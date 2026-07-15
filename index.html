@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2ndSTREET.html - 純HTML/CSS/JS專案">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Your Name">
+
+    <title>2ndSTREET.html</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="container">
+                <div class="logo">
+                    <h1>2ndSTREET</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">首頁</a></li>
+                    <li><a href="#about">關於</a></li>
+                    <li><a href="#services">服務</a></li>
+                    <li><a href="#contact">聯絡</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h2>歡迎來到 2ndSTREET</h2>
+                <p>這是一個純 HTML/CSS/JavaScript 專案</p>
+                <button class="btn btn-primary">開始探索</button>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2>關於我們</h2>
+                <p>在這裡填入你的內容...</p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2>我們的服務</h2>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <h3>服務一</h3>
+                        <p>服務說明...</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>服務二</h3>
+                        <p>服務說明...</p>
+                    </div>
+                    <div class="service-card">
+                        <h3>服務三</h3>
+                        <p>服務說明...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>聯絡我們</h2>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="訊息內容" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">送出</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 2ndSTREET. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>
