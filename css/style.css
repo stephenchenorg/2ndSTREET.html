@@ -304,12 +304,12 @@ ol {
 }
 
 .btn-primary {
-    background: var(--color-secondary);
+    background: #333333;
     color: var(--text-inverse);
 }
 
 .btn-primary:hover {
-    background: #CC0010;
+    background: #1a1a1a;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -1333,4 +1333,5 @@ section {
 
 .nav-link .en {
     font-size: var(--font-size-sm);
+    font-style: italic;
 }
