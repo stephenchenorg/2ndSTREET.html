@@ -1058,15 +1058,17 @@ section {
     background: var(--bg-primary);
 }
 
-.about-layout {
+/* Top Grid: 3 Columns */
+.about-top-grid {
     display: grid;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
 }
 
 @media (min-width: 1024px) {
-    .about-layout {
-        grid-template-columns: 1fr 2fr;
-        gap: var(--spacing-xl);
+    .about-top-grid {
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: var(--spacing-lg);
         align-items: start;
     }
 }
@@ -1074,6 +1076,8 @@ section {
 /* Left Image */
 .about-left-image {
     width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
 .about-left-image img {
@@ -1084,17 +1088,36 @@ section {
 
 @media (min-width: 1024px) {
     .about-left-image {
+        max-width: 100%;
         margin-top: var(--spacing-xl);
     }
 }
 
-/* Right Area */
-.about-right-area {
-    display: grid;
-    gap: var(--spacing-lg);
+/* Right Image */
+.about-right-image {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
 }
 
-.about-store-image img,
+.about-right-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+@media (min-width: 1024px) {
+    .about-right-image {
+        max-width: 100%;
+    }
+}
+
+/* Team Image (Bottom, Full Width) */
+.about-team-image {
+    width: 100%;
+    margin-top: var(--spacing-lg);
+}
+
 .about-team-image img {
     width: 100%;
     height: auto;
