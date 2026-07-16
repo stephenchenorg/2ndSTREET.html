@@ -1082,6 +1082,12 @@ section {
     object-fit: cover;
 }
 
+@media (min-width: 1024px) {
+    .about-left-image {
+        margin-top: var(--spacing-xl);
+    }
+}
+
 /* Right Area */
 .about-right-area {
     display: grid;
