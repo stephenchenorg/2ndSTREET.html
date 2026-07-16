@@ -482,3 +482,95 @@ ol {
         font-size: var(--font-size-xl);
     }
 }
+
+/* ========================================
+   Section Common Styles
+   ======================================== */
+section {
+    padding: var(--spacing-xl) 0;
+}
+
+@media (min-width: 1024px) {
+    section {
+        padding: var(--spacing-2xl) 0;
+    }
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+@media (min-width: 768px) {
+    .section-title {
+        font-size: var(--font-size-2xl);
+    }
+}
+
+.section-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   Recruitment Highlight Section
+   ======================================== */
+.recruitment-highlight {
+    background: var(--bg-secondary);
+    text-align: center;
+}
+
+.highlight-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.highlight-content p {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+}
+
+.btn-lg {
+    padding: 16px 48px;
+    font-size: var(--font-size-lg);
+}
+
+/* ========================================
+   About Section
+   ======================================== */
+.about-content {
+    display: grid;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .about-content {
+        grid-template-columns: 2fr 1fr;
+        gap: var(--spacing-xl);
+    }
+}
+
+.about-text p {
+    font-size: var(--font-size-base);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.about-logo {
+    text-align: center;
+}
+
+.about-logo img {
+    max-width: 200px;
+    margin: 0 auto;
+}
