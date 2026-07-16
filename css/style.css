@@ -1047,7 +1047,7 @@ section {
     background: var(--bg-primary);
 }
 
-/* Top Grid: 2 Columns */
+/* Top Grid: 3 Columns (Left Image + Text + Right Image) */
 .about-top-grid {
     display: grid;
     gap: var(--spacing-md);
@@ -1056,7 +1056,7 @@ section {
 
 @media (min-width: 1024px) {
     .about-top-grid {
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 2fr 1.6fr;
         gap: var(--spacing-lg);
         align-items: start;
     }
@@ -1082,7 +1082,7 @@ section {
     }
 }
 
-/* Right Image with Text Below */
+/* Right Image */
 .about-right-image {
     width: 100%;
     max-width: 300px;
@@ -1099,9 +1099,6 @@ section {
 @media (min-width: 1024px) {
     .about-right-image {
         max-width: 100%;
-        width: 80%;
-        margin-left: auto;
-        margin-right: 0;
     }
 }
 
@@ -1119,15 +1116,12 @@ section {
 
 /* Text Content */
 .about-text-content {
-    padding: var(--spacing-lg) 0;
-    max-width: 100%;
-    margin: 0 auto;
+    padding: var(--spacing-md) 0;
 }
 
 @media (min-width: 1024px) {
     .about-text-content {
-        padding: var(--spacing-xl) 0;
-        max-width: 800px;
+        padding: 0;
     }
 }
 
@@ -1343,8 +1337,15 @@ section {
 
 /* Staff Stories Section */
 .staff-stories-section {
-    padding: var(--spacing-2xl) 0;
+    padding: var(--spacing-2xl) 0 var(--spacing-lg);
     background-color: var(--bg-secondary);
+    text-align: center;
+}
+
+.staff-stories-section .section-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin: 0;
 }
 
 .staff-grid {
@@ -1355,9 +1356,14 @@ section {
 
 @media (min-width: 768px) {
     .staff-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-xl);
     }
+}
+
+.staff-grid .staff-card {
+    background: transparent;
+    box-shadow: none;
 }
 
 .section-cta {
