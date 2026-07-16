@@ -1048,7 +1048,7 @@ section {
 
 .highlight-line {
     width: 1px;
-    height: 60px;
+    height: 100px;
     background-color: var(--color-secondary);
     margin: 0 auto;
 }
