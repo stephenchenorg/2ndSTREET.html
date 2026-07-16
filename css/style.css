@@ -516,7 +516,7 @@ section {
 
 .section-subtitle {
     font-size: var(--font-size-lg);
-    color: var(--text-secondary);
+    color: var(--color-secondary);
 }
 
 /* ========================================
@@ -1049,7 +1049,7 @@ section {
 .highlight-line {
     width: 1px;
     height: 60px;
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
     margin: 0 auto;
 }
 
