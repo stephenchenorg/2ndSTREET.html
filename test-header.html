@@ -1,185 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Header Navigation Component Test - 2ndSTREET">
-    <title>Header Navigation Test - 2ndSTREET</title>
+    <title>Header Test</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header Navigation Component -->
     <header class="header">
         <div class="container">
-            <div class="header-logo">
-                <a href="index.html">2ndSTREET</a>
-            </div>
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="2nd STREET">
+            </a>
 
-            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
             <nav class="nav-menu">
-                <ul>
-                    <li class="nav-menu-item active">
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a href="job-intro.html">Jobs</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a href="recruit.html">Recruit</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a href="stories.html">Stories</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a href="daily-work.html">Daily Work</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a href="evaluation.html">Evaluation</a>
-                    </li>
-                </ul>
-
-                <div class="nav-cta">
-                    <button class="btn btn-primary" aria-label="Apply for job">APPLY</button>
-                </div>
+                <a href="index.html" class="nav-link">ABOUT</a>
+                <a href="stories.html" class="nav-link">STORY</a>
+                <a href="job-intro.html" class="nav-link">JOB</a>
+                <a href="recruit.html" class="nav-link">RECRUIT</a>
+                <a href="mailto:recruit@2ndstreet.jp" class="btn btn-primary">APPLY</a>
             </nav>
         </div>
     </header>
 
-    <!-- Test Content -->
-    <main>
-        <section style="padding: 40px; text-align: center;">
-            <h1>Header Navigation Component Test</h1>
-            <p style="margin-top: 20px; color: #666;">
-                Test the sticky header with responsive navigation menu. 
-                Toggle the hamburger menu on mobile to see the menu slide down.
-            </p>
-        </section>
+    <!-- 測試內容 -->
+    <div style="height: 200vh; padding: 100px 20px;">
+        <h1>測試內容（捲動看 sticky header）</h1>
+        <p>捲動頁面，Header 應該固定在頂部</p>
+    </div>
 
-        <section style="padding: 40px 20px; background: #f5f5f5;">
-            <div class="container">
-                <h2>Features to Test</h2>
-                <ul style="margin-top: 20px; color: #666;">
-                    <li>✓ Sticky header that stays at top while scrolling</li>
-                    <li>✓ Hamburger menu toggle on mobile (< 768px)</li>
-                    <li>✓ Horizontal navigation on desktop</li>
-                    <li>✓ Active state on navigation items</li>
-                    <li>✓ Hover effects on navigation links</li>
-                    <li>✓ Primary button styling (APPLY CTA)</li>
-                    <li>✓ Smooth animations and transitions</li>
-                </ul>
-            </div>
-        </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>2nd STREET</h3>
+                    <p>日本最大二手時尚連鎖店</p>
+                </div>
 
-        <section style="padding: 40px; background: #fff;">
-            <div class="container">
-                <h2>Button Styles Available</h2>
-                <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px;">
-                    <button class="btn btn-primary">Primary Button</button>
-                    <button class="btn btn-secondary">Secondary Button</button>
-                    <button class="btn btn-dark">Dark Button</button>
-                    <button class="btn btn-light">Light Button</button>
-                    <button class="btn btn-primary btn-sm">Small Button</button>
-                    <button class="btn btn-primary btn-lg">Large Button</button>
-                    <button class="btn btn-primary" disabled>Disabled Button</button>
+                <div class="footer-section">
+                    <h4>聯絡我們</h4>
+                    <p>Email: recruit@2ndstreet.jp</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>追蹤我們</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section style="padding: 40px; background: #f5f5f5;">
-            <div class="container">
-                <h2>Responsive Breakpoints</h2>
-                <p style="margin-top: 20px; color: #666;">
-                    <strong>Mobile (< 768px):</strong> Hamburger menu visible, navigation items hidden<br>
-                    <strong>Tablet (768px - 1024px):</strong> Desktop navigation visible<br>
-                    <strong>Desktop (> 1024px):</strong> Full horizontal navigation with CTA button
-                </p>
+            <div class="footer-bottom">
+                <p>&copy; 2020 2nd STREET. All rights reserved.</p>
             </div>
-        </section>
-
-        <!-- Spacer to test sticky header -->
-        <section style="padding: 40px; background: #fff;">
-            <div class="container">
-                <h3>Scroll Down to Test Sticky Header</h3>
-                <p style="margin-top: 10px; color: #666; line-height: 1.8;">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt 
-                    in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-            </div>
-        </section>
-
-        <section style="padding: 40px; background: #f5f5f5;">
-            <div class="container">
-                <p style="color: #666; line-height: 1.8;">
-                    The header should remain fixed at the top of the screen while you scroll. 
-                    This creates a persistent navigation that users can access from any point 
-                    on the page. The hamburger menu on mobile should collapse/expand smoothly 
-                    with animation effects.
-                </p>
-            </div>
-        </section>
-
-        <section style="padding: 40px; background: #fff;">
-            <div class="container">
-                <p style="color: #666; line-height: 1.8;">
-                    The navigation menu features smooth transitions, hover states with color 
-                    changes, and an active state indicator. On mobile, the menu slides down 
-                    from the header with a fade-in effect. The hamburger icon transforms into 
-                    an X when the menu is open.
-                </p>
-            </div>
-        </section>
-
-        <section style="padding: 40px; background: #f5f5f5;">
-            <div class="container">
-                <p style="color: #666; line-height: 1.8;">
-                    All components follow the 2ndSTREET design system using CSS variables for 
-                    colors, spacing, and transitions. This makes it easy to maintain consistency 
-                    and update styles globally without modifying individual elements.
-                </p>
-            </div>
-        </section>
-
-        <section style="padding: 60px 40px; background: #fff; text-align: center;">
-            <div class="container">
-                <h2>Ready to Use</h2>
-                <p style="margin-top: 15px; color: #666; margin-bottom: 30px;">
-                    Copy the header structure from this test file to your main pages.
-                </p>
-                <a href="index.html" class="btn btn-primary">Back to Home</a>
-            </div>
-        </section>
-    </main>
+        </div>
+    </footer>
 
     <script>
         // Mobile menu toggle functionality
         document.addEventListener('DOMContentLoaded', function() {
-            const navToggle = document.querySelector('.nav-toggle');
+            const menuToggle = document.querySelector('.menu-toggle');
             const navMenu = document.querySelector('.nav-menu');
-            const navMenuItems = document.querySelectorAll('.nav-menu-item a');
+            const navLinks = document.querySelectorAll('.nav-link');
 
             // Toggle menu on button click
-            navToggle.addEventListener('click', function() {
-                navToggle.classList.toggle('active');
+            menuToggle.addEventListener('click', function() {
+                menuToggle.classList.toggle('active');
                 navMenu.classList.toggle('active');
-                const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-                navToggle.setAttribute('aria-expanded', !isExpanded);
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
             });
 
             // Close menu when clicking on a navigation link
-            navMenuItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    navToggle.classList.remove('active');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuToggle.classList.remove('active');
                     navMenu.classList.remove('active');
-                    navToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.setAttribute('aria-expanded', 'false');
                 });
             });
 
@@ -187,18 +99,18 @@
             document.addEventListener('click', function(event) {
                 const isClickInsideHeader = event.target.closest('.header');
                 if (!isClickInsideHeader && navMenu.classList.contains('active')) {
-                    navToggle.classList.remove('active');
+                    menuToggle.classList.remove('active');
                     navMenu.classList.remove('active');
-                    navToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.setAttribute('aria-expanded', 'false');
                 }
             });
 
             // Close menu on ESC key
             document.addEventListener('keydown', function(event) {
                 if (event.key === 'Escape' && navMenu.classList.contains('active')) {
-                    navToggle.classList.remove('active');
+                    menuToggle.classList.remove('active');
                     navMenu.classList.remove('active');
-                    navToggle.setAttribute('aria-expanded', 'false');
+                    menuToggle.setAttribute('aria-expanded', 'false');
                 }
             });
         });
