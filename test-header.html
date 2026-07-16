@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Header Navigation Component Test - 2ndSTREET">
+    <title>Header Navigation Test - 2ndSTREET</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header Navigation Component -->
+    <header class="header">
+        <div class="container">
+            <div class="header-logo">
+                <a href="index.html">2ndSTREET</a>
+            </div>
+
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li class="nav-menu-item active">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a href="job-intro.html">Jobs</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a href="recruit.html">Recruit</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a href="stories.html">Stories</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a href="daily-work.html">Daily Work</a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a href="evaluation.html">Evaluation</a>
+                    </li>
+                </ul>
+
+                <div class="nav-cta">
+                    <button class="btn btn-primary" aria-label="Apply for job">APPLY</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Test Content -->
+    <main>
+        <section style="padding: 40px; text-align: center;">
+            <h1>Header Navigation Component Test</h1>
+            <p style="margin-top: 20px; color: #666;">
+                Test the sticky header with responsive navigation menu. 
+                Toggle the hamburger menu on mobile to see the menu slide down.
+            </p>
+        </section>
+
+        <section style="padding: 40px 20px; background: #f5f5f5;">
+            <div class="container">
+                <h2>Features to Test</h2>
+                <ul style="margin-top: 20px; color: #666;">
+                    <li>✓ Sticky header that stays at top while scrolling</li>
+                    <li>✓ Hamburger menu toggle on mobile (< 768px)</li>
+                    <li>✓ Horizontal navigation on desktop</li>
+                    <li>✓ Active state on navigation items</li>
+                    <li>✓ Hover effects on navigation links</li>
+                    <li>✓ Primary button styling (APPLY CTA)</li>
+                    <li>✓ Smooth animations and transitions</li>
+                </ul>
+            </div>
+        </section>
+
+        <section style="padding: 40px; background: #fff;">
+            <div class="container">
+                <h2>Button Styles Available</h2>
+                <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 15px;">
+                    <button class="btn btn-primary">Primary Button</button>
+                    <button class="btn btn-secondary">Secondary Button</button>
+                    <button class="btn btn-dark">Dark Button</button>
+                    <button class="btn btn-light">Light Button</button>
+                    <button class="btn btn-primary btn-sm">Small Button</button>
+                    <button class="btn btn-primary btn-lg">Large Button</button>
+                    <button class="btn btn-primary" disabled>Disabled Button</button>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 40px; background: #f5f5f5;">
+            <div class="container">
+                <h2>Responsive Breakpoints</h2>
+                <p style="margin-top: 20px; color: #666;">
+                    <strong>Mobile (< 768px):</strong> Hamburger menu visible, navigation items hidden<br>
+                    <strong>Tablet (768px - 1024px):</strong> Desktop navigation visible<br>
+                    <strong>Desktop (> 1024px):</strong> Full horizontal navigation with CTA button
+                </p>
+            </div>
+        </section>
+
+        <!-- Spacer to test sticky header -->
+        <section style="padding: 40px; background: #fff;">
+            <div class="container">
+                <h3>Scroll Down to Test Sticky Header</h3>
+                <p style="margin-top: 10px; color: #666; line-height: 1.8;">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt 
+                    in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </section>
+
+        <section style="padding: 40px; background: #f5f5f5;">
+            <div class="container">
+                <p style="color: #666; line-height: 1.8;">
+                    The header should remain fixed at the top of the screen while you scroll. 
+                    This creates a persistent navigation that users can access from any point 
+                    on the page. The hamburger menu on mobile should collapse/expand smoothly 
+                    with animation effects.
+                </p>
+            </div>
+        </section>
+
+        <section style="padding: 40px; background: #fff;">
+            <div class="container">
+                <p style="color: #666; line-height: 1.8;">
+                    The navigation menu features smooth transitions, hover states with color 
+                    changes, and an active state indicator. On mobile, the menu slides down 
+                    from the header with a fade-in effect. The hamburger icon transforms into 
+                    an X when the menu is open.
+                </p>
+            </div>
+        </section>
+
+        <section style="padding: 40px; background: #f5f5f5;">
+            <div class="container">
+                <p style="color: #666; line-height: 1.8;">
+                    All components follow the 2ndSTREET design system using CSS variables for 
+                    colors, spacing, and transitions. This makes it easy to maintain consistency 
+                    and update styles globally without modifying individual elements.
+                </p>
+            </div>
+        </section>
+
+        <section style="padding: 60px 40px; background: #fff; text-align: center;">
+            <div class="container">
+                <h2>Ready to Use</h2>
+                <p style="margin-top: 15px; color: #666; margin-bottom: 30px;">
+                    Copy the header structure from this test file to your main pages.
+                </p>
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const navMenuItems = document.querySelectorAll('.nav-menu-item a');
+
+            // Toggle menu on button click
+            navToggle.addEventListener('click', function() {
+                navToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', !isExpanded);
+            });
+
+            // Close menu when clicking on a navigation link
+            navMenuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Close menu when clicking outside (for mobile)
+            document.addEventListener('click', function(event) {
+                const isClickInsideHeader = event.target.closest('.header');
+                if (!isClickInsideHeader && navMenu.classList.contains('active')) {
+                    navToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Close menu on ESC key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                    navToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
