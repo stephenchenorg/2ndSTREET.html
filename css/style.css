@@ -652,3 +652,93 @@ section {
 .photo-item:hover {
     transform: scale(1.05);
 }
+
+/* ========================================
+   Cards
+   ======================================== */
+.card {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--bg-secondary);
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: var(--spacing-md);
+}
+
+.card-title {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+}
+
+.card-role {
+    font-size: var(--font-size-sm);
+    color: var(--text-accent);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+}
+
+.card-text {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* ========================================
+   Staff Cards Grid
+   ======================================== */
+.staff-cards {
+    display: grid;
+    gap: var(--spacing-lg);
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .staff-cards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-xl);
+    }
+}
+
+.staff-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.staff-card .card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.staff-card .card-text {
+    flex: 1;
+}
