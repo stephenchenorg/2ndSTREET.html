@@ -1085,6 +1085,7 @@ section {
     font-size: var(--font-size-base);
     line-height: 1.8;
     color: var(--text-secondary);
+    margin-top: var(--spacing-lg);
 }
 
 .about-list {
