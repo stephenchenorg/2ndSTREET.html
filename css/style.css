@@ -1119,12 +1119,15 @@ section {
 
 /* Text Content */
 .about-text-content {
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-lg) 0;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 @media (min-width: 1024px) {
     .about-text-content {
-        padding: var(--spacing-lg) 0;
+        padding: var(--spacing-xl) 0;
+        max-width: 800px;
     }
 }
 
