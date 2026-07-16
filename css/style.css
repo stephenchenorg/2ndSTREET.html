@@ -522,7 +522,6 @@ section {
    Recruitment Highlight Section
    ======================================== */
 .recruitment-highlight {
-    background: var(--bg-secondary);
     text-align: center;
 }
 
@@ -1036,7 +1035,7 @@ section {
     font-size: var(--font-size-xl);
     font-weight: 700;
     color: var(--color-secondary);
-    margin: 0;
+    margin: 0 0 var(--spacing-md) 0;
     text-align: center;
 }
 
@@ -1044,6 +1043,13 @@ section {
     .highlight-heading {
         font-size: var(--font-size-2xl);
     }
+}
+
+.highlight-line {
+    width: 1px;
+    height: 60px;
+    background-color: var(--color-primary);
+    margin: 0 auto;
 }
 
 /* About Grid (Two Column) */
