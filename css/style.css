@@ -1023,10 +1023,16 @@ section {
 }
 
 .highlight-title {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-lg);
     font-weight: 700;
     color: var(--color-secondary);
     margin: 0;
+}
+
+@media (min-width: 768px) {
+    .highlight-title {
+        font-size: var(--font-size-xl);
+    }
 }
 
 .highlight-heading {
