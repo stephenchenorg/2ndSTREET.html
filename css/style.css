@@ -1038,7 +1038,7 @@ section {
     width: 1px;
     height: 100px;
     background-color: var(--color-secondary);
-    margin: 0 auto;
+    margin: var(--spacing-xl) auto;
 }
 
 /* About Layout */
@@ -1357,8 +1357,8 @@ section {
 @media (min-width: 768px) {
     .staff-grid {
         grid-template-columns: repeat(2, 1fr);
-        column-gap: var(--spacing-xl);
-        row-gap: var(--spacing-xl);
+        column-gap: var(--spacing-lg);
+        row-gap: var(--spacing-lg);
         padding: 0 var(--spacing-2xl);
     }
 }
@@ -1366,6 +1366,11 @@ section {
 .staff-grid .staff-card {
     background: transparent;
     box-shadow: none;
+    border-radius: 0;
+}
+
+.staff-grid .card-image {
+    aspect-ratio: 3 / 2;
 }
 
 .section-cta {

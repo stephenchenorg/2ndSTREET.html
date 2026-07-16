@@ -261,7 +261,7 @@ mkdir -p assets/images/icons
 檢查所有圖片檔案：
 
 ```bash
-ls -la assets/images/logo.png
+ls -la assets/images/2ndstreet-logo.png
 ls -la assets/images/hero/
 ls -la assets/images/work/
 ls -la assets/images/staff/

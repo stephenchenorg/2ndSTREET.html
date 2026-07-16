@@ -31,11 +31,11 @@
 ```
 2ndSTREET/
 ├── index.html              # 首頁（Hero + 招募摘要 + 公司簡介）
-├── daily-work.html         # 工作日常（工作環境照片網格）
-├── stories.html            # 員工故事（員工個人檔案）
+├── daily-work.html         # 日常業務（工作環境照片網格）
+├── stories.html            # 社員故事（員工個人檔案）
 ├── recruit.html            # 招募資訊（完整招募內容）
-├── job-intro.html          # 工作介紹（職務說明）
-├── evaluation.html         # 評價制度（晉升機制）
+├── job-intro.html          # 職缺介紹（職務說明）
+├── evaluation.html         # 人事評價制度（晉升機制）
 ├── css/
 │   └── style.css           # 統一樣式表
 ├── js/
