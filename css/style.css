@@ -1067,7 +1067,7 @@ section {
 
 @media (min-width: 1024px) {
     .about-top-grid {
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: 1fr 2fr 1.5fr;
         gap: var(--spacing-lg);
         align-items: start;
     }
