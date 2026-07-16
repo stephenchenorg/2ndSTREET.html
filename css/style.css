@@ -131,8 +131,8 @@ ol {
 .header {
     position: sticky;
     top: 0;
-    background: var(--bg-primary);
-    color: var(--text-primary);
+    background: #FFFFFF !important;
+    color: #000000 !important;
     z-index: 1000;
     box-shadow: var(--shadow-sm);
 }
