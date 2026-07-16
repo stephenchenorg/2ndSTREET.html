@@ -1421,6 +1421,12 @@ section {
     transition: var(--transition-base);
 }
 
+.footer-social a img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
 .footer-social a:hover {
     transform: translateY(-2px);
 }
