@@ -1041,7 +1041,7 @@ section {
 
 @media (min-width: 768px) {
     .highlight-heading {
-        font-size: var(--font-size-2xl);
+        font-size: var(--font-size-xl);
     }
 }
 
@@ -1052,61 +1052,84 @@ section {
     margin: 0 auto;
 }
 
-/* About Grid (Two Column) */
-.about-grid {
-    display: grid;
-    gap: var(--spacing-lg);
-    align-items: center;
+/* About Layout */
+.about-section {
+    padding: var(--spacing-xl) 0;
+    background: var(--bg-primary);
 }
 
-@media (min-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr 1.2fr;
+.about-layout {
+    display: grid;
+    gap: var(--spacing-lg);
+}
+
+@media (min-width: 1024px) {
+    .about-layout {
+        grid-template-columns: 1fr 2fr;
         gap: var(--spacing-xl);
+        align-items: start;
     }
 }
 
-.about-image img {
+/* Left Image */
+.about-left-image {
+    width: 100%;
+}
+
+.about-left-image img {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-.about-content {
-    padding: var(--spacing-md);
+/* Right Area */
+.about-right-area {
+    display: grid;
+    gap: var(--spacing-lg);
 }
 
-.about-content .section-title {
+.about-store-image img,
+.about-team-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Text Content */
+.about-text-content {
+    padding: var(--spacing-md) 0;
+}
+
+.about-title {
     font-size: var(--font-size-xl);
-    margin-bottom: var(--spacing-md);
-}
-
-.about-text {
-    font-size: var(--font-size-base);
-    line-height: 1.8;
-    color: var(--text-secondary);
-    margin-top: var(--spacing-lg);
-}
-
-.about-list {
-    list-style: none;
-    margin-top: var(--spacing-md);
-    padding-left: 0;
-}
-
-.about-list li {
-    position: relative;
-    padding-left: 24px;
-    margin-bottom: var(--spacing-sm);
-    line-height: 1.8;
-}
-
-.about-list li::before {
-    content: "・";
-    position: absolute;
-    left: 0;
-    color: var(--color-secondary);
     font-weight: 700;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .about-title {
+        font-size: var(--font-size-2xl);
+    }
+}
+
+.about-description,
+.about-points,
+.about-mission {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.8;
+}
+
+.about-description p,
+.about-points p,
+.about-mission p {
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.indent {
+    padding-left: var(--spacing-md);
 }
 
 /* Explore Section (Single Image) */
