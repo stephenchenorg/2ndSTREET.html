@@ -23,7 +23,7 @@
     <header class="header">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="assets/images/logo.png" alt="2nd STREET">
+                <img src="assets/images/logo.png" alt="2nd STREET" width="410" height="59">
             </a>
 
             <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">
@@ -33,12 +33,18 @@
             </button>
 
             <nav class="nav-menu">
-                <a href="index.html" class="nav-link active">關於我們</a>
+                <a href="job-intro.html" class="nav-link">職缺介紹</a>
                 <a href="daily-work.html" class="nav-link">日常業務</a>
                 <a href="evaluation.html" class="nav-link">人事評價制度</a>
                 <a href="stories.html" class="nav-link">社員故事</a>
-                <a href="recruit.html" class="btn btn-primary">應徵<span class="divider">｜</span><span class="en">Entry</span></a>
+                <a href="recruit.html" class="nav-link nav-menu__entry">應徵｜Entry</a>
             </nav>
+
+            <a href="recruit.html" class="entry-btn" aria-label="應徵 Entry">
+                <span class="entry-btn__jp">應徵</span>
+                <span class="entry-btn__divider"></span>
+                <span class="entry-btn__en">Entry</span>
+            </a>
         </div>
     </header>
 
@@ -47,7 +53,7 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-image">
-                <img src="assets/images/hero/team.jpg" alt="Team working together" loading="eager">
+                <img src="assets/images/hero/team.jpg" alt="2nd STREET 團隊工作照" loading="eager">
             </div>
         </section>
 
@@ -61,53 +67,58 @@
         <section class="recruitment-highlight">
             <div class="container">
                 <div class="highlight-box">
-                    <h2 class="highlight-title">2030年 百店模擬</h2>
+                    <h2 class="highlight-title">2030年 百店規模</h2>
                 </div>
 
                 <div class="highlight-content">
-                    <h3 class="highlight-heading">加入我們，揮「WAKUWAKU」的嶄新舞台全會！</h3>
-                    <div class="highlight-line"></div>
+                    <h3 class="highlight-heading">加入我們，讓「WAKUWAKU」的感動遍佈全台！</h3>
                 </div>
             </div>
+            <div class="highlight-divider" aria-hidden="true"></div>
         </section>
 
-        <!-- About Section -->
+        <!-- About Section (Brand Philosophy Collage) -->
         <section class="about-section">
-            <div class="container">
-                <!-- Top Grid: Left Image + Right Image with Text -->
-                <div class="about-top-grid">
-                    <!-- Left Image -->
-                    <div class="about-left-image">
-                        <img src="assets/images/index/index2.png" alt="2nd STREET 店鋪" loading="lazy">
+            <div class="about-collage">
+                <!-- Left tall vertical shoes image -->
+                <figure class="about-collage__image about-collage__image--shoes">
+                    <img src="assets/images/index/index2.png" alt="2nd STREET 店內球鞋選品" loading="lazy">
+                </figure>
+
+                <!-- Right-top store sign image -->
+                <figure class="about-collage__image about-collage__image--sign">
+                    <img src="assets/images/index/index1.png" alt="2nd STREET 店鋪外觀" loading="lazy">
+                </figure>
+
+                <!-- Section heading with red underline under 夥伴 -->
+                <div class="about-collage__heading">
+                    <h2 class="about-collage__title">「&nbsp;關於我們理想中的&nbsp;<span class="about-collage__title-underline">夥伴</span>」</h2>
+                </div>
+
+                <!-- Brand philosophy text -->
+                <div class="about-collage__text">
+                    <div class="about-collage__group">
+                        <p class="about-collage__paragraph about-collage__paragraph--lead">懷抱真摯的尊重，用最溫暖的能量款待每一個人</p>
+                        <p class="about-collage__paragraph">讓每個走進這裡的人，都能感受到被珍視的溫度</p>
                     </div>
 
-                    <!-- Right Image with Text Below -->
-                    <div class="about-right-image">
-                        <img src="assets/images/index/index1.png" alt="2nd STREET 商品" loading="lazy">
+                    <div class="about-collage__group">
+                        <p class="about-collage__paragraph about-collage__paragraph--lead">把理想融入日常，在持續的累積中迎來爆發與超越！</p>
+                        <p class="about-collage__paragraph">我們不只在工作，更在並肩拓展視野</p>
+                        <p class="about-collage__paragraph">每一次的突破，都將成就更強大、更耀眼的自己</p>
+                    </div>
 
-                        <!-- Text Content (Below Image) -->
-                        <div class="about-text-content">
-                            <h2 class="about-title">「關於我們理想中的 夥伴」</h2>
-
-                            <div class="about-description">
-                                <p>懷抱真摯的尊重，用最溫暖的能量款待每一個人 </p>
-                                <p>讓每個走進這裡的人，都能感受到被珍視的溫度</p>
-                            </div>
-
-                            <div class="about-points">
-                                <p>把理想融入日常，在持續的累積中迎來爆發與超越！</p>
-                                <p class="indent"> 我們不只在工作，更在並肩拓展視野</p>
-                                <p class="indent">每一次的突破，都將成就更強大、更耀眼的自己</p>
-                            </div>
-
-                            <div class="about-mission">
-                                <p>心懷感恩，攜手激盪出「超越期待」的服務與感動</p>
-                                <p class="indent">帶著謝意，並用真誠的服務，點亮客人的心，</p>
-                                <p class="indent">讓WAKUWAKU 的感動在全台遍地開花！</p>
-                            </div>
-                        </div>
+                    <div class="about-collage__group">
+                        <p class="about-collage__paragraph about-collage__paragraph--lead">心懷感恩，攜手激盪出「超越期待」的服務與感動</p>
+                        <p class="about-collage__paragraph">帶著謝意，並用真誠的服務，點亮客人的心，</p>
+                        <p class="about-collage__paragraph">讓&nbsp;WAKUWAKU&nbsp;的感動在全台遍地開花！</p>
                     </div>
                 </div>
+
+                <!-- Right-bottom group photo -->
+                <figure class="about-collage__image about-collage__image--group">
+                    <img src="assets/images/index/index3.png" alt="2nd STREET 團隊夥伴" loading="lazy">
+                </figure>
             </div>
         </section>
 
@@ -122,26 +133,33 @@
 
         <!-- Deep Dive Images Section -->
         <section class="deep-dive-images">
-            <div class="container">
-                <!-- First Row: Single Large Image -->
-                <div class="image-single">
-                    <span class="image-label">日常業務 Business operations</span>
-                    <img src="assets/images/index/index4.png" alt="2nd STREET" loading="lazy">
-                    <a href="#" class="image-view-more">VIEW MORE</a>
-                </div>
+            <!-- First Row: Single Large Image (Full Bleed) -->
+            <div class="image-single">
+                <img src="assets/images/index/index4.png" alt="日常業務 Business operations" loading="lazy">
+                <span class="image-label">
+                    <span class="image-label__zh">日常業務</span>
+                    <span class="image-label__en">Business operations</span>
+                </span>
+                <a href="daily-work.html" class="image-view-more">view more</a>
+            </div>
 
-                <!-- Second Row: Two Images Side by Side -->
-                <div class="images-grid-two">
-                    <div class="image-item">
-                        <span class="image-label">人事評價制度 Personal_system</span>
-                        <img src="assets/images/index/index5.png" alt="2nd STREET" loading="lazy">
-                        <a href="#" class="image-view-more">VIEW MORE</a>
-                    </div>
-                    <div class="image-item">
-                        <span class="image-label">職缺介紹 Occupation</span>
-                        <img src="assets/images/index/index6.png" alt="2nd STREET" loading="lazy">
-                        <a href="#" class="image-view-more">VIEW MORE</a>
-                    </div>
+            <!-- Second Row: Two Images Side by Side (Full Bleed) -->
+            <div class="images-grid-two">
+                <div class="image-item">
+                    <img src="assets/images/index/index5.png" alt="人事評價制度 Personal_system" loading="lazy">
+                    <span class="image-label">
+                        <span class="image-label__zh">人事評價制度</span>
+                        <span class="image-label__en">Personal_system</span>
+                    </span>
+                    <a href="evaluation.html" class="image-view-more">view more</a>
+                </div>
+                <div class="image-item">
+                    <img src="assets/images/index/index6.png" alt="職缺介紹 Occupation" loading="lazy">
+                    <span class="image-label">
+                        <span class="image-label__zh">職缺介紹</span>
+                        <span class="image-label__en">Occupation</span>
+                    </span>
+                    <a href="job-intro.html" class="image-view-more">view more</a>
                 </div>
             </div>
         </section>
@@ -151,56 +169,56 @@
             <div class="highlight-line"></div>
             <div class="container">
                 <h2 class="section-title">社員故事</h2>
-                <p class="section-subtitle">Story</p>
+                <p class="section-subtitle">interview</p>
 
                 <div class="staff-grid">
                     <!-- Staff Card 1 -->
-                    <div class="card staff-card">
+                    <a href="stories.html" class="card staff-card">
                         <div class="card-image">
-                            <img src="assets/images/staff/staff-03.jpg" alt="員工照片" loading="lazy">
+                            <img src="assets/images/staff/staff-03.jpg" alt="本部 店舖營運部 經理 沈 Betty" loading="lazy">
                         </div>
                         <div class="card-content">
-                            <h3 class="card-title">本店 店舗副經理 峰吉</h3>
-                            <p class="card-role">A-Store</p>
+                            <h3 class="card-title">本部 店舖營運部 經理</h3>
+                            <p class="card-role">沈 Betty</p>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Staff Card 2 -->
-                    <div class="card staff-card">
+                    <a href="stories.html" class="card staff-card">
                         <div class="card-image">
-                            <img src="assets/images/staff/staff-01.jpg" alt="員工照片" loading="lazy">
+                            <img src="assets/images/staff/staff-01.jpg" alt="本部 教育課 副理 方 Sam" loading="lazy">
                         </div>
                         <div class="card-content">
-                            <h3 class="card-title">本店 商品經理 康康</h3>
-                            <p class="card-role">B-Store</p>
+                            <h3 class="card-title">本部 教育課 副理</h3>
+                            <p class="card-role">方 Sam</p>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Staff Card 3 -->
-                    <div class="card staff-card">
+                    <a href="stories.html" class="card staff-card">
                         <div class="card-image">
-                            <img src="assets/images/staff/staff-04.jpg" alt="員工照片" loading="lazy">
+                            <img src="assets/images/staff/staff-04.jpg" alt="本部 店舖營運部 區經理 郭 Eating" loading="lazy">
                         </div>
                         <div class="card-content">
-                            <h3 class="card-title">本店 商品經理 康康</h3>
-                            <p class="card-role">B-Store</p>
+                            <h3 class="card-title">本部 店舖營運部 區經理</h3>
+                            <p class="card-role">郭 Eating</p>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Staff Card 4 -->
-                    <div class="card staff-card">
+                    <a href="stories.html" class="card staff-card">
                         <div class="card-image">
-                            <img src="assets/images/staff/staff-02.jpg" alt="員工照片" loading="lazy">
+                            <img src="assets/images/staff/staff-02.jpg" alt="香港事業部 區經理 黃 Aaren" loading="lazy">
                         </div>
                         <div class="card-content">
-                            <h3 class="card-title">本店 店舗副經理 蜜蜂君</h3>
-                            <p class="card-role">C-Store</p>
+                            <h3 class="card-title">香港事業部 區經理</h3>
+                            <p class="card-role">黃 Aaren</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="section-cta">
-                    <a href="stories.html" class="btn btn-secondary">VIEW MORE</a>
+                    <a href="stories.html" class="btn btn-secondary">view more</a>
                 </div>
             </div>
         </section>
@@ -273,11 +291,11 @@
             </div>
 
             <div class="footer-bottom">
-                <svg width="80" height="20" viewBox="0 0 80 20" fill="none" class="geo-logo">
-                    <path d="M10 0L0 10L10 20L20 10L10 0ZM10 15L5 10L10 5L15 10L10 15Z" fill="black"/>
-                    <path d="M30 0L20 10L30 20L40 10L30 0ZM30 15L25 10L30 5L35 10L30 15Z" fill="black"/>
-                    <path d="M50 0L40 10L50 20L60 10L50 0ZM50 15L45 10L50 5L55 10L50 15Z" fill="black"/>
-                    <path d="M70 0L60 10L70 20L80 10L70 0ZM70 15L65 10L70 5L75 10L70 15Z" fill="black"/>
+                <svg width="80" height="20" viewBox="0 0 80 20" fill="none" class="geo-logo" role="img" aria-label="GEO">
+                    <path d="M10 0L0 10L10 20L20 10L10 0ZM10 15L5 10L10 5L15 10L10 15Z" fill="currentColor"/>
+                    <path d="M30 0L20 10L30 20L40 10L30 0ZM30 15L25 10L30 5L35 10L30 15Z" fill="currentColor"/>
+                    <path d="M50 0L40 10L50 20L60 10L50 0ZM50 15L45 10L50 5L55 10L50 15Z" fill="currentColor"/>
+                    <path d="M70 0L60 10L70 20L80 10L70 0ZM70 15L65 10L70 5L75 10L70 15Z" fill="currentColor"/>
                 </svg>
                 <p>GEO HOLDINGS CORPORATION</p>
             </div>
