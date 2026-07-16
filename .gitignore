@@ -81,3 +81,6 @@ coverage/
 
 # Custom
 # 在這裡新增專案特定的忽略檔案
+
+# 交接文件不納入版控
+docs/HANDOFF.md
