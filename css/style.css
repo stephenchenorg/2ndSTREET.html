@@ -996,7 +996,7 @@ section {
 .scroll-line {
     width: 1px;
     height: 60px;
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
     animation: scrollIndicator 2s infinite;
 }
 
@@ -1360,7 +1360,13 @@ section {
     .footer-grid {
         grid-template-columns: repeat(4, 1fr);
         gap: var(--spacing-xl);
+        align-items: start;
     }
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-column h4 {
@@ -1368,10 +1374,12 @@ section {
     font-weight: 700;
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
+    min-height: 24px;
 }
 
 .footer-column ul {
     list-style: none;
+    flex: 1;
 }
 
 .footer-column li {
