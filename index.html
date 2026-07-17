@@ -23,7 +23,7 @@
     <header class="header">
         <div class="container">
             <a href="index.html" class="logo">
-                <img src="assets/images/logo.png" alt="2nd STREET" width="410" height="59">
+                <img src="assets/images/logo.png" alt="2nd STREET">
             </a>
 
             <button class="menu-toggle" aria-label="開啟選單" aria-expanded="false">
@@ -48,12 +48,44 @@
         </div>
     </header>
 
+    <!-- Menu Overlay -->
+    <div class="menu-overlay"></div>
+
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-image">
-                <img src="assets/images/hero/team.jpg" alt="2nd STREET 團隊工作照" loading="eager">
+            <div class="hero-slider">
+                <div class="hero-slides">
+                    <div class="hero-slide active">
+                        <div class="hero-image">
+                            <img src="assets/images/hero/team.jpg" alt="2nd STREET 團隊工作照" loading="eager">
+                        </div>
+                    </div>
+                    <div class="hero-slide">
+                        <div class="hero-image">
+                            <img src="assets/images/hero/hero1.png" alt="2nd STREET 招募資訊" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 左右箭頭 -->
+                <button class="hero-arrow hero-arrow--prev" aria-label="上一張">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="hero-arrow hero-arrow--next" aria-label="下一張">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+
+                <!-- 指示點 -->
+                <div class="hero-dots">
+                    <button class="hero-dot active" aria-label="第 1 張"></button>
+                    <button class="hero-dot" aria-label="第 2 張"></button>
+                </div>
             </div>
         </section>
 
@@ -231,13 +263,13 @@
                 <div class="footer-brand">
                     <img src="assets/images/logo.png" alt="2nd STREET" class="footer-logo">
                     <div class="footer-social">
-                        <a href="#" aria-label="Instagram" class="social-icon">
+                        <a href="https://www.instagram.com/2ndstreet_taiwan/" aria-label="Instagram" class="social-icon" target="_blank" rel="noopener noreferrer">
                             <img src="assets/images/social/ig.png" alt="Instagram" width="40" height="40">
                         </a>
-                        <a href="#" aria-label="Facebook" class="social-icon">
+                        <a href="https://www.facebook.com/2ndSTREET.TAIWAN/" aria-label="Facebook" class="social-icon" target="_blank" rel="noopener noreferrer">
                             <img src="assets/images/social/fb.png" alt="Facebook" width="40" height="40">
                         </a>
-                        <a href="#" aria-label="LINE" class="social-icon">
+                        <a href="https://page.line.me/062zihqb?openQrModal=true" aria-label="LINE" class="social-icon" target="_blank" rel="noopener noreferrer">
                             <img src="assets/images/social/line.png" alt="LINE" width="40" height="40">
                         </a>
                     </div>
@@ -248,9 +280,9 @@
                     <div class="footer-column">
                         <h4>我想賣</h4>
                         <ul>
-                            <li><a href="#">宅配收購</a></li>
-                            <li><a href="#">店舗收購</a></li>
-                            <li><a href="#">收購品項</a></li>
+                            <li><a href="https://store.2ndstreet.com.tw/v2/activity/28423" target="_blank" rel="noopener noreferrer">宅配收購</a></li>
+                            <li><a href="https://2ndstreet.com.tw/service/sell.html" target="_blank" rel="noopener noreferrer">店舗收購</a></li>
+                            <li><a href="https://2ndstreet.com.tw/service/tips.html" target="_blank" rel="noopener noreferrer">收購品項</a></li>
                         </ul>
                     </div>
 
@@ -258,8 +290,8 @@
                     <div class="footer-column">
                         <h4>我想買</h4>
                         <ul>
-                            <li><a href="#">店舗一覽</a></li>
-                            <li><a href="#">網路商店</a></li>
+                            <li><a href="https://2ndstreet.com.tw/shop/" target="_blank" rel="noopener noreferrer">店舗一覽</a></li>
+                            <li><a href="https://store.2ndstreet.com.tw/?lang=zh-TW" target="_blank" rel="noopener noreferrer">網路商店</a></li>
                             <li><a href="#">下載APP</a></li>
                         </ul>
                     </div>
@@ -269,15 +301,15 @@
                         <h4>關於我們</h4>
                         <ul class="footer-links-grid">
                             <li><a href="#">公司概要</a></li>
-                            <li><a href="recruit.html">人才招募</a></li>
+                            <li><a href="https://www.104.com.tw/company/1a2x6bl42j" target="_blank" rel="noopener noreferrer">人才招募</a></li>
                             <li><a href="#">物件募集</a></li>
-                            <li><a href="#">企業永續發展</a></li>
-                            <li><a href="#">常見問題</a></li>
-                            <li><a href="#">客服中心</a></li>
-                            <li><a href="#">網站政策</a></li>
+                            <li><a href="https://2ndstreet.com.tw/sustainability/" target="_blank" rel="noopener noreferrer">企業永續發展</a></li>
+                            <li><a href="https://2ndstreet.com.tw/faq/" target="_blank" rel="noopener noreferrer">常見問題</a></li>
+                            <li><a href="https://2ndstreet.com.tw/inquiry/" target="_blank" rel="noopener noreferrer">客服中心</a></li>
+                            <li><a href="https://2ndstreet.com.tw/sitepolicy/" target="_blank" rel="noopener noreferrer">網站政策</a></li>
                             <li><a href="#">cookie設定</a></li>
-                            <li><a href="#">隱私權保護政策</a></li>
-                            <li><a href="#">性騷擾防治公告</a></li>
+                            <li><a href="https://2ndstreet.com.tw/privacy/" target="_blank" rel="noopener noreferrer">隱私權保護政策</a></li>
+                            <li><a href="https://2ndstreet.com.tw/sexualharassment/" target="_blank" rel="noopener noreferrer">性騷擾防治公告</a></li>
                         </ul>
                     </div>
                 </div>
