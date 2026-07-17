@@ -244,8 +244,8 @@ ol {
 .nav-link {
     position: relative;
     font-size: var(--font-size-base);
-    font-weight: 500;
-    color: var(--text-primary);
+    font-weight: 700;
+    color: #000;
     transition: color var(--transition-fast);
     padding: var(--spacing-xs) 0;
 }
@@ -253,7 +253,7 @@ ol {
 .nav-link::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -7px;
     left: 0;
     width: 0;
     height: 2px;
@@ -274,7 +274,6 @@ ol {
         display: flex;
         position: absolute;
         top: 2.5521vw;        /* 49px @1920，字面頂緣對齊設計稿 y=52 */
-        right: 27.7604vw;     /* 導覽右緣對齊 x=1380（含字距尾隨 7px） */
         flex-direction: row;
         align-items: flex-start;
         gap: 2.1667vw;        /* 41.6px；加上尾隨字距後視覺間隔 46px */
@@ -284,13 +283,15 @@ ol {
         padding: 0;
         background: transparent;
         transition: none;
+        right: 28.125vw;      /* 導覽右緣對齊 x≈1380 */
+        overflow: visible;    /* 行動版 overflow-y:auto 會裁掉 hover 底線（::after 在盒外 7px） */
     }
 
     .nav-link {
-        font-size: 1.25vw;        /* 24px @1920 */
-        letter-spacing: 0.2431vw; /* 4.7px */
+        font-size: 1.45vw;        /* ~28px @1920 */
+        letter-spacing: 0.03vw;   /* ~0.6px */
         line-height: 1.2;
-        color: var(--color-ink);
+        color: #000;
         padding: 0;
     }
 
@@ -326,7 +327,7 @@ ol {
     .entry-btn__jp {
         font-family: "Yu Mincho", "Hiragino Mincho ProN", "Songti TC", "Noto Serif TC", serif;
         font-size: 3.125vw; /* 60px @1920 */
-        font-weight: 700;
+        font-weight: 900;
         font-style: italic;
         line-height: 1;
     }
@@ -337,12 +338,12 @@ ol {
         margin-left: 2.8646vw;  /* 55px */
         margin-right: 1.4583vw; /* 28px */
         background: var(--text-inverse);
-        opacity: 0.6;
-        transform: skewX(-15deg);
+        opacity: 1;
+        transform: skewX(-8deg);
     }
 
     .entry-btn__en {
-        font-size: 1.5625vw; /* 30px @1920 */
+        font-size: 2.1vw; /* ~40px @1920 */
         font-weight: 700;
         font-style: italic;
         line-height: 1;
@@ -396,20 +397,30 @@ ol {
 .footer {
     background: var(--bg-primary);
     color: var(--color-ink);
-    padding: var(--spacing-xl) 0 var(--spacing-md);
-    margin-top: var(--spacing-2xl);
-    border-top: 1px solid var(--border-color);
+    padding: 120px 0 64px;
+    margin-top: 0;
+    border-top: 1px solid #000;
 }
 
 .footer-content {
     display: grid;
     gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 158px;
+}
+
+/* 桌機：footer 內容區收窄置中，對齊設計稿左緣 x=295（內容寬約 1354px） */
+@media (min-width: 1024px) {
+    .footer .container {
+        max-width: 1354px;
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 @media (min-width: 768px) {
     .footer-content {
-        grid-template-columns: 1fr 2.5fr;
+        /* 左 logo 區彈性、右連結欄群靠右（設計稿欄群位於 x≈958–1650） */
+        grid-template-columns: 1fr auto;
         gap: var(--spacing-2xl);
         align-items: start;
     }
@@ -451,9 +462,11 @@ ol {
 }
 
 .footer-bottom {
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--border-color);
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .footer-bottom p {
@@ -578,6 +591,7 @@ section {
        beyond what the section's own top padding already provides */
     .recruitment-highlight {
         margin-top: 200px;
+        padding-bottom: 108px;
     }
 }
 
@@ -1055,7 +1069,7 @@ section {
     /* Figma: 指標橫跨 hero 圖下緣 ~95px 並向下延伸 ~140px
        (group 93x235 @ y=1142，hero 圖底 y=1237) */
     .hero-indicator {
-        margin-top: -4.95vw;
+        margin-top: 1.1vw;
         padding: 0;
         gap: 16px;
     }
@@ -1063,8 +1077,8 @@ section {
 
 .scroll-text {
     font-size: var(--font-size-xs);
-    font-weight: 700;
-    letter-spacing: 3px;
+    font-weight: 400;
+    letter-spacing: 6.5px;
     color: var(--color-secondary);
 }
 
@@ -1077,7 +1091,7 @@ section {
 
 @media (min-width: 1024px) {
     .scroll-line {
-        height: 180px;
+        height: 77px;
     }
 }
 
@@ -1117,14 +1131,15 @@ section {
 @media (min-width: 1024px) {
     /* Figma: 盒 844x119 @x=538-1382, y=1772-1891；文字群組 510x56 */
     .highlight-box {
-        padding: 1.28vw 12.2vw;
+        padding: 1.2vw 8.3vw;
         border-width: 3px;
         margin-bottom: 4.17vw;
     }
 
     .highlight-title {
-        font-size: 2.08vw;
+        font-size: 3.1vw;
         letter-spacing: 0.3vw;
+        line-height: 1.1;
     }
 }
 
@@ -1145,8 +1160,9 @@ section {
 @media (min-width: 1024px) {
     /* Figma: 群組 1289x57 @x=311, y=1971 */
     .highlight-heading {
-        font-size: 1.77vw;
+        font-size: 3.2vw;
         margin-bottom: 0;
+        white-space: nowrap;
     }
 }
 
@@ -1179,6 +1195,14 @@ section {
 .about-section {
     padding: var(--spacing-xl) 0;
     background: var(--bg-primary);
+}
+
+@media (min-width: 1024px) {
+    /* 上：垂直線→拼貼區約 108px；下：拼貼區→深入了解垂直線由該線自身 margin 提供，去除重複內距 */
+    .about-section {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
 }
 
 /* Collage container: scales proportionally to the 1920px design frame */
@@ -1244,12 +1268,13 @@ section {
     margin: 0;
     font-size: var(--font-size-sm);
     line-height: 1.9;
-    color: var(--text-secondary);
+    color: #4D4D4D;
 }
 
 .about-collage__paragraph--lead {
     font-size: var(--font-size-base);
-    color: var(--color-secondary);
+    font-weight: 700;
+    color: #4D4D4D;
     margin-bottom: var(--spacing-xs);
 }
 
@@ -1311,13 +1336,14 @@ section {
     }
 
     .about-collage__title {
-        font-size: 2cqw;
+        font-size: 2.9cqw;
         line-height: 1.3;
+        white-space: nowrap; /* 設計稿為單行，防止尾端「」」折行 */
     }
 
     .about-collage__title-underline {
-        border-bottom-width: 0.28cqw;
-        padding-bottom: 0.4cqw;
+        border-bottom-width: 0.18cqw; /* ~3.5px */
+        padding-bottom: 0.63cqw;      /* ~12px */
     }
 
     /* 理念文字群組 (@x=651.9, y=3207.5, 615.9x576.5) */
@@ -1328,7 +1354,7 @@ section {
     }
 
     .about-collage__group {
-        margin-bottom: 3.6cqw;
+        margin-bottom: 2.5cqw;
     }
 
     .about-collage__paragraph {
@@ -1337,7 +1363,7 @@ section {
     }
 
     .about-collage__paragraph--lead {
-        font-size: 1.35cqw;
+        font-size: 1.25cqw;
         margin-bottom: 0.6cqw;
     }
 }
@@ -1362,7 +1388,7 @@ section {
 
 /* Deep Dive Title Section */
 .deep-dive-title {
-    padding: var(--spacing-lg) 0;
+    padding: 0 0 var(--spacing-lg);
     text-align: center;
 }
 
@@ -1371,18 +1397,19 @@ section {
 }
 
 .deep-dive-title .section-title {
-    font-size: var(--font-size-2xl);
+    font-size: 58px;
     font-weight: 700;
     margin: 0 0 var(--spacing-xs);
 }
 
 .deep-dive-title .section-subtitle {
+    font-size: 29px;
     margin: 0;
 }
 
 /* Deep Dive Images Section */
 .deep-dive-images {
-    padding: var(--spacing-lg) 0;
+    padding: 96px 0 21px;
 }
 
 /* First Row: Single Large Image (full-bleed hero photo, 1920x639 design ratio) */
@@ -1412,7 +1439,7 @@ section {
     .images-grid-two {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
-        margin-top: 12px;
+        margin-top: 20px;
     }
 }
 
@@ -1435,13 +1462,14 @@ section {
     top: 8%;
     right: 4.5%;
     left: auto;
-    padding: 10px clamp(16px, 1.6vw, 24px);
+    padding: 12px clamp(16px, 2.05vw, 40px);
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: baseline;
     justify-content: center;
-    gap: 2px;
+    gap: 14px;
     background-color: #FFFFFF;
+    border: 2px solid var(--color-secondary);
     z-index: 1;
     line-height: 1.3;
 }
@@ -1452,13 +1480,13 @@ section {
 }
 
 .image-label__zh {
-    font-size: clamp(15px, 1.6vw, 22px);
+    font-size: clamp(18px, 1.5vw, 28px);
     font-weight: 700;
-    color: var(--text-primary);
+    color: var(--color-secondary);
 }
 
 .image-label__en {
-    font-size: clamp(10px, 1vw, 13px);
+    font-size: clamp(12px, 1.2vw, 23px);
     font-weight: 400;
     color: var(--color-secondary);
 }
@@ -1469,11 +1497,12 @@ section {
     bottom: 8%;
     left: 4.1667%;
     right: auto;
-    padding: clamp(10px, 1vw, 16px) clamp(20px, 2.2vw, 32px);
+    padding: clamp(10px, 0.95vw, 18px) clamp(20px, 3vw, 58px);
     background-color: var(--color-secondary);
     color: #FFFFFF;
-    font-size: clamp(12px, 1vw, 16px);
+    font-size: clamp(12px, 1.35vw, 26px);
     font-weight: 700;
+    line-height: 1;
     letter-spacing: 0.05em;
     text-decoration: none;
     border-radius: var(--radius-full);
@@ -1556,8 +1585,8 @@ section {
 
 /* Staff Stories Section */
 .staff-stories-section {
-    padding: var(--spacing-2xl) 0 var(--spacing-lg);
-    background-color: var(--bg-secondary);
+    padding: 289px 0 300px;
+    background-color: #F2F2F2;
     text-align: center;
 }
 
@@ -1566,9 +1595,13 @@ section {
 }
 
 .staff-stories-section .section-title {
-    font-size: var(--font-size-2xl);
+    font-size: 60px;
     font-weight: 700;
     margin: 0;
+}
+
+.staff-stories-section .section-subtitle {
+    font-size: 31px;
 }
 
 .staff-grid {
@@ -1590,7 +1623,7 @@ section {
 @media (min-width: 1024px) {
     .staff-grid {
         max-width: 1201px;
-        margin: var(--spacing-lg) auto;
+        margin: 158px auto var(--spacing-lg);
         padding: 0;
         column-gap: 47px;
         align-items: start;
@@ -1617,15 +1650,16 @@ section {
 }
 
 .staff-grid .card-title {
-    font-size: var(--font-size-base);
-    font-weight: 400;
-    color: var(--text-primary);
+    font-size: 32px;
+    font-weight: 300;
+    color: #4D4D4D;
     margin-bottom: var(--spacing-xs);
 }
 
 .staff-grid .card-role {
-    font-size: var(--font-size-base);
-    color: var(--text-primary);
+    font-size: 32px;
+    font-weight: 300;
+    color: #4D4D4D;
     margin-bottom: 0;
 }
 
@@ -1653,6 +1687,14 @@ section {
     .btn-secondary {
         padding: 28px 90px;
     }
+
+    /* 社員故事區 view more：目標外觀 298x76、字級 34/weight 400 */
+    .staff-stories-section .btn-secondary {
+        padding: 21px 72px;
+        font-size: 34px;
+        font-weight: 400;
+        line-height: 1;
+    }
 }
 
 .btn-secondary:hover {
@@ -1666,13 +1708,13 @@ section {
 }
 
 .footer-logo {
-    max-width: 150px;
+    max-width: 340px;
     margin-bottom: var(--spacing-md);
 }
 
 .footer-social {
     display: flex;
-    gap: var(--spacing-md);
+    gap: 44px;
     margin-top: var(--spacing-md);
 }
 
@@ -1683,8 +1725,8 @@ section {
 }
 
 .footer-social a img {
-    width: 32px;
-    height: 32px;
+    width: 56px;
+    height: 56px;
     object-fit: contain;
 }
 
@@ -1699,8 +1741,9 @@ section {
 
 @media (min-width: 768px) {
     .footer-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: var(--spacing-xl);
+        /* max-content：auto 欄會把 flex 拉伸的剩餘空間分掉，欄距會失真 */
+        grid-template-columns: repeat(3, max-content);
+        gap: 100px; /* 欄位節距 ≈172px，貼近設計稿 ~180px */
         align-items: start;
     }
 }
@@ -1711,41 +1754,36 @@ section {
 }
 
 .footer-column h4 {
-    font-size: var(--font-size-base);
+    font-size: 24px;
     font-weight: 700;
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
     min-height: 24px;
     padding-bottom: 8px;
+    border-bottom: 1px solid #BFBFBF;
 }
 
-.footer-column:nth-child(1) h4,
-.footer-column:nth-child(2) h4 {
-    border-bottom: 1px solid var(--border-color);
-}
-
-.footer-column:nth-child(3) {
-    position: relative;
-}
-
-/* 跨欄分隔線僅在 ≥768px 的四欄版面出現，避免行動版單欄時 200% 寬度撐出橫向捲動 */
+/* 關於我們：單欄內的連結 grid，前 4 項第一行清單、其餘換到第二行清單；
+   h4 寬度隨欄撐滿，底線自然延伸橫跨整個 grid */
 @media (min-width: 768px) {
-    .footer-column:nth-child(3)::after {
-        content: '';
-        position: absolute;
-        top: 32px;
-        left: 0;
-        right: calc(-1 * var(--spacing-xl));
-        width: calc(200% + var(--spacing-xl));
-        height: 1px;
-        background-color: var(--border-color);
+    .footer-links-grid {
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        grid-auto-flow: column;
+        column-gap: 100px;
     }
-}
 
-.footer-column h4.invisible-title {
-    padding-bottom: 8px;
-    margin-bottom: var(--spacing-sm);
-    min-height: 24px;
+    .footer-links-grid li:nth-child(-n+4) {
+        grid-column: 1;
+    }
+
+    .footer-links-grid li:nth-child(n+5) {
+        grid-column: 2;
+    }
+
+    .footer-links-grid li:nth-child(5) {
+        grid-row: 1;
+    }
 }
 
 .footer-column ul {
@@ -1758,8 +1796,8 @@ section {
 }
 
 .footer-column a {
-    font-size: var(--font-size-sm);
-    color: var(--text-secondary);
+    font-size: 18px;
+    color: var(--text-primary);
 }
 
 .footer-column a:hover {
@@ -1767,8 +1805,8 @@ section {
 }
 
 .geo-logo {
-    margin-bottom: var(--spacing-sm);
-    color: var(--text-primary);
+    width: 68px;
+    height: auto;
 }
 
 /* Navigation Enhancements for Homepage */
