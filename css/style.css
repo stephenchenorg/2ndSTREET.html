@@ -273,7 +273,7 @@ ol {
     .nav-menu {
         display: flex;
         position: absolute;
-        top: 2.5521vw;        /* 49px @1920，字面頂緣對齊設計稿 y=52 */
+        top: 3.2708vw;        /* 62.8px @1920：與 logo 垂直置中對齊（logo 中心 y79.5）。設計稿原為頂緣對齊（y52），依使用者要求改置中 */
         flex-direction: row;
         align-items: flex-start;
         gap: 2.1667vw;        /* 41.6px；加上尾隨字距後視覺間隔 46px */
@@ -2738,7 +2738,7 @@ section {
     .story-hero__card {
         position: absolute;
         left: 8.85vw;
-        bottom: 0.8vw;
+        bottom: 99px; /* 23px @1920：career 卡底 1218 vs hero 底 1241 */
         max-width: none;
         margin: 0;
         padding: 0;
