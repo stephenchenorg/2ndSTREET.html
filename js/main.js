@@ -222,7 +222,74 @@ function initHeroSlider() {
 }
 
 // ========================================
-// 6. 超寬螢幕等比縮放（>1920px 以 1920 版面放大）
+// 6. 滾動淡入動畫
+// ========================================
+function initScrollFadeIn() {
+    const animatedElements = document.querySelectorAll('.fade-in-down, .fade-in-up, .fade-in, .fade-in-down-scale, .char-animation')
+
+    if (!animatedElements.length) return
+
+    const observerOptions = {
+        threshold: 0.15, // 當元素 15% 進入視窗時觸發
+        rootMargin: '0px 0px -50px 0px' // 提早 50px 觸發
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible')
+                // 一旦出現就不再監聽（避免重複動畫）
+                observer.unobserve(entry.target)
+            }
+        })
+    }, observerOptions)
+
+    animatedElements.forEach(element => {
+        observer.observe(element)
+    })
+}
+
+// ========================================
+// 7. 視差滾動效果
+// ========================================
+function initParallax() {
+    const parallaxImages = document.querySelectorAll('.parallax-image')
+    if (!parallaxImages.length) return
+
+    const handleParallax = () => {
+        parallaxImages.forEach(image => {
+            const rect = image.getBoundingClientRect()
+            const speed = parseFloat(image.dataset.speed) || 0.5
+
+            // 只在圖片進入視窗時才計算
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                // 計算圖片在視窗中的相對位置（-1 到 1）
+                const relativePos = (window.innerHeight - rect.top) / (window.innerHeight + rect.height)
+                // 根據位置和速度計算移動距離
+                const translateY = (relativePos - 0.5) * 100 * speed
+
+                image.style.transform = `translateY(${translateY}px)`
+            }
+        })
+    }
+
+    // 使用 throttle 優化效能
+    let ticking = false
+    window.addEventListener('scroll', () => {
+        if (ticking) return
+        ticking = true
+        requestAnimationFrame(() => {
+            handleParallax()
+            ticking = false
+        })
+    })
+
+    // 初始執行一次
+    handleParallax()
+}
+
+// ========================================
+// 8. 超寬螢幕等比縮放（>1920px 以 1920 版面放大）
 // ========================================
 function initDesktopZoom() {
     const BASE = 1920
@@ -255,5 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveNav()
     initJobIntroTabs()
     initHeroSlider()
+    initScrollFadeIn()
+    initParallax()
     initDesktopZoom()
 })
