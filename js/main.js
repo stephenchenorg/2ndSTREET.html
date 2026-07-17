@@ -106,6 +106,31 @@ function initJobIntroTabs() {
 }
 
 // ========================================
+// 5. 超寬螢幕等比縮放（>1920px 以 1920 版面放大）
+// ========================================
+function initDesktopZoom() {
+    const BASE = 1920
+
+    const apply = () => {
+        const w = window.innerWidth
+        // CSS 已用 min(vw, 設計px) 把版面鎖在 1920 基準，這裡整頁等比放大
+        document.body.style.zoom = w > BASE ? String(w / BASE) : ''
+    }
+
+    apply()
+
+    let ticking = false
+    window.addEventListener('resize', () => {
+        if (ticking) return
+        ticking = true
+        requestAnimationFrame(() => {
+            apply()
+            ticking = false
+        })
+    })
+}
+
+// ========================================
 // 初始化所有功能
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -113,4 +138,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll()
     initActiveNav()
     initJobIntroTabs()
+    initDesktopZoom()
 })

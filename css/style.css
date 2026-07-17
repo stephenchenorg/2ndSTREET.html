@@ -160,7 +160,7 @@ ol {
 /* 桌機版（≥1024px）：依 1920 設計稿等比呈現（1px = 100/1920 vw） */
 @media (min-width: 1024px) {
     .header {
-        height: 5.7813vw; /* 111px @1920 */
+        height: min(5.7813vw, 111px); /* 111px @1920 */
         box-shadow: none;
     }
 
@@ -172,12 +172,12 @@ ol {
 
     .logo {
         position: absolute;
-        left: 6.6927vw;  /* 128.5px */
-        top: 2.6042vw;   /* 50px */
+        left: min(6.6927vw, 128.5px);  /* 128.5px */
+        top: min(2.6042vw, 50px);   /* 50px */
     }
 
     .logo img {
-        width: 21.3542vw; /* 410px */
+        width: min(21.3542vw, 410px); /* 410px */
         height: auto;
     }
 }
@@ -223,11 +223,11 @@ ol {
 .nav-menu {
     display: none;
     position: fixed;
-    top: 60px;
+    top: 72px; /* 行動版 header 實高：logo 40 + 上下內距 32 */
     right: -100%;
     width: 80%;
     max-width: 300px;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 72px);
     background: var(--bg-dark);
     flex-direction: column;
     gap: var(--spacing-md);
@@ -273,23 +273,23 @@ ol {
     .nav-menu {
         display: flex;
         position: absolute;
-        top: 3.2708vw;        /* 62.8px @1920：與 logo 垂直置中對齊（logo 中心 y79.5）。設計稿原為頂緣對齊（y52），依使用者要求改置中 */
+        top: min(3.2708vw, 62.8px);        /* 62.8px @1920：與 logo 垂直置中對齊（logo 中心 y79.5）。設計稿原為頂緣對齊（y52），依使用者要求改置中 */
         flex-direction: row;
         align-items: flex-start;
-        gap: 2.1667vw;        /* 41.6px；加上尾隨字距後視覺間隔 46px */
+        gap: min(2.1667vw, 41.6px);        /* 41.6px；加上尾隨字距後視覺間隔 46px */
         width: auto;
         max-width: none;
         height: auto;
         padding: 0;
         background: transparent;
         transition: none;
-        right: 28.125vw;      /* 導覽右緣對齊 x≈1380 */
+        right: min(28.125vw, 540px);      /* 導覽右緣對齊 x≈1380 */
         overflow: visible;    /* 行動版 overflow-y:auto 會裁掉 hover 底線（::after 在盒外 7px） */
     }
 
     .nav-link {
-        font-size: 1.45vw;        /* ~28px @1920 */
-        letter-spacing: 0.03vw;   /* ~0.6px */
+        font-size: min(1.45vw, 27.84px);        /* ~28px @1920 */
+        letter-spacing: min(0.03vw, 0.576px);   /* ~0.6px */
         line-height: 1.2;
         color: #000;
         padding: 0;
@@ -313,8 +313,8 @@ ol {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 25.7292vw;  /* 494px @1920 */
-        height: 5.625vw;   /* 108px */
+        width: min(25.7292vw, 494px);  /* 494px @1920 */
+        height: min(5.625vw, 108px);   /* 108px */
         background: var(--color-ink);
         color: var(--text-inverse);
         transition: background var(--transition-base);
@@ -326,24 +326,24 @@ ol {
 
     .entry-btn__jp {
         font-family: "Yu Mincho", "Hiragino Mincho ProN", "Songti TC", "Noto Serif TC", serif;
-        font-size: 3.125vw; /* 60px @1920 */
+        font-size: min(3.125vw, 60px); /* 60px @1920 */
         font-weight: 900;
         font-style: italic;
         line-height: 1;
     }
 
     .entry-btn__divider {
-        width: 0.1042vw; /* 2px */
-        height: 1.875vw; /* 36px */
-        margin-left: 2.8646vw;  /* 55px */
-        margin-right: 1.4583vw; /* 28px */
+        width: min(0.1042vw, 2.001px); /* 2px */
+        height: min(1.875vw, 36px); /* 36px */
+        margin-left: min(2.8646vw, 55px);  /* 55px */
+        margin-right: min(1.4583vw, 28px); /* 28px */
         background: var(--text-inverse);
         opacity: 1;
         transform: skewX(-8deg);
     }
 
     .entry-btn__en {
-        font-size: 2.1vw; /* ~40px @1920 */
+        font-size: min(2.1vw, 40.32px); /* ~40px @1920 */
         font-weight: 700;
         font-style: italic;
         line-height: 1;
@@ -487,7 +487,7 @@ ol {
 @media (min-width: 1024px) {
     /* Figma: header 底 (y=111) 到 hero 圖頂 (y=152) 僅 41px = 2.14vw @1920 */
     .hero {
-        padding-top: 2.14vw;
+        padding-top: min(2.14vw, 41.09px);
     }
 }
 
@@ -1070,7 +1070,7 @@ section {
     /* Figma: 指標橫跨 hero 圖下緣 ~95px 並向下延伸 ~140px
        (group 93x235 @ y=1142，hero 圖底 y=1237) */
     .hero-indicator {
-        margin-top: 1.1vw;
+        margin-top: min(1.1vw, 21.12px);
         padding: 0;
         gap: 16px;
     }
@@ -1132,14 +1132,14 @@ section {
 @media (min-width: 1024px) {
     /* Figma: 盒 844x119 @x=538-1382, y=1772-1891；文字群組 510x56 */
     .highlight-box {
-        padding: 1.2vw 8.3vw;
+        padding: min(1.2vw, 23.04px) min(8.3vw, 159.4px);
         border-width: 3px;
-        margin-bottom: 4.17vw;
+        margin-bottom: min(4.17vw, 80.06px);
     }
 
     .highlight-title {
-        font-size: 3.1vw;
-        letter-spacing: 0.3vw;
+        font-size: min(3.1vw, 59.52px);
+        letter-spacing: min(0.3vw, 5.76px);
         line-height: 1.1;
     }
 }
@@ -1161,7 +1161,7 @@ section {
 @media (min-width: 1024px) {
     /* Figma: 群組 1289x57 @x=311, y=1971 */
     .highlight-heading {
-        font-size: 3.2vw;
+        font-size: min(3.2vw, 61.44px);
         margin-bottom: 0;
         white-space: nowrap;
     }
@@ -1463,7 +1463,7 @@ section {
     top: 8%;
     right: 4.5%;
     left: auto;
-    padding: 12px clamp(16px, 2.05vw, 40px);
+    padding: 12px clamp(16px, min(2.05vw, 39.36px), 40px);
     display: flex;
     flex-direction: row;
     align-items: baseline;
@@ -1481,13 +1481,13 @@ section {
 }
 
 .image-label__zh {
-    font-size: clamp(18px, 1.5vw, 28px);
+    font-size: clamp(18px, min(1.5vw, 28.8px), 28px);
     font-weight: 700;
     color: var(--color-secondary);
 }
 
 .image-label__en {
-    font-size: clamp(12px, 1.2vw, 23px);
+    font-size: clamp(12px, min(1.2vw, 23.04px), 23px);
     font-weight: 400;
     color: var(--color-secondary);
 }
@@ -1498,10 +1498,10 @@ section {
     bottom: 8%;
     left: 4.1667%;
     right: auto;
-    padding: clamp(10px, 0.95vw, 18px) clamp(20px, 3vw, 58px);
+    padding: clamp(10px, min(0.95vw, 18.24px), 18px) clamp(20px, min(3vw, 57.6px), 58px);
     background-color: var(--color-secondary);
     color: #FFFFFF;
-    font-size: clamp(12px, 1.35vw, 26px);
+    font-size: clamp(12px, min(1.35vw, 25.92px), 26px);
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0.05em;
@@ -1709,7 +1709,7 @@ section {
 }
 
 .footer-logo {
-    max-width: 340px;
+    max-width: min(340px, 100%); /* 320px 窄幅時不得超出容器 */
     margin-bottom: var(--spacing-md);
 }
 
@@ -2079,7 +2079,7 @@ section {
 }
 
 .eval-intro__heading {
-    font-size: clamp(28px, 3.4vw, 64px);
+    font-size: clamp(28px, min(3.4vw, 65.28px), 64px);
     font-weight: 700;
     line-height: 1.3;
     color: var(--text-primary);
@@ -2092,7 +2092,7 @@ section {
 }
 
 .eval-intro__text p {
-    font-size: clamp(15px, 1.5vw, 28px);
+    font-size: clamp(15px, min(1.5vw, 28.8px), 28px);
     line-height: 2;
     color: var(--color-ink);
     margin: 0;
@@ -2106,7 +2106,7 @@ section {
 }
 
 .eval-section-header__title {
-    font-size: clamp(28px, 2.9vw, 56px);
+    font-size: clamp(28px, min(2.9vw, 55.68px), 56px);
     font-weight: 700;
     line-height: 1.2;
     color: var(--text-primary);
@@ -2114,7 +2114,7 @@ section {
 }
 
 .eval-section-header__subtitle {
-    font-size: clamp(16px, 1.5vw, 28px);
+    font-size: clamp(16px, min(1.5vw, 28.8px), 28px);
     font-weight: 700;
     letter-spacing: 0.02em;
     color: var(--color-secondary);
@@ -2169,7 +2169,7 @@ section {
     text-align: center;
     padding: var(--spacing-lg) var(--spacing-md);
     margin: 0;
-    font-size: clamp(18px, 2vw, 40px);
+    font-size: clamp(18px, min(2vw, 38.4px), 40px);
     font-weight: 400;
     line-height: 1.5;
     color: var(--text-primary);
@@ -2183,7 +2183,7 @@ section {
 
 .eval-closing p {
     margin: 0 0 var(--spacing-md);
-    font-size: clamp(18px, 2vw, 40px);
+    font-size: clamp(18px, min(2vw, 38.4px), 40px);
     line-height: 1.5;
     color: var(--color-gray-dark);
 }
@@ -2605,53 +2605,53 @@ section {
     margin-right: 16px;
 }
 
-/* ≥1024px：依 1920 設計稿以 px 還原（照片 860x489，內容左緣 x235） */
+/* ≥1024px：依 1920 設計稿等比呈現（1px = 100/1920 vw；1920 下即設計值：照片 860x489、內容左緣 x235） */
 @media (min-width: 1024px) {
     .members-stories {
-        padding: 567px 0 302px;
+        padding: min(29.5313vw, 567px) 0 min(15.7292vw, 302px); /* 567 / 302 */
     }
 
     .members-list {
-        gap: 168px;
+        gap: min(8.75vw, 168px); /* 168 */
     }
 
     .members-card {
         flex-direction: row;
         align-items: flex-start;
-        gap: 117px;
-        padding-left: 235px;
+        gap: min(6.0938vw, 117px);          /* 117 */
+        padding-left: min(12.2396vw, 235px); /* 235 */
     }
 
     .members-card__photo {
-        width: 860px;
-        height: 489px;
-        aspect-ratio: auto;
+        width: min(44.7917vw, 860px); /* 860 */
+        height: auto;
+        aspect-ratio: 860 / 489;
         flex: none;
     }
 
     .members-card__role {
-        font-size: 30px;
-        margin-bottom: 20px;
+        font-size: min(1.5625vw, 30px);      /* 30 */
+        margin-bottom: min(1.0417vw, 20px);  /* 20 */
     }
 
     .members-card__name {
-        font-size: 44px;
-        margin-bottom: 47px;
+        font-size: min(2.2917vw, 44px);      /* 44 */
+        margin-bottom: min(2.4479vw, 47px);  /* 47 */
     }
 
     .members-card__badge {
-        font-size: 20px;
-        padding: 11px 18px;
+        font-size: min(1.0417vw, 20px);            /* 20 */
+        padding: min(0.5729vw, 11px) min(0.9375vw, 18px);     /* 11 18 */
     }
 
     .members-career__item {
-        font-size: 32px;
-        line-height: 48px;
+        font-size: min(1.6667vw, 32px);   /* 32 */
+        line-height: min(2.5vw, 48px);    /* 48 */
     }
 
     .members-career__date {
-        width: 139px;
-        margin-right: 26px;
+        width: min(7.2396vw, 139px);         /* 139 */
+        margin-right: min(1.3542vw, 26px);  /* 26 */
     }
 }
 
@@ -2737,7 +2737,7 @@ section {
 @media (min-width: 1024px) {
     .story-hero__card {
         position: absolute;
-        left: 8.85vw;
+        left: min(8.85vw, 169.9px);
         bottom: 99px; /* 23px @1920：career 卡底 1218 vs hero 底 1241 */
         max-width: none;
         margin: 0;
@@ -2745,38 +2745,38 @@ section {
     }
 
     .story-hero__namebox {
-        padding: 1.9vw 2.6vw 1.7vw;
+        padding: min(1.9vw, 36.48px) min(2.6vw, 49.92px) min(1.7vw, 32.64px);
     }
 
     .story-hero__name {
-        font-size: 2.5vw;
+        font-size: min(2.5vw, 48px);
     }
 
     .story-hero__role {
-        font-size: 1.56vw;
-        margin-top: 0.4vw;
+        font-size: min(1.56vw, 29.95px);
+        margin-top: min(0.4vw, 7.68px);
     }
 
     .story-hero__careerbox {
         border: none;
-        padding: 1.7vw 1.9vw;
-        margin-top: 2.85vw;
+        padding: min(1.7vw, 32.64px) min(1.9vw, 36.48px);
+        margin-top: min(2.85vw, 54.72px);
     }
 
     .story-hero__badge {
-        font-size: 0.94vw;
-        padding: 0.5vw 0.9vw;
-        margin-bottom: 1vw;
+        font-size: min(0.94vw, 18.05px);
+        padding: min(0.5vw, 9.6px) min(0.9vw, 17.28px);
+        margin-bottom: min(1vw, 19.2px);
     }
 
     .story-hero__career-item {
-        font-size: 1.04vw;
+        font-size: min(1.04vw, 19.97px);
         line-height: 1.75;
     }
 
     .story-hero__career-date {
-        width: 6.7vw;
-        margin-right: 0.8vw;
+        width: min(6.7vw, 128.6px);
+        margin-right: min(0.8vw, 15.36px);
     }
 }
 
