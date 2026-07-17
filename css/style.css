@@ -408,20 +408,21 @@ ol {
     margin-bottom: 158px;
 }
 
-/* 桌機：footer 內容區收窄置中，對齊設計稿左緣 x=295（內容寬約 1354px） */
+/* 桌機：footer 內容區收窄置中，對齊設計稿左緣 x=295（內容寬 1354px＋兩側最少 24px 呼吸空間） */
 @media (min-width: 1024px) {
     .footer .container {
-        max-width: 1354px;
-        padding-left: 0;
-        padding-right: 0;
+        max-width: 1402px; /* 1354 + 24*2 */
+        padding-left: 24px;
+        padding-right: 24px;
     }
 }
 
-@media (min-width: 768px) {
+/* ponytail: RWD 僅初步處理——設計稿只有 1920 桌機版，<1200 直接堆疊，之後有行動版設計稿再重做 */
+@media (min-width: 1200px) {
     .footer-content {
-        /* 左 logo 區彈性、右連結欄群靠右（設計稿欄群位於 x≈958–1650） */
+        /* 左 logo 區彈性、右連結欄群靠右（設計稿欄群位於 x≈958–1650，gap 由彈性欄吸收） */
         grid-template-columns: 1fr auto;
-        gap: var(--spacing-2xl);
+        gap: var(--spacing-xl);
         align-items: start;
     }
 }
@@ -1714,8 +1715,9 @@ section {
 
 .footer-social {
     display: flex;
-    gap: 44px;
-    margin-top: var(--spacing-md);
+    gap: 28px;
+    margin-top: var(--spacing-lg);
+    margin-left: var(--spacing-lg)
 }
 
 .footer-social a {
@@ -1805,7 +1807,7 @@ section {
 }
 
 .geo-logo {
-    width: 68px;
+    width: 84px;
     height: auto;
 }
 
