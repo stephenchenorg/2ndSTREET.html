@@ -258,17 +258,20 @@ function initParallax() {
 
     const handleParallax = () => {
         parallaxImages.forEach(image => {
-            const rect = image.getBoundingClientRect()
+            const parent = image.parentElement
+            const rect = parent.getBoundingClientRect()
             const speed = parseFloat(image.dataset.speed) || 0.5
 
             // 只在圖片進入視窗時才計算
             if (rect.top < window.innerHeight && rect.bottom > 0) {
-                // 計算圖片在視窗中的相對位置（-1 到 1）
-                const relativePos = (window.innerHeight - rect.top) / (window.innerHeight + rect.height)
-                // 根據位置和速度計算移動距離
-                const translateY = (relativePos - 0.5) * 100 * speed
+                // 計算容器相對於視窗的滾動進度 (0 到 1)
+                const scrollProgress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height)
 
-                image.style.transform = `translateY(${translateY}px)`
+                // 計算移動範圍（-10% 到 +10%）
+                const translateY = (scrollProgress - 0.5) * 20 * speed
+
+                // 使用 CSS 變數，這樣不會覆蓋其他 transform
+                image.style.setProperty('--parallax-y', `${translateY}%`)
             }
         })
     }

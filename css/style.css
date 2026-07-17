@@ -608,8 +608,13 @@ ol {
 
 /* Parallax scroll effect */
 .parallax-image {
+    --parallax-y: 0%;
     will-change: transform;
-    transition: transform 0.1s ease-out;
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    object-position: center;
+    transform: translateY(var(--parallax-y));
 }
 
 /* ========================================
@@ -1603,12 +1608,14 @@ section {
 
     /* 直式球鞋圖，貼左邊緣 (index2 @x=0, y=2879, 567.5x948.8) */
     .about-collage__image--shoes {
+        position: sticky;
         left: 0;
-        top: 17.149%;
+        top: 120px;
         width: 29.557%;
         height: 57.678%;
         max-width: none;
         margin: 0;
+        overflow: hidden;
     }
 
     /* 店招圖，右上 (index1 @x=1138.6, y=2596.9, 787.6x427.8) */
@@ -2342,6 +2349,14 @@ section {
     padding: 6px 14px;
     background-color: rgba(255, 255, 255, 0.9);
     border: 2px solid var(--color-secondary);
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reveal animation when parent is visible */
+.daily-job.is-visible .daily-job__label {
+    clip-path: inset(0 0 0 0);
+    transition-delay: 0.3s;
 }
 
 .daily-job__label-jp {
