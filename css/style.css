@@ -2654,3 +2654,221 @@ section {
         margin-right: 26px;
     }
 }
+
+/* ======== Story Page (社員故事詳細頁，四頁共用) ======== */
+
+/* 沿用既有 class：.hero / .hero-image / .hero-indicator / .scroll-text / .scroll-line
+   本頁新增 class 一律以 story- 前綴，通用命名（勿寫死 Betty 專屬內容於 CSS）。
+   桌機（≥1024px）依 1920 設計稿還原：文字欄 max-width 1460、圖片 max-width 1575，皆置中。 */
+
+/* ---- Hero 覆蓋卡片（姓名 / 職稱 / career 履歷） ---- */
+
+/* Story hero 使用完整橫幅比例（覆寫 .hero-image 預設 4/5 裁切） */
+.story-hero .hero-image {
+    aspect-ratio: 1920 / 1092;
+}
+
+/* 行動版：卡片以一般文件流堆疊於圖片下方 */
+.story-hero__card {
+    max-width: 480px;
+    margin: 24px auto 0;
+    padding: 0 24px;
+}
+
+.story-hero__namebox {
+    background-color: var(--color-secondary);
+    color: var(--text-inverse);
+    padding: 20px 24px 18px;
+}
+
+.story-hero__name {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.story-hero__role {
+    font-size: var(--font-size-lg);
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 8px 0 0;
+}
+
+.story-hero__careerbox {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    padding: 24px;
+    margin-top: 16px;
+}
+
+.story-hero__badge {
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: var(--text-inverse);
+    font-size: var(--font-size-sm);
+    font-weight: 700;
+    line-height: 1;
+    padding: 8px 14px;
+    margin: 0 0 16px;
+}
+
+.story-hero__career {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.story-hero__career-item {
+    display: flex;
+    color: #4D4D4D;
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.story-hero__career-date {
+    flex: none;
+    width: 88px;
+    margin-right: 12px;
+}
+
+/* 桌機：卡片絕對定位覆蓋於 hero 圖片左側（以底部對齊，卡片高度隨履歷筆數自適應） */
+@media (min-width: 1024px) {
+    .story-hero__card {
+        position: absolute;
+        left: 8.85vw;
+        bottom: 0.8vw;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .story-hero__namebox {
+        padding: 1.9vw 2.6vw 1.7vw;
+    }
+
+    .story-hero__name {
+        font-size: 2.5vw;
+    }
+
+    .story-hero__role {
+        font-size: 1.56vw;
+        margin-top: 0.4vw;
+    }
+
+    .story-hero__careerbox {
+        border: none;
+        padding: 1.7vw 1.9vw;
+        margin-top: 2.85vw;
+    }
+
+    .story-hero__badge {
+        font-size: 0.94vw;
+        padding: 0.5vw 0.9vw;
+        margin-bottom: 1vw;
+    }
+
+    .story-hero__career-item {
+        font-size: 1.04vw;
+        line-height: 1.75;
+    }
+
+    .story-hero__career-date {
+        width: 6.7vw;
+        margin-right: 0.8vw;
+    }
+}
+
+/* ---- 訪談內容（Q&A 交錯圖片） ---- */
+
+.story-interview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/* 區塊之間的統一垂直間距 */
+.story-interview > * + * {
+    margin-top: 48px;
+}
+
+/* 單一問答塊 */
+.story-qa {
+    width: 100%;
+    max-width: 1460px;
+}
+
+.story-qa__label {
+    color: var(--color-secondary);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    line-height: 1;
+    margin: 0 0 16px;
+}
+
+.story-qa__title {
+    color: var(--color-secondary);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 32px;
+}
+
+.story-qa__title::before {
+    content: "Q.";
+}
+
+.story-qa__answer {
+    color: #4D4D4D;
+    font-size: var(--font-size-base);
+    line-height: 1.9;
+}
+
+.story-qa__answer p {
+    margin: 0;
+}
+
+/* 圖片（1575x890） */
+.story-figure {
+    width: 100%;
+    max-width: 1575px;
+    margin: 0;
+}
+
+.story-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* 桌機（≥1024px）：依 1920 設計稿還原 */
+@media (min-width: 1024px) {
+    .story-interview {
+        /* 水平留白沿用基礎 24px 安全內距；在 ≥1920 時由子項 max-width 置中形成
+           設計稿的 230px（文字）/172px（圖片）留白 */
+        padding-top: 240px;
+    }
+
+    .story-interview > * + * {
+        margin-top: 108px;
+    }
+
+    .story-qa__label {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+
+    .story-qa__title {
+        font-size: var(--font-size-3xl);
+        line-height: 1.35;
+        margin-bottom: 96px;
+    }
+
+    .story-qa__answer {
+        font-size: 20px;
+        line-height: 2;
+    }
+}
