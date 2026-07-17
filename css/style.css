@@ -245,7 +245,7 @@ ol {
     position: relative;
     font-size: var(--font-size-base);
     font-weight: 700;
-    color: #000;
+    color: var(--text-inverse); /* 行動版選單為黑底；桌機 media query 覆寫為 #000 */
     transition: color var(--transition-fast);
     padding: var(--spacing-xs) 0;
 }
@@ -1699,8 +1699,8 @@ section {
 }
 
 .btn-secondary:hover {
-    background-color: #C5000F;
-    transform: translateY(-2px);
+    background-color: #FFFFFF;
+    color: var(--color-secondary);
     box-shadow: var(--shadow-md);
 }
 
