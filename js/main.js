@@ -80,10 +80,37 @@ function initActiveNav() {
 }
 
 // ========================================
+// 4. 職缺介紹 - 正職／兼職頁籤切換
+// ========================================
+function initJobIntroTabs() {
+    const tablist = document.querySelector('.job-tabs')
+    if (!tablist) return
+
+    const tabs = tablist.querySelectorAll('.job-tabs__tab')
+    if (!tabs.length) return
+
+    const activateTab = (tab) => {
+        tabs.forEach((t) => {
+            const selected = t === tab
+            t.setAttribute('aria-selected', selected)
+            t.tabIndex = selected ? 0 : -1
+
+            const panel = document.getElementById(t.getAttribute('aria-controls'))
+            if (panel) panel.hidden = !selected
+        })
+    }
+
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', () => activateTab(tab))
+    })
+}
+
+// ========================================
 // 初始化所有功能
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu()
     initSmoothScroll()
     initActiveNav()
+    initJobIntroTabs()
 })

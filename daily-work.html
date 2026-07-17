@@ -52,9 +52,138 @@
 
     <!-- Main Content -->
     <main>
-        <section style="min-height: 60vh; display: flex; align-items: center; justify-content: center;">
-            <div class="container" style="text-align: center;">
-                <h1 style="font-size: 2rem; color: var(--text-secondary); font-weight: 400;">暫時尚未開發</h1>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-image">
+                <img src="assets/images/daily-work/hero.png" alt="2nd STREET 店內服飾陳列與商品展示" loading="eager">
+            </div>
+        </section>
+
+        <!-- Scroll Indicator -->
+        <div class="hero-indicator">
+            <span class="scroll-text">SCROLL</span>
+            <div class="scroll-line"></div>
+        </div>
+
+        <!-- Vision Statement -->
+        <section class="daily-vision">
+            <div class="container">
+                <h2 class="daily-vision__title">「Reuse也很讚呢!從服務達人到經營專家」</h2>
+                <p class="daily-vision__subtitle">
+                    我們正在尋找熱愛穿搭、喜歡與人交流的你<br>
+                    在這裡，你將不只是一位「店員」，而是一步步累積實力的「時尚顧問」與「店舖經營者」
+                </p>
+            </div>
+            <div class="daily-vision__divider" aria-hidden="true"></div>
+        </section>
+
+        <!-- Category: 關於販售 -->
+        <section class="daily-category daily-category--first">
+            <header class="daily-category__header">
+                <h2 class="daily-category__title">關於販售</h2>
+                <p class="daily-category__subtitle">about Our Products</p>
+            </header>
+
+            <div class="daily-jobs">
+                <!-- 顧客應對 -->
+                <article class="daily-job">
+                    <figure class="daily-job__figure">
+                        <img src="assets/images/daily-work/customer-service.webp" alt="店員為顧客包裝 2nd STREET 購物紙袋" loading="lazy">
+                        <figcaption class="daily-job__label">
+                            <span class="daily-job__label-jp">顧客應對</span>
+                            <span class="daily-job__label-en">Customer Service</span>
+                        </figcaption>
+                    </figure>
+                    <div class="daily-job__body">
+                        <h3 class="daily-job__heading">品牌形象的起點</h3>
+                        <p class="daily-job__desc">專業禮儀｜用良好接待建立顧客信任</p>
+                        <p class="daily-job__desc">暖心服務｜掌握基本招呼，創造愉悅購物氛圍</p>
+                    </div>
+                </article>
+
+                <!-- 銷售業務 -->
+                <article class="daily-job">
+                    <figure class="daily-job__figure">
+                        <img src="assets/images/daily-work/sales-spacialist.webp" alt="店員在收銀櫃檯為顧客結帳" loading="lazy">
+                        <figcaption class="daily-job__label">
+                            <span class="daily-job__label-jp">銷售業務</span>
+                            <span class="daily-job__label-en">Sales Specialist</span>
+                        </figcaption>
+                    </figure>
+                    <div class="daily-job__body">
+                        <h3 class="daily-job__heading">銷售與服務的專家</h3>
+                        <p class="daily-job__desc">流暢體驗｜熟練收銀與接待，確保高效購物體驗</p>
+                        <p class="daily-job__desc">成就實績｜為商品尋找新主人，並創造營運成就</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Category: 關於收購 -->
+        <section class="daily-category">
+            <header class="daily-category__header">
+                <h2 class="daily-category__title">關於收購</h2>
+                <p class="daily-category__subtitle">about Our Buying Services</p>
+            </header>
+
+            <div class="daily-jobs">
+                <!-- 收購業務 -->
+                <article class="daily-job">
+                    <figure class="daily-job__figure">
+                        <img src="assets/images/daily-work/procurement-executive.webp" alt="店員鑑定收購二手商品" loading="lazy">
+                        <figcaption class="daily-job__label">
+                            <span class="daily-job__label-jp">收購業務</span>
+                            <span class="daily-job__label-en">Procurement Executive</span>
+                        </figcaption>
+                    </figure>
+                    <div class="daily-job__body">
+                        <h3 class="daily-job__heading">獨具慧眼的鑑定大師</h3>
+                        <p class="daily-job__desc">專業鑑定｜掌握估價標準，發掘二手物品價值</p>
+                        <p class="daily-job__desc">價值延續｜實踐循環經濟，讓每件商品重獲新生</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Category: 關於賣場 -->
+        <section class="daily-category">
+            <header class="daily-category__header">
+                <h2 class="daily-category__title">關於賣場</h2>
+                <p class="daily-category__subtitle">about Our Store</p>
+            </header>
+
+            <div class="daily-jobs">
+                <!-- 賣場陳列 -->
+                <article class="daily-job">
+                    <figure class="daily-job__figure">
+                        <img src="assets/images/daily-work/merchandise-display.webp" alt="店員整理賣場服飾陳列" loading="lazy">
+                        <figcaption class="daily-job__label">
+                            <span class="daily-job__label-jp">賣場陳列</span>
+                            <span class="daily-job__label-en">Merchandise Display</span>
+                        </figcaption>
+                    </figure>
+                    <div class="daily-job__body">
+                        <h3 class="daily-job__heading">空間營造的魔法師</h3>
+                        <p class="daily-job__desc">視覺陳列｜優化商品佈置，打造吸睛的賣場空間</p>
+                        <p class="daily-job__desc">高效營運｜精準掌握商品動向，確保商品流動</p>
+                    </div>
+                </article>
+
+                <!-- 店舖管理 -->
+                <article class="daily-job">
+                    <figure class="daily-job__figure">
+                        <img src="assets/images/daily-work/store-operations.webp" alt="店長使用平板管理店舖營運" loading="lazy">
+                        <figcaption class="daily-job__label">
+                            <span class="daily-job__label-jp">店舖管理</span>
+                            <span class="daily-job__label-en">Store Operations</span>
+                        </figcaption>
+                    </figure>
+                    <div class="daily-job__body">
+                        <h3 class="daily-job__heading">全方位的經營者</h3>
+                        <p class="daily-job__desc">團隊領導｜負責人員與顧客管理，打造高效團隊</p>
+                        <p class="daily-job__desc">數據思維｜結合現場與數據，掌握店舖營運核心</p>
+                    </div>
+                </article>
             </div>
         </section>
     </main>

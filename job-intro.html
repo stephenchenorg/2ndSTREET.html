@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="2ndSTREET 職缺介紹 - 正職與兼職人員招募">
+    <meta name="description" content="2ndSTREET 職缺介紹 - 門市正職與兼職人員福利、工作條件、津貼與獎金制度一次看">
     <meta name="keywords" content="2ndSTREET, 職缺, 正職, 兼職, 工作機會">
     <meta name="author" content="2ndSTREET">
 
@@ -52,9 +52,219 @@
 
     <!-- Main Content -->
     <main>
-        <section style="min-height: 60vh; display: flex; align-items: center; justify-content: center;">
-            <div class="container" style="text-align: center;">
-                <h1 style="font-size: 2rem; color: var(--text-secondary); font-weight: 400;">暫時尚未開發</h1>
+        <!-- 全員工享有福利（正職／兼職共用） -->
+        <section class="job-benefits">
+            <div class="container">
+                <h1 class="section-title">全員工享有福利</h1>
+                <ul class="job-benefits__grid">
+                    <li class="job-benefit">
+                        <img src="assets/images/job-intro/icon-01.webp" alt="升遷加給" class="job-benefit__icon" width="150" height="150">
+                        <h2 class="job-benefit__title">升遷加給</h2>
+                        <p class="job-benefit__desc">正職或門市兼職人員<br>皆定期考核進行調薪</p>
+                    </li>
+                    <li class="job-benefit">
+                        <img src="assets/images/job-intro/icon-02.webp" alt="員購優惠" class="job-benefit__icon" width="150" height="150">
+                        <h2 class="job-benefit__title">員購優惠</h2>
+                        <p class="job-benefit__desc">購買2nd STREET商品<br>可享有員工優惠價</p>
+                    </li>
+                    <li class="job-benefit">
+                        <img src="assets/images/job-intro/icon-03.webp" alt="收購福利" class="job-benefit__icon" width="150" height="150">
+                        <h2 class="job-benefit__title">收購福利</h2>
+                        <p class="job-benefit__desc">進行收購服務<br>可享收購金額加碼福利</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 職缺明細（正職／兼職頁籤切換） -->
+        <section class="job-detail">
+            <div class="container">
+                <div class="job-detail__card">
+                    <div class="job-tabs" role="tablist" aria-label="職缺類型">
+                        <button type="button" class="job-tabs__tab" id="job-tab-fulltime" role="tab" aria-selected="true" aria-controls="job-panel-fulltime">門市正職人員</button>
+                        <button type="button" class="job-tabs__tab" id="job-tab-parttime" role="tab" aria-selected="false" aria-controls="job-panel-parttime" tabindex="-1">門市兼職人員</button>
+                    </div>
+
+                    <div class="job-panels">
+                        <!-- 門市正職人員 -->
+                        <div class="job-panel" id="job-panel-fulltime" role="tabpanel" aria-labelledby="job-tab-fulltime">
+                            <dl class="job-table">
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">工作條件</dt>
+                                    <dd class="job-table__desc">
+                                        <p>基本上為每週5日×8小時</p>
+                                        <p>工作時間原則上分為早、晚班(出勤時間將依據店鋪型態略有不同)</p>
+                                        <p>正職員工採四週變形工時，排休依店鋪現場狀況安排</p>
+                                        <p>兼職員工依店鋪需求及個人安排，排定每月出勤時間</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">加班津貼</dt>
+                                    <dd class="job-table__desc">
+                                        <p>平日工作時間超過8小時，延長時間前2小時以內加給時薪x1.34</p>
+                                        <p>平日工作時間超過8小時，再延長2小時以內加給時薪x1.67</p>
+                                        <p>若於休息日、國定假日出勤也皆依循法規計算</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">交通津貼</dt>
+                                    <dd class="job-table__desc">
+                                        <p>限門市正職人員</p>
+                                        <p>依公司規程，津貼自動反映至員工薪資中</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">異動津貼</dt>
+                                    <dd class="job-table__desc">
+                                        <p>全台店鋪可配合異動者依據公司規程，每月另有津貼補助</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">區域津貼</dt>
+                                    <dd class="job-table__desc">
+                                        <p>限雙北、桃園、新竹門市正職人員享有補助</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">租屋補助</dt>
+                                    <dd class="job-table__desc">
+                                        <p>若配合公司轉調並符合規定者享有租屋補助</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">升遷加給</dt>
+                                    <dd class="job-table__desc">
+                                        <p>每半年依照人事考核結果進行調薪</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">三節獎金</dt>
+                                    <dd class="job-table__desc">
+                                        <span class="job-table__mark" role="img" aria-label="提供"></span>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">年度獎金</dt>
+                                    <dd class="job-table__desc">
+                                        <p>依照公司業績每年發放夏季、冬季獎金</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">健康保險</dt>
+                                    <dd class="job-table__desc">
+                                        <span class="job-table__mark" role="img" aria-label="提供"></span>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">勞工保險</dt>
+                                    <dd class="job-table__desc">
+                                        <span class="job-table__mark" role="img" aria-label="提供"></span>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">團體保險</dt>
+                                    <dd class="job-table__desc">
+                                        <span class="job-table__mark" role="img" aria-label="提供"></span>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">特別休假</dt>
+                                    <dd class="job-table__desc">
+                                        <p>到職半年者給予特別休假</p>
+                                        <p>正職入社後滿三個月即享生日假</p>
+                                        <p>內部轉正面試合格者，年資延續，休天數將依照員工兼職職時期的出勤時數按比例計算</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">其他福利</dt>
+                                    <dd class="job-table__desc">
+                                        <p>員工年度體檢｜結婚禮金｜生育津貼｜退職金提撥｜Payeasy 企業會員</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">員工消費</dt>
+                                    <dd class="job-table__desc">
+                                        <p>購買2nd STREET商品可享有員工優惠價</p>
+                                        <p>進行收購服務可享有購金額加碼福利</p>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+
+                        <!-- 門市兼職人員 -->
+                        <div class="job-panel" id="job-panel-parttime" role="tabpanel" aria-labelledby="job-tab-parttime" hidden>
+                            <dl class="job-table">
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">工作條件</dt>
+                                    <dd class="job-table__desc">
+                                        <p>每天排班4-8小時，一週不超過40小時</p>
+                                        <p>工作時間原則上分為早、晚班(出勤時間將依據店鋪型態略有不同)</p>
+                                        <p>正職員工採四週變形工時，排休依店鋪現場狀況安排</p>
+                                        <p>兼職員工依店鋪需求及個人安排，排定每月出勤時間</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">加班津貼</dt>
+                                    <dd class="job-table__desc">
+                                        <p>平日工作時間超過8小時，延長時間前2小時以內加給時薪x1.34</p>
+                                        <p>平日工作時間超過8小時，再延長2小時以內加給時薪x1.67</p>
+                                        <p>若於休息日、國定假日出勤也皆依循法規計算</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">升遷加給</dt>
+                                    <dd class="job-table__desc">
+                                        <p>入職滿3個月後，依個人業務熟悉度達考試資格者，</p>
+                                        <p>分別進行考試和面談，並視最終成果調整時薪</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">三節獎金</dt>
+                                    <dd class="job-table__desc">
+                                        <span class="job-table__mark" role="img" aria-label="提供"></span>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">健康保險</dt>
+                                    <dd class="job-table__desc">
+                                        <span class="job-table__mark" role="img" aria-label="提供"></span>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">勞工保險</dt>
+                                    <dd class="job-table__desc">
+                                        <span class="job-table__mark" role="img" aria-label="提供"></span>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">團體保險</dt>
+                                    <dd class="job-table__desc">
+                                        <span class="job-table__mark" role="img" aria-label="提供"></span>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">特別休假</dt>
+                                    <dd class="job-table__desc">
+                                        <p>到職半年者給予特別休假，依工作時數比例計算</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">其他福利</dt>
+                                    <dd class="job-table__desc">
+                                        <p>結婚禮金｜生育津貼｜退職金提撥｜Payeasy 企業會員</p>
+                                    </dd>
+                                </div>
+                                <div class="job-table__row">
+                                    <dt class="job-table__term">員工消費</dt>
+                                    <dd class="job-table__desc">
+                                        <p>購買2nd STREET商品可享有員工優惠價</p>
+                                        <p>進行收購服務可享有購金額加碼福利</p>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
