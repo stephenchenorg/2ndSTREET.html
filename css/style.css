@@ -683,6 +683,8 @@ ol {
 /* 標題遮罩上浮，沿用 milkstar 的 1.3s 曲線；padding 避免底線被裁切 */
 .about-collage__title.title-rise {
     padding-bottom: 0.5em;
+    /* 只需垂直裁切做浮升遮罩；水平放行，避免 nowrap 標題被切掉尾字 */
+    overflow: visible clip;
 }
 
 .about-collage__title.title-rise > span {
