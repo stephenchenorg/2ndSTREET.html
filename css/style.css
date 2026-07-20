@@ -122,7 +122,7 @@ ol {
 
 @media (min-width: 1024px) {
     .container {
-        width: 1180px;
+        width: min(1180px, 100%);
         padding: 0 var(--spacing-xl);
     }
 }
@@ -141,6 +141,7 @@ ol {
 }
 
 .header .container {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -172,7 +173,7 @@ ol {
         position: relative;
         min-height: 0;
         padding: 0;
-        width: 1180px;
+        width: min(1180px, 100%);
         height: 100%;
         margin: 0 auto;
     }
@@ -182,12 +183,12 @@ ol {
         left: 0;
         top: 50%;
         transform: translateY(-50%);
-        max-width: 240px;
+        max-width: clamp(180px, 20vw, 240px);
     }
 
     .logo img {
         width: 100%;
-        max-width: 240px;
+        max-width: clamp(180px, 20vw, 240px);
         height: auto;
     }
 }
@@ -306,20 +307,22 @@ ol {
         transform: translateY(-50%);
         flex-direction: row;
         align-items: center;
-        gap: 35px;
+        /* 1024–1200px：隨視窗縮放，避免撞到右上角的應徵按鈕 */
+        gap: clamp(20px, 2.9vw, 35px);
         width: auto;
-        max-width: 530px;
+        max-width: clamp(360px, 44vw, 530px);
         height: auto;
         padding: 0;
         background: transparent;
         transition: none;
-        left: 310px;
+        left: clamp(215px, 25.8vw, 310px);
         overflow: hidden;
         box-shadow: none;
     }
 
     .nav-link {
-        font-size: 20px;
+        font-size: clamp(16px, 1.67vw, 20px);
+        white-space: nowrap;
         letter-spacing: 0.5px;
         line-height: 1.2;
         color: #000;
@@ -344,8 +347,8 @@ ol {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 300px;
-        height: 80px;
+        width: clamp(200px, 25vw, 300px);
+        height: clamp(60px, 6.7vw, 80px);
         background: var(--color-ink);
         color: var(--text-inverse);
         transition: background var(--transition-base);
@@ -357,7 +360,7 @@ ol {
 
     .entry-btn__jp {
         font-family: "Yu Mincho", "Hiragino Mincho ProN", "Songti TC", "Noto Serif TC", serif;
-        font-size: 36px;
+        font-size: clamp(26px, 3vw, 36px);
         font-weight: 900;
         font-style: italic;
         line-height: 1;
@@ -365,16 +368,16 @@ ol {
 
     .entry-btn__divider {
         width: 2px;
-        height: 22px;
-        margin-left: 32px;
-        margin-right: 16px;
+        height: clamp(16px, 1.83vw, 22px);
+        margin-left: clamp(18px, 2.67vw, 32px);
+        margin-right: clamp(10px, 1.33vw, 16px);
         background: var(--text-inverse);
         opacity: 1;
         transform: skewX(-8deg);
     }
 
     .entry-btn__en {
-        font-size: 24px;
+        font-size: clamp(18px, 2vw, 24px);
         font-weight: 700;
         font-style: italic;
         line-height: 1;
@@ -436,13 +439,13 @@ ol {
 .footer-content {
     display: grid;
     gap: var(--spacing-lg);
-    margin-bottom: 80px;
+    margin-bottom: var(--spacing-lg);
 }
 
 /* 桌機：footer 內容區固定寬度 */
 @media (min-width: 1024px) {
     .footer .container {
-        width: 1180px;
+        width: min(1180px, 100%);
     }
 }
 
@@ -901,7 +904,7 @@ section {
 
 @media (min-width: 1024px) {
     .recruitment-highlight {
-        width: 1180px;
+        width: min(1180px, 100%);
         margin: 0 auto;
     }
 }
@@ -1736,7 +1739,7 @@ section {
 
 @media (min-width: 1024px) {
     .deep-dive-title {
-        width: 1180px;
+        width: min(1180px, 100%);
         margin: 0 auto;
     }
 }
@@ -1763,7 +1766,7 @@ section {
 
 @media (min-width: 1024px) {
     .deep-dive-images {
-        width: 1180px;
+        width: min(1180px, 100%);
         margin: 0 auto;
     }
 }
@@ -2177,6 +2180,32 @@ section {
     object-fit: contain;
 }
 
+@media (max-width: 768px) {
+    .footer-brand,
+    .footer-bottom {
+        text-align: center;
+    }
+
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .footer-social {
+        margin-top: var(--spacing-md);
+        margin-left: 0;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+    }
+}
+
 .footer-social a:hover {
     transform: translateY(-2px);
 }
@@ -2193,6 +2222,36 @@ section {
         gap: 100px; /* 欄位節距 ≈172px，貼近設計稿 ~180px */
         align-items: start;
     }
+}
+
+/* 平板（768–1199）：左 brand 置中、右側上為買/賣、下為關於我們 */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .footer-content {
+        grid-template-columns: auto 1fr;
+        align-items: center;
+    }
+
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .footer-social {
+        margin-left: 0;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    .footer-column--about {
+        grid-column: 1 / -1;
+    }
+
 }
 
 .footer-column {
@@ -2230,6 +2289,14 @@ section {
 
     .footer-links-grid li:nth-child(5) {
         grid-row: 1;
+    }
+}
+
+/* 平板（768–1199）：關於我們的第二列軌道對齊上排的「我想買」 */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .footer-links-grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: var(--spacing-lg);
     }
 }
 
