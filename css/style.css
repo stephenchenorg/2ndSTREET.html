@@ -531,6 +531,42 @@ ol {
     transform: translateY(0) scale(1);
 }
 
+/* 卡片：由上至下展開 */
+/* ponytail: 用 mask-size 而非 clip-path —— Chrome 的 IntersectionObserver 會把 clip-path
+   算進交集矩形，inset(0 0 100% 0) 使交集為 0 而永遠不觸發 is-visible（Firefox 不會）。 */
+.expand-down {
+    -webkit-mask-image: linear-gradient(#000, #000);
+    mask-image: linear-gradient(#000, #000);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 0%;
+    mask-size: 100% 0%;
+    transition: -webkit-mask-size 0.5s ease-out, mask-size 0.5s ease-out;
+}
+
+.expand-down.is-visible {
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+/* 標題：文字自遮罩下方浮升（地平線效果，需父層 overflow: hidden） */
+/* 觀察外層（內層被 overflow 裁掉時 IntersectionObserver 不會觸發） */
+.title-rise {
+    overflow: hidden;
+}
+
+.title-rise > span {
+    display: block;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease-out;
+}
+
+.title-rise.is-visible > span {
+    transform: translateY(0);
+    opacity: 1;
+}
+
 /* 通用淡入（從原位置） */
 .fade-in {
     opacity: 0;
@@ -2985,10 +3021,20 @@ section {
     gap: 24px;
 }
 
+.members-card__photo-link {
+    display: block;
+    overflow: hidden;
+}
+
 .members-card__photo {
     width: 100%;
     aspect-ratio: 860 / 489;
     object-fit: cover;
+    transition: transform 0.5s ease-out;
+}
+
+.members-card__photo-link:hover .members-card__photo {
+    transform: scale(1.05);
 }
 
 .members-card__body {
@@ -3253,7 +3299,7 @@ section {
     margin: 0 0 32px;
 }
 
-.story-qa__title::before {
+.story-qa__title > span::before {
     content: "Q.";
 }
 
