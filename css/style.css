@@ -3641,17 +3641,23 @@ section {
     }
 
     /* 選單底部社群圖示（markup 無此元素，以裝飾性背景呈現；可點擊版本在 footer） */
-    .nav-menu::after {
-        content: '';
-        flex: none;
-        height: 55px;
+    .nav-menu__social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
         margin-top: 59px;
-        background-image: url('../assets/images/social/ig.png'),
-            url('../assets/images/social/fb.png'),
-            url('../assets/images/social/line.png');
-        background-repeat: no-repeat;
-        background-size: 55px, auto 55px, auto 55px;
-        background-position: calc(50% - 83px) 50%, 50% 50%, calc(50% + 82px) 50%;
+        border-bottom: none;
+    }
+
+    .nav-menu__social a {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-menu__social img {
+        height: 55px;
+        width: auto;
     }
 
     /* 面板全螢幕不透明，遮罩不需要（其 vh 定位在 zoom 下會錯位） */
@@ -4088,21 +4094,25 @@ section {
         aspect-ratio: 5 / 3;
     }
 
-    /* 裝飾用箭頭膠囊（不可點，連結僅照片）：位於照片右下方 16px 處 */
-    .members-card::after {
-        content: "";
+    /* 箭頭膠囊＝卡片連結（照片連結行動版停用）：位於照片右下方 17px 處 */
+    .members-card__photo-link {
+        pointer-events: none;
+    }
+
+    .members-card__arrow {
+        display: block;
         position: absolute;
         top: 437px; /* 照片高 420 + 17 */
         right: 52px;
         width: 124px;
         height: 46px;
         background-color: var(--color-secondary);
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66 18'%3E%3Cpath d='M1 14.5 H63 M47 3 L64 14.5' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        /* 燕尾式箭頭：細長桿＋實心箭頭（下緣倒勾延伸到桿下方） */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 22'%3E%3Cpath d='M0 10h62v2H0z' fill='%23fff'/%3E%3Cpath d='M52 0 80 11 54 22 61 11Z' fill='%23fff'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
         background-position: center;
-        background-size: 66px 18px;
+        background-size: 80px 22px;
         border-radius: 23px;
-        pointer-events: none;
     }
 
     /* 紅色標題盒：疊在照片左下（上緣壓照片 57px、下緣凸出 71px） */
@@ -4828,5 +4838,13 @@ section {
     .staff-nav svg {
         width: 26px;
         height: 12px;
+    }
+}
+
+/* ======== 行動選單社群連結／stories 箭頭連結（桌機隱藏） ======== */
+@media (min-width: 1024px) {
+    .members-card__arrow,
+    .nav-menu__social {
+        display: none;
     }
 }

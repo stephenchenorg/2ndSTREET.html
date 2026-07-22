@@ -13,6 +13,7 @@ function initMobileMenu() {
         menuToggle.classList.remove('active')
         overlay.classList.remove('active')
         menuToggle.setAttribute('aria-expanded', 'false')
+        document.body.style.overflow = ''
     }
 
     menuToggle.addEventListener('click', () => {
@@ -22,6 +23,9 @@ function initMobileMenu() {
 
         // 更新 ARIA 屬性
         menuToggle.setAttribute('aria-expanded', isActive)
+
+        // 選單開啟時鎖住背景捲動
+        document.body.style.overflow = isActive ? 'hidden' : ''
     })
 
     // 點擊遮罩關閉選單
