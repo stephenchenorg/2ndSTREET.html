@@ -4788,3 +4788,45 @@ section {
     }
 }
 
+
+/* ======== 首頁社員故事輪播箭頭（僅行動版顯示） ======== */
+.staff-nav {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    .staff-carousel {
+        position: relative;
+    }
+
+    /* 紅色圓形箭頭鈕 46px：設計稿距視窗左右 26（container 內縮 24 → 偏移 2） */
+    .staff-nav {
+        position: absolute;
+        top: 317px; /* grid margin-top 55 + 照片 570/2 - 鈕半徑 23 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: var(--color-secondary);
+        color: #fff;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .staff-nav--prev {
+        left: 2px;
+    }
+
+    .staff-nav--next {
+        right: 2px;
+    }
+
+    .staff-nav svg {
+        width: 26px;
+        height: 12px;
+    }
+}

@@ -325,6 +325,27 @@ function initDesktopZoom() {
 }
 
 // ========================================
+// 9. 首頁社員故事輪播箭頭（行動版 scroll-snap 的左右切換）
+// ========================================
+function initStaffCarousel() {
+    const carousel = document.querySelector('.staff-carousel')
+    if (!carousel) return
+
+    const grid = carousel.querySelector('.staff-grid')
+    const step = () => {
+        const card = grid.querySelector('.staff-card')
+        return card ? card.offsetWidth + parseFloat(getComputedStyle(grid).gap || 0) : grid.clientWidth
+    }
+
+    carousel.querySelector('.staff-nav--prev').addEventListener('click', () => {
+        grid.scrollBy({ left: -step(), behavior: 'smooth' })
+    })
+    carousel.querySelector('.staff-nav--next').addEventListener('click', () => {
+        grid.scrollBy({ left: step(), behavior: 'smooth' })
+    })
+}
+
+// ========================================
 // 初始化所有功能
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -336,4 +357,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollFadeIn()
     initParallax()
     initDesktopZoom()
+    initStaffCarousel()
 })
