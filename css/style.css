@@ -1560,6 +1560,11 @@ section {
         font-size: min(3.2vw, 61.44px);
         margin-bottom: 0;
         white-space: nowrap;
+        /* Inter 讓整行比容器寬（1920 實寬 ~1372 > 1020）：
+           以自身寬度對父層中心置中，溢出才會左右對稱 */
+        width: max-content;
+        margin-left: 50%;
+        transform: translateX(-50%);
     }
 }
 
