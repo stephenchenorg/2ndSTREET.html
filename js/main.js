@@ -296,11 +296,19 @@ function initParallax() {
 // ========================================
 function initDesktopZoom() {
     const BASE = 1920
+    const MOBILE_BASE = 700
 
     const apply = () => {
         const w = window.innerWidth
-        // CSS 已用 min(vw, 設計px) 把版面鎖在 1920 基準，這裡整頁等比放大
-        document.body.style.zoom = w > BASE ? String(w / BASE) : ''
+        // CSS 已用 min(vw, 設計px) 把桌機版面鎖在 1920 基準；
+        // 行動版（<1024）以 700 設計 px 固定值撰寫，zoom = 寬/700 等比縮放
+        if (w > BASE) {
+            document.body.style.zoom = String(w / BASE)
+        } else if (w < 1024) {
+            document.body.style.zoom = String(w / MOBILE_BASE)
+        } else {
+            document.body.style.zoom = ''
+        }
     }
 
     apply()

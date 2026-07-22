@@ -3502,3 +3502,1289 @@ section {
         line-height: 2;
     }
 }
+
+/* ============================================================
+   Mobile (<=1023px) — 700px 設計稿實作；body zoom = 寬/700 等比縮放
+   ============================================================ */
+/* ======== Mobile <=1023px: 共用元件（header／行動版選單／footer） ========
+   量測基準：手機版 w700 設計稿（3x 匯出 ÷3）；zoom 架構下版面恆為 700 CSS px 寬 */
+@media (max-width: 1023px) {
+
+    /* ---------- Header（設計稿：白帶高 105、logo 375×54 置中、漢堡 45×36 右緣距 39） ---------- */
+    .header {
+        box-shadow: none;
+    }
+
+    .header .container {
+        max-width: none;
+        height: 105px;
+        padding: 0;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 375px;
+    }
+
+    .logo img {
+        width: 375px;
+        max-width: 375px;
+    }
+
+    .menu-toggle {
+        position: absolute;
+        right: 39px;
+        top: 50%;
+        transform: translateY(-50%);
+        gap: 9px;
+        padding: 0;
+    }
+
+    .menu-toggle span {
+        width: 45px;
+        height: 6px;
+        background: var(--color-gray-dark);
+    }
+
+    /* 漢堡 → X：線距 15px（6 高 + 9 gap），位移 15/√2 ≈ 10.5px */
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(10.5px, 10.5px);
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(10.5px, -10.5px);
+    }
+
+    /* 選單面板是 .header 的子元素：logo 與漢堡鈕要壓在面板之上（flex item 可直接吃 z-index） */
+    .logo,
+    .menu-toggle {
+        z-index: 1010;
+    }
+
+    /* ---------- 行動版選單（全螢幕白面板，滑入；高度由 inset 決定，禁 vh） ---------- */
+    .nav-menu {
+        display: flex;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        max-width: none;
+        height: auto;
+        gap: 0;
+        /* 首項文字 ink 頂 = 設計 203（含 header 105）→ 203 − 30(item pad) − 4(行高留白) */
+        padding: 169px 65px 55px;
+        box-shadow: none;
+    }
+
+    .nav-link {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.2;
+        color: #1a1a1a;
+        padding: 30px 0 32px 23px;
+    }
+
+    /* 前三項之後有分隔線（社員故事後無） */
+    .nav-menu .nav-link:nth-child(-n+3) {
+        border-bottom: 2px solid #b3b3b3;
+    }
+
+    /* 應徵｜Entry：深灰大鈕（570×108）。markup 為純文字，改以偽元素分段呈現字級 */
+    .nav-menu__entry {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 108px;
+        margin-top: 6px;
+        padding: 0;
+        background: var(--color-ink);
+        color: var(--text-inverse);
+        font-size: 0; /* 隱藏原始文字（仍供螢幕閱讀器朗讀） */
+        border-bottom: none;
+    }
+
+    .nav-menu__entry::before {
+        content: '應徵';
+        font-family: "Noto Sans TC", sans-serif;
+        font-size: 64px;
+        font-weight: 500;
+        font-style: italic;
+        line-height: 1;
+        color: var(--text-inverse);
+    }
+
+    /* 蓋掉 .nav-link::after 的 hover 底線樣式，改作「| Entry」段 */
+    .nav-menu__entry::after {
+        /* \00a0 後接空白作為 escape 終止符（E 是十六進位字元，直接相連會被吃進 escape） */
+        content: '|\00a0\00a0 Entry';
+        position: relative;
+        top: 8px;
+        bottom: auto;
+        left: auto;
+        width: auto;
+        height: auto;
+        background: none;
+        margin-left: 42px;
+        font-size: 40px;
+        font-weight: 500;
+        font-style: italic;
+        line-height: 1;
+        color: var(--text-inverse);
+    }
+
+    .nav-menu__entry:hover::after {
+        width: auto;
+    }
+
+    /* 選單底部社群圖示（markup 無此元素，以裝飾性背景呈現；可點擊版本在 footer） */
+    .nav-menu::after {
+        content: '';
+        flex: none;
+        height: 55px;
+        margin-top: 59px;
+        background-image: url('../assets/images/social/ig.png'),
+            url('../assets/images/social/fb.png'),
+            url('../assets/images/social/line.png');
+        background-repeat: no-repeat;
+        background-size: 55px, auto 55px, auto 55px;
+        background-position: calc(50% - 83px) 50%, 50% 50%, calc(50% + 82px) 50%;
+    }
+
+    /* 面板全螢幕不透明，遮罩不需要（其 vh 定位在 zoom 下會錯位） */
+    .menu-overlay,
+    .menu-overlay.active {
+        display: none;
+    }
+
+    /* ---------- Footer（設計稿：上緣黑線、logo/社群置中、賣買雙欄、關於我們整寬） ---------- */
+    .footer {
+        padding: 84px 0 119px;
+    }
+
+    .footer .container {
+        max-width: none;
+        padding: 0;
+    }
+
+    .footer-content {
+        display: block;
+        margin-bottom: 0;
+    }
+
+    .footer-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        text-align: center;
+    }
+
+    .footer-logo {
+        width: 241px;
+        max-width: 241px;
+        margin-bottom: 0;
+    }
+
+    .footer-social {
+        gap: 30px;
+        margin: 46px 0 0;
+    }
+
+    .footer-social a img {
+        width: auto;
+        height: 42px;
+    }
+
+    /* 我想賣／我想買：兩欄各 134 寬、欄距 95、整組置中；關於我們跨整寬（363） */
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 134px 134px;
+        gap: 74px 95px;
+        justify-content: center;
+        align-items: start;
+        margin-top: 112px;
+    }
+
+    .footer-column--about {
+        grid-column: 1 / -1;
+    }
+
+    .footer-column h4 {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 1.2;
+        min-height: 0;
+        margin-bottom: 16px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #000;
+    }
+
+    .footer-column ul {
+        padding-left: 17px;
+    }
+
+    .footer-column li {
+        margin-bottom: 20px;
+    }
+
+    .footer-column a {
+        font-size: 24px;
+        line-height: 1.5;
+    }
+
+    /* 關於我們連結：左欄 4 項、右欄 6 項（右欄軌道起點 = 左緣 + 203）
+       右欄用 max-content 讓「隱私權保護政策」等 7 字項目單行不折 */
+    .footer-links-grid {
+        display: grid;
+        grid-template-columns: 203px max-content;
+        grid-auto-flow: column;
+        column-gap: 0;
+        padding-left: 7px;
+    }
+
+    .footer-links-grid li:nth-child(-n+4) {
+        grid-column: 1;
+    }
+
+    .footer-links-grid li:nth-child(n+5) {
+        grid-column: 2;
+    }
+
+    .footer-links-grid li:nth-child(5) {
+        grid-row: 1;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        gap: 12px;
+        margin-top: 148px;
+    }
+
+    .geo-logo {
+        width: 91px;
+    }
+
+    .footer-bottom p {
+        font-size: 12px;
+        color: var(--text-primary);
+    }
+}
+
+/* ======== Mobile <=1023px: 日常業務 daily-work ======== */
+@media (max-width: 1023px) {
+    /* ---- Hero（滿版 700x433）---- */
+    .hero-image {
+        aspect-ratio: 700 / 433;
+    }
+
+    /* ---- Scroll Indicator ---- */
+    .hero-indicator {
+        margin: 20px auto 0;
+        padding: 0;
+        gap: 15px;
+    }
+
+    .scroll-text {
+        font-size: 16px;
+        letter-spacing: 4px;
+    }
+
+    .scroll-line {
+        width: 2px;
+        height: 58px;
+    }
+
+    /* ---- Vision（願景標語）---- */
+    .daily-vision {
+        padding: 107px 25px 0;
+    }
+
+    .daily-vision__title {
+        font-size: 44px;
+        line-height: 1.5;
+    }
+
+    .daily-vision__subtitle {
+        max-width: none;
+        margin-top: 46px;
+        font-size: 24px;
+        line-height: 2;
+    }
+
+    .daily-vision__divider {
+        width: 2px;
+        height: 130px;
+        margin-top: 173px;
+    }
+
+    /* ---- Category（關於販售 / 收購 / 賣場）---- */
+    .daily-category {
+        margin-top: 168px;
+    }
+
+    .daily-category--first {
+        margin-top: 25px;
+    }
+
+    .daily-category:last-of-type {
+        padding-bottom: 150px;
+    }
+
+    .daily-category__header {
+        margin-bottom: 62px;
+    }
+
+    .daily-category__title {
+        font-size: 44px;
+        line-height: 1.3;
+        margin: 0 0 6px;
+    }
+
+    .daily-category__subtitle {
+        font-size: 24px;
+        line-height: 1.4;
+        font-weight: 700;
+    }
+
+    /* ---- Job Block（滿版圖 + 置中文字）---- */
+    .daily-job {
+        max-width: none;
+        padding: 0;
+    }
+
+    .daily-job + .daily-job {
+        margin-top: 46px;
+    }
+
+    .daily-job__figure {
+        aspect-ratio: 700 / 573;
+    }
+
+    /* 標籤：置中、貼近圖片下緣 */
+    .daily-job__label {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 40px;
+        gap: 14px;
+        padding: 18px 40px;
+        border-width: 2px;
+        white-space: nowrap;
+    }
+
+    .daily-job__label-jp {
+        font-size: 36px;
+        line-height: 1;
+        letter-spacing: 2px;
+    }
+
+    .daily-job__label-en {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .daily-job__body {
+        margin-top: 49px;
+        padding: 0 25px;
+    }
+
+    .daily-job__heading {
+        font-size: 36px;
+        line-height: 1.3;
+        margin-bottom: 26px;
+    }
+
+    .daily-job__desc {
+        font-size: 24px;
+        line-height: 2;
+    }
+}
+
+/* 行動版專用換行點（桌機隱藏） */
+@media (min-width: 1024px) {
+    .m-br {
+        display: none;
+    }
+}
+
+/* ======== Mobile <=1023px: 人事評價制度 evaluation.html ======== */
+/* 設計稿：手機版w700-o_人事評價制度 1.png（3x，700 設計 px 寬），
+   body zoom 縮放架構下直接寫設計稿絕對 px 值 */
+@media (max-width: 1023px) {
+    /* --- Hero（僅作用於本頁：hero--eval 修飾類） --- */
+    .hero--eval {
+        padding: 0;
+    }
+
+    .hero--eval .hero-image {
+        height: 426px; /* 設計稿 hero 700x426，object-fit cover 裁切 */
+    }
+
+    /* --- Scroll indicator（hero 正下方） --- */
+    .hero--eval + .hero-indicator {
+        gap: 14px;
+        padding: 14px 0 0;
+    }
+
+    .hero--eval + .hero-indicator .scroll-text {
+        font-size: 18px;
+        letter-spacing: 4px;
+    }
+
+    .hero--eval + .hero-indicator .scroll-line {
+        width: 2px;
+        height: 58px;
+    }
+
+    /* --- Intro（尋找與我們相同頻率的你） --- */
+    .eval-intro {
+        padding: 104px 24px 0;
+    }
+
+    .eval-intro__heading {
+        font-size: 44px;
+        line-height: 1.3;
+        margin: 0 0 48px;
+    }
+
+    .eval-intro__text p {
+        font-size: 24px;
+        line-height: 2;
+        margin: 0;
+    }
+
+    /* --- 兼職人員 section --- */
+    .eval-part-time {
+        padding: 0;
+    }
+
+    .eval-part-time .highlight-line {
+        width: 2px;
+        height: 130px;
+        margin: 170px auto 24px;
+    }
+
+    /* --- Section header（中文標題 + 紅色英文副標） --- */
+    .eval-section-header {
+        padding: 0 24px;
+        margin-bottom: 64px;
+    }
+
+    .eval-section-header__title {
+        font-size: 44px;
+    }
+
+    .eval-section-header__subtitle {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    /* --- Track 共通：改為流式排版，紅 tag 疊在左上角 --- */
+    .eval-track {
+        aspect-ratio: auto;
+        max-width: none;
+    }
+
+    .eval-track__tag {
+        left: 34px;
+        top: 0;
+        padding: 6px 14px;
+        font-size: 26px;
+    }
+
+    .eval-track__img {
+        position: static;
+        display: block;
+        height: auto;
+    }
+
+    /* 店鋪PT：tag 與階梯圖之間留空（設計稿圖頂距 tag 頂 95px） */
+    .eval-pt {
+        aspect-ratio: auto;
+    }
+
+    .eval-pt__img {
+        width: 656px;
+        margin: 95px auto 0;
+    }
+
+    /* 店鋪（正職）：階梯圖頂與 tag 同高，tag 直接疊圖上 */
+    .eval-ft {
+        aspect-ratio: auto;
+    }
+
+    .eval-ft__img {
+        width: 618px;
+        margin: 0 auto;
+    }
+
+    /* 本部 */
+    .eval-hq {
+        aspect-ratio: auto;
+        margin-top: 146px;
+    }
+
+    .eval-hq__img {
+        width: 620px;
+        margin: 0 auto;
+    }
+
+    /* --- 圖下說明（兼職考核說明） --- */
+    .eval-caption {
+        padding: 60px 24px 0;
+        margin: 0;
+        font-size: 20px;
+        line-height: 2.05;
+    }
+
+    /* --- 正職人員 section --- */
+    .eval-full-time {
+        padding: 168px 0 0;
+    }
+
+    /* --- 結語（灰字三行） --- */
+    .eval-closing {
+        padding: 62px 24px 140px;
+    }
+
+    .eval-closing p {
+        margin: 0;
+        font-size: 20px;
+        line-height: 2.05;
+    }
+}
+
+/* 行動版專用換行（<br class="m-br">）：桌機隱藏 */
+@media (min-width: 1024px) {
+    .m-br {
+        display: none;
+    }
+}
+
+/* ======== Mobile <=1023px: 各社員（stories.html） ======== */
+@media (max-width: 1023px) {
+
+    /* Section：照片滿版出血，底部留白至 footer */
+    .members-stories {
+        padding: 0 0 156px;
+    }
+
+    .members-list {
+        gap: 64px;
+    }
+
+    .members-card {
+        position: relative;
+        gap: 0;
+    }
+
+    /* 照片：滿版 700 寬、5:3（設計稿 700x420） */
+    .members-card__photo {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 5 / 3;
+    }
+
+    /* 裝飾用箭頭膠囊（不可點，連結僅照片）：位於照片右下方 16px 處 */
+    .members-card::after {
+        content: "";
+        position: absolute;
+        top: 437px; /* 照片高 420 + 17 */
+        right: 52px;
+        width: 124px;
+        height: 46px;
+        background-color: var(--color-secondary);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 66 18'%3E%3Cpath d='M1 14.5 H63 M47 3 L64 14.5' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 66px 18px;
+        border-radius: 23px;
+        pointer-events: none;
+    }
+
+    /* 紅色標題盒：疊在照片左下（上緣壓照片 57px、下緣凸出 71px） */
+    .members-card__title {
+        position: relative;
+        z-index: 1;
+        width: fit-content;
+        max-width: calc(100% - 68px);
+        margin: -57px 34px 0;
+        background-color: var(--color-secondary);
+        padding: 25px 36px;
+    }
+
+    .members-card__role {
+        color: var(--text-inverse);
+        font-size: 26px;
+        line-height: 1;
+        margin-bottom: 12px;
+    }
+
+    .members-card__name {
+        color: var(--text-inverse);
+        font-size: 40px;
+        line-height: 1.05;
+        margin-bottom: 0;
+    }
+
+    /* career 徽章 */
+    .members-card__badge {
+        font-size: 24px;
+        padding: 10px 21px;
+        margin: 53px 0 24px 52px;
+    }
+
+    /* 經歷：兩欄直向排列（左欄排滿再換右欄）
+       gap 36：讓「晉升為資深專員」（date 112＋7字168=280）單行不折 */
+    .members-card__career {
+        display: block;
+        columns: 2;
+        column-gap: 36px;
+        margin: 0 52px;
+    }
+
+    .members-career__item {
+        font-size: 24px;
+        line-height: 40px;
+        break-inside: avoid;
+    }
+
+    .members-career__date {
+        width: 100px;
+        margin-right: 12px;
+    }
+}
+
+/* ======== Mobile <=1023px: 職缺介紹 job-intro ======== */
+@media (max-width: 1023px) {
+    /* 版面：設計稿 700px 寬，左右留白 50px */
+    .job-benefits .container,
+    .job-detail .container {
+        padding: 0 50px;
+    }
+
+    /* ----------------------------------------
+       全員工享有福利
+       ---------------------------------------- */
+    .job-benefits {
+        padding: 120px 0 0;
+    }
+
+    .job-benefits .section-title {
+        font-size: 30px;
+        line-height: 1.4;
+        margin-bottom: 0;
+    }
+
+    .job-benefits__grid {
+        gap: 52px;
+        margin-top: 62px;
+    }
+
+    .job-benefit {
+        max-width: none;
+    }
+
+    .job-benefit__icon {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 46px;
+    }
+
+    .job-benefit__title {
+        font-size: 30px;
+        padding-bottom: 20px;
+        margin-bottom: 22px;
+    }
+
+    .job-benefit__title::after {
+        width: 133px;
+        height: 3px;
+    }
+
+    .job-benefit__desc {
+        font-size: 22px;
+        line-height: 1.5;
+        color: var(--color-ink);
+    }
+
+    /* ----------------------------------------
+       職缺明細卡片 + 頁籤
+       ---------------------------------------- */
+    .job-detail {
+        padding: 146px 0 90px;
+    }
+
+    .job-detail__card {
+        max-width: none;
+    }
+
+    /* 頁籤：選中較高、未選中較矮，底端貼齊卡片白色內容區頂緣 */
+    .job-tabs {
+        align-items: flex-end;
+        gap: 0;
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    .job-tabs__tab {
+        flex: 1 1 50%;
+        height: 55px;
+        padding: 0 8px;
+        font-size: 32px;
+        line-height: 1;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .job-tabs__tab[aria-selected="true"] {
+        height: 72px;
+        padding-top: 0;
+    }
+
+    /* 白色內容區：紅框僅左右下（頂部由頁籤補滿紅色） */
+    .job-panels {
+        border-width: 0 16px 16px;
+        border-radius: 0 0 20px 20px;
+        padding: 60px 36px 50px;
+    }
+
+    /* 明細列：行動版無分隔線，僅灰色標題條 + 置中文字 */
+    .job-table__row {
+        border-bottom: none;
+    }
+
+    .job-table__row:first-child {
+        border-top: none;
+    }
+
+    .job-table__term {
+        min-height: 97px;
+        padding: 10px 16px;
+        font-size: 32px;
+        line-height: 1.3;
+    }
+
+    .job-table__desc {
+        align-items: center;
+        padding: 42px 0;
+        font-size: 18px;
+        line-height: 28px;
+        text-align: center;
+        color: var(--color-ink);
+    }
+
+    /* ○ 提供標記 */
+    .job-table__mark {
+        width: 34px;
+        height: 34px;
+        border-width: 3px;
+        margin: 10px 0;
+    }
+}
+
+/* ======== Mobile <=1023px: 社員故事（betty/sam/eating/aaren 四頁共用 story- 模板） ======== */
+/* 依 手機版w700_社員故事 設計稿（700 設計 px，body zoom 縮放）量測還原 */
+@media (max-width: 1023px) {
+
+    /* ---- Hero 照片：全幅、比原圖(1920x1092)略高的裁切 700x427 ---- */
+    .story-hero .hero-image {
+        aspect-ratio: 700 / 427;
+    }
+
+    /* ---- 覆蓋卡片：貼齊照片左下（左 52、距照片底 38） ---- */
+    .story-hero__card {
+        position: absolute;
+        left: 52px;
+        bottom: 38px;
+        z-index: 2;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 紅色姓名框（寬度隨內容） */
+    .story-hero__namebox {
+        width: fit-content;
+        padding: 12px 20px;
+    }
+
+    .story-hero__name {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    .story-hero__role {
+        font-size: 14px;
+        line-height: 1.2;
+        margin-top: 4px;
+    }
+
+    /* 白色 career 框（緊貼姓名框下緣、寬度隨內容） */
+    .story-hero__careerbox {
+        width: fit-content;
+        border: none;
+        margin-top: 0;
+        padding: 10px 14px 13px 12px;
+    }
+
+    .story-hero__badge {
+        font-size: 11px;
+        padding: 4px 8px;
+        margin-bottom: 3px;
+    }
+
+    .story-hero__career-item {
+        font-size: 13px;
+        line-height: 1.35;
+    }
+
+    .story-hero__career-date {
+        width: 54px;
+        margin-right: 12px;
+    }
+
+    /* ---- SCROLL 指示：線 / SCROLL / 線，上段紅線壓在照片下緣上（高 58，突出 67） ---- */
+    .hero-indicator {
+        margin: -67px auto 0;
+        padding: 0;
+        gap: 0;
+    }
+
+    .hero-indicator::before {
+        content: "";
+        width: 2px;
+        height: 58px;
+        background-color: var(--color-secondary);
+        margin-bottom: 28px;
+    }
+
+    .scroll-text {
+        font-size: 16px;
+        letter-spacing: 3px;
+        line-height: 1;
+    }
+
+    .scroll-line {
+        width: 2px;
+        height: 58px;
+        margin-top: 17px;
+    }
+
+    /* ---- 訪談 Q&A ---- */
+    .story-interview {
+        /* 圖片左右留白 52；文字再內縮 42（合計 94） */
+        padding: 84px 52px 120px;
+    }
+
+    /* 間距改由相鄰規則個別控制 */
+    .story-interview > * + * {
+        margin-top: 0;
+    }
+
+    .story-qa + .story-figure {
+        margin-top: 100px;
+    }
+
+    .story-figure + .story-qa {
+        margin-top: 24px;
+    }
+
+    .story-qa {
+        max-width: none;
+        padding: 0 42px;
+    }
+
+    .story-qa__label {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .story-qa__title {
+        font-size: 32px;
+        line-height: 1.35;
+        margin-bottom: 32px;
+    }
+
+    .story-qa__answer {
+        font-size: 20px;
+        line-height: 1.6;
+    }
+
+    /* ---- 圖片：596x351 裁切（素材 1575x890 較寬，object-fit 置中裁切） ---- */
+    .story-figure {
+        max-width: none;
+        padding-top: 0;
+    }
+
+    .story-figure img {
+        aspect-ratio: 596 / 351;
+        object-fit: cover;
+    }
+}
+
+/* ======== Mobile <=1023px: 首頁 index.html ======== */
+/* 行動版換行點（<br class="m-br">）：桌機隱藏 */
+@media (min-width: 1024px) {
+    .m-br {
+        display: none;
+    }
+}
+
+@media (max-width: 1023px) {
+    /* ----------------------------------------
+       Hero（設計稿：700x424，無箭頭/指示點）
+       ---------------------------------------- */
+    .hero {
+        padding: 0;
+    }
+
+    .hero-image {
+        aspect-ratio: 700 / 424;
+    }
+
+    .hero-arrow,
+    .hero-dots {
+        display: none;
+    }
+
+    /* ----------------------------------------
+       Scroll Indicator（SCROLL 18px + 線高 53）
+       ---------------------------------------- */
+    .hero-indicator {
+        padding: 14px 0 0;
+        gap: 20px;
+    }
+
+    .scroll-text {
+        font-size: 18px;
+        letter-spacing: 5px;
+    }
+
+    .scroll-line {
+        width: 2px;
+        height: 53px;
+    }
+
+    /* ----------------------------------------
+       Recruitment Highlight（2030年 百店規模）
+       ---------------------------------------- */
+    .recruitment-highlight {
+        padding: 84px 0 0;
+        margin: 0;
+    }
+
+    .highlight-box {
+        width: 515px;
+        max-width: calc(100% - 48px);
+        padding: 17px 0;
+        border-width: 3px;
+        margin-bottom: 0;
+    }
+
+    .highlight-title {
+        font-size: 44px;
+        line-height: 1;
+        letter-spacing: 2px;
+    }
+
+    .highlight-content {
+        max-width: none;
+    }
+
+    .highlight-heading {
+        font-size: 40px;
+        line-height: 66px;
+        margin: 60px 0 0;
+    }
+
+    .highlight-divider {
+        width: 2px;
+        height: 135px;
+        margin: 68px auto 0;
+    }
+
+    /* ----------------------------------------
+       About Section（絕對定位拼貼，設計高 1620）
+       sign: x197 y1344 438x262
+       shoes: x34 y1376 310x522
+       group: x279 y1860 352x196
+       ---------------------------------------- */
+    .about-section {
+        padding: 0;
+    }
+
+    .about-collage {
+        position: relative;
+        display: block;
+        padding: 0;
+        margin: 83px auto 0;
+        max-width: none;
+        height: 1620px;
+        overflow: hidden;
+    }
+
+    .about-collage__image {
+        position: absolute;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .about-collage__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* 行動版停用視差位移，避免圖片在 figure 內錯位 */
+    .about-collage__image .parallax-image {
+        height: 100%;
+        transform: none;
+    }
+
+    .about-collage__image--shoes {
+        left: 34px;
+        top: 32px;
+        width: 310px;
+        height: 522px;
+        max-width: none;
+        margin: 0;
+    }
+
+    .about-collage__image--sign {
+        left: 197px;
+        top: 0;
+        width: 438px;
+        height: 262px;
+    }
+
+    .about-collage__image--group {
+        left: 279px;
+        top: 516px;
+        width: 352px;
+        height: 196px;
+    }
+
+    .about-collage__heading {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 776px;
+        text-align: center;
+    }
+
+    .about-collage__title {
+        font-size: 44px;
+        line-height: 1.3;
+        white-space: nowrap;
+    }
+
+    .about-collage__title-underline {
+        border-bottom-width: 4px;
+        padding-bottom: 6px;
+    }
+
+    .about-collage__text {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 903px;
+    }
+
+    .about-collage__group {
+        margin-bottom: 45px;
+    }
+
+    .about-collage__group:last-child {
+        margin-bottom: 0;
+    }
+
+    .about-collage__paragraph {
+        font-size: 26px;
+        line-height: 48px;
+        color: #4D4D4D;
+    }
+
+    .about-collage__paragraph--lead {
+        font-size: 26px;
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+    /* ----------------------------------------
+       深入了解（標題區）
+       ---------------------------------------- */
+    .deep-dive-title {
+        padding: 0 0 60px;
+    }
+
+    .deep-dive-title .highlight-line {
+        width: 2px;
+        height: 125px;
+        margin: 95px auto 0;
+    }
+
+    .deep-dive-title .section-title {
+        font-size: 44px;
+        line-height: 1.4;
+        margin: 26px 0 0;
+        color: var(--text-primary);
+    }
+
+    .deep-dive-title .section-subtitle {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 8px 0 0;
+    }
+
+    /* ----------------------------------------
+       深入了解（三張直落大圖，全出血）
+       img1: 700x806、img2/3: 700x660，間距 22-26
+       ---------------------------------------- */
+    .deep-dive-images {
+        padding: 0 0 26px;
+    }
+
+    .image-single {
+        aspect-ratio: 700 / 806;
+    }
+
+    .images-grid-two {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        margin-top: 22px;
+    }
+
+    .image-item {
+        aspect-ratio: 700 / 660;
+    }
+
+    /* 白底紅框標籤：貼右 30、距頂 40、框線 3 */
+    .image-label,
+    .image-single .image-label {
+        top: 40px;
+        right: 30px;
+        left: auto;
+        padding: 12px 28px;
+        gap: 12px;
+        border-width: 3px;
+        line-height: 1.2;
+    }
+
+    .image-label__zh {
+        font-size: 34px;
+    }
+
+    .image-label__en {
+        font-size: 22px;
+    }
+
+    /* 紅色 view more 膠囊：左 28、距底 40、240x64 */
+    .image-view-more {
+        left: 28px;
+        right: auto;
+        bottom: 40px;
+        width: 240px;
+        height: 64px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+    }
+
+    /* ----------------------------------------
+       社員故事（灰底、單卡橫向滑動）
+       卡圖 508x570、文字 28、鈕 300x78
+       ---------------------------------------- */
+    .staff-stories-section {
+        padding: 158px 0 160px;
+        margin-top: 0;
+    }
+
+    .staff-stories-section .highlight-line {
+        width: 2px;
+        height: 122px;
+        margin: 0 auto;
+    }
+
+    .staff-stories-section .section-title {
+        font-size: 44px;
+        line-height: 1.4;
+        margin: 30px 0 0;
+    }
+
+    .staff-stories-section .section-subtitle {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 8px 0 0;
+    }
+
+    /* 卡片群改為水平滑動輪播（scroll-snap） */
+    .staff-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 40px;
+        margin: 55px -24px 0;
+        padding: 0 96px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .staff-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .staff-grid .staff-card {
+        flex: 0 0 508px;
+        width: 508px;
+        scroll-snap-align: center;
+    }
+
+    .staff-grid .card-image {
+        aspect-ratio: 508 / 570;
+    }
+
+    .staff-grid .card-content {
+        padding: 26px 0 0;
+        text-align: center;
+    }
+
+    .staff-grid .card-title {
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #4D4D4D;
+        margin-bottom: 0;
+    }
+
+    .staff-grid .card-role {
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #4D4D4D;
+    }
+
+    .section-cta {
+        margin-top: 60px;
+    }
+
+    .staff-stories-section .btn-secondary {
+        width: 300px;
+        height: 78px;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 1;
+        border-radius: 10px;
+    }
+}
+
