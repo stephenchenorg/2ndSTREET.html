@@ -166,7 +166,8 @@ ol {
 /* 桌機版（≥1024px）：依 1920 設計稿等比呈現（1px = 100/1920 vw） */
 @media (min-width: 1024px) {
     .header {
-        height: 120px;
+        /* 設計稿白帶總高 152：應徵鈕高 106＋鈕下留白 46（首圖緊貼 header） */
+        height: min(7.9167vw, 152px);
         box-shadow: none;
     }
 
@@ -174,22 +175,23 @@ ol {
         position: relative;
         min-height: 0;
         padding: 0;
-        width: min(1180px, 100%);
+        width: 100%;
+        max-width: none;
         height: 100%;
-        margin: 0 auto;
+        margin: 0;
     }
 
     .logo {
         position: absolute;
-        left: 0;
-        top: 50%;
+        left: min(6.6667vw, 128px);
+        top: min(4.1667vw, 80px);
         transform: translateY(-50%);
-        max-width: clamp(180px, 20vw, 240px);
+        max-width: min(21.3542vw, 410px);
     }
 
     .logo img {
         width: 100%;
-        max-width: clamp(180px, 20vw, 240px);
+        max-width: min(21.3542vw, 410px);
         height: auto;
     }
 }
@@ -304,27 +306,27 @@ ol {
     .nav-menu {
         display: flex;
         position: absolute;
-        top: 50%;
+        top: min(3.3333vw, 64px);
         transform: translateY(-50%);
         flex-direction: row;
         align-items: center;
-        /* 1024–1200px：隨視窗縮放，避免撞到右上角的應徵按鈕 */
-        gap: clamp(20px, 2.9vw, 35px);
+        gap: min(2.4479vw, 47px);
         width: auto;
-        max-width: clamp(360px, 44vw, 530px);
+        max-width: none;
         height: auto;
         padding: 0;
         background: transparent;
         transition: none;
-        left: clamp(215px, 25.8vw, 310px);
-        overflow: hidden;
+        /* 最後一項右緣距應徵鈕左緣 47px（1920-1379=541） */
+        right: min(28.1771vw, 541px);
         box-shadow: none;
     }
 
     .nav-link {
-        font-size: clamp(16px, 1.67vw, 20px);
+        font-size: min(1.4583vw, 28px);
+        font-weight: 500;
         white-space: nowrap;
-        letter-spacing: 0.5px;
+        letter-spacing: 0;
         line-height: 1.2;
         color: #000;
         padding: 0;
@@ -348,8 +350,8 @@ ol {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: clamp(200px, 25vw, 495px);
-        height: clamp(60px, 6.7vw, 110px);
+        width: min(25.7292vw, 494px);
+        height: min(5.5208vw, 106px);
         background: var(--color-ink);
         color: var(--text-inverse);
         transition: background var(--transition-base);
@@ -367,16 +369,21 @@ ol {
     }
 
     .entry-btn__divider {
+        position: relative;
+        top: min(0.4167vw, 8px);
         width: 2px;
-        height: clamp(16px, 1.83vw, 22px);
-        margin-left: clamp(18px, 2.67vw, 32px);
-        margin-right: clamp(10px, 1.33vw, 16px);
+        height: min(2.0313vw, 39px);
+        margin-left: min(2.3958vw, 46px);
+        margin-right: min(1.3542vw, 26px);
         background: var(--text-inverse);
         opacity: 1;
         transform: skewX(-8deg);
     }
 
     .entry-btn__en {
+        /* 與「應徵」基線對齊（設計稿非垂直置中） */
+        position: relative;
+        top: min(0.6771vw, 13px);
         font-size: min(2.0625vw, 39.6px);
         font-weight: 500;
         font-style: italic;
