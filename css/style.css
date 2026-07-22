@@ -4848,3 +4848,1286 @@ section {
         display: none;
     }
 }
+
+/* ========================================
+   >1920px：內容鎖 1920 置中，僅 header 延伸
+   ======================================== */
+@media (min-width: 1921px) {
+    main,
+    .footer {
+        max-width: 1920px;
+        margin-inline: auto;
+    }
+}
+
+/* ======== Desktop >=1024px redesign: 共用 Footer ======== */
+@media (min-width: 1024px) {
+    /* ---- Footer 外框：上緣 1px 黑線、白底、上下內距 ---- */
+    .footer {
+        background: var(--bg-primary);
+        border-top: 1px solid var(--color-primary);
+        padding: min(5.7292vw, 110px) 0 min(2.4479vw, 47px);
+    }
+
+    /* 內容容器：左 294 / 右 271（設計稿 1920 基準） */
+    .footer .container {
+        width: 100%;
+        max-width: none;
+        padding-left: min(15.3125vw, 294px);
+        padding-right: min(14.1146vw, 271px);
+    }
+
+    /* 左 brand、右三欄連結：兩端對齊 */
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: min(2.6042vw, 50px);
+        margin-bottom: 0;
+    }
+
+    /* ---- 左側：logo + 社群圖示 ---- */
+    .footer-brand {
+        display: block;
+        flex: 0 0 auto;
+    }
+
+    .footer-logo {
+        display: block;
+        width: min(17.6042vw, 338px);
+        max-width: min(17.6042vw, 338px);
+        height: auto;
+        margin: 0;
+    }
+
+    .footer-social {
+        display: flex;
+        align-items: center;
+        gap: min(2.2396vw, 43px);
+        margin: min(4.4792vw, 86px) 0 0 min(2.2396vw, 43px);
+    }
+
+    .footer-social a {
+        display: inline-block;
+        line-height: 0;
+        transition: var(--transition-base);
+    }
+
+    .footer-social a:hover {
+        transform: translateY(-2px);
+    }
+
+    .footer-social a img {
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+
+    /* 圖示依設計稿實際墨寬：IG 58 / FB 32 / LINE 60 */
+    .footer-social a:nth-child(1) img {
+        width: min(3.0208vw, 58px);
+    }
+
+    .footer-social a:nth-child(2) img {
+        width: min(1.6667vw, 32px);
+    }
+
+    .footer-social a:nth-child(3) img {
+        width: min(3.125vw, 60px);
+    }
+
+    /* ---- 右側三欄（我想賣／我想買／關於我們） ---- */
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(3, max-content);
+        column-gap: min(4.4792vw, 86px);
+        gap: min(4.4792vw, 86px);
+        align-items: start;
+        margin-top: min(0.7813vw, 15px);
+    }
+
+    .footer-column {
+        display: flex;
+        flex-direction: column;
+        min-width: min(4.5313vw, 87px);
+    }
+
+    .footer-column--about {
+        min-width: min(17.9167vw, 344px);
+    }
+
+    /* 欄標題：24px 粗體 + 下方灰色分隔線 */
+    .footer-column h4 {
+        font-size: min(1.25vw, 24px);
+        font-weight: 700;
+        line-height: 1;
+        color: var(--text-primary);
+        min-height: 0;
+        margin-bottom: 0;
+        padding-bottom: min(0.8854vw, 17px);
+        border-bottom: 1px solid #999999;
+    }
+
+    .footer-column ul {
+        margin-top: min(1.25vw, 24px);
+        flex: none;
+    }
+
+    /* 連結 18px、行距節距 35px（18 + 17） */
+    .footer-column li {
+        margin-bottom: min(0.8854vw, 17px);
+    }
+
+    .footer-column li:last-child {
+        margin-bottom: 0;
+    }
+
+    .footer-column a {
+        font-size: min(0.9375vw, 18px);
+        line-height: 1;
+        color: var(--text-primary);
+        transition: var(--transition-base);
+    }
+
+    .footer-column a:hover {
+        color: var(--text-accent);
+    }
+
+    /* 關於我們：前 4 項第一行清單、後 6 項第二行清單 */
+    .footer-links-grid {
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
+        grid-auto-flow: column;
+        column-gap: min(3.2292vw, 62px);
+    }
+
+    .footer-links-grid li:nth-child(-n+4) {
+        grid-column: 1;
+    }
+
+    .footer-links-grid li:nth-child(n+5) {
+        grid-column: 2;
+    }
+
+    .footer-links-grid li:nth-child(5) {
+        grid-row: 1;
+    }
+
+    /* 第一行清單第 4 項、第二行清單第 6 項為各軌道最後一項 */
+    .footer-links-grid li:nth-child(4),
+    .footer-links-grid li:nth-child(10) {
+        margin-bottom: 0;
+    }
+
+    /* ---- 最底部：GEO HOLDINGS 置中列 ---- */
+    .footer-bottom {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: min(0.9375vw, 18px);
+        margin-top: min(7.2396vw, 139px);
+    }
+
+    .geo-logo {
+        width: min(6.6146vw, 127px);
+        height: auto;
+    }
+
+    .footer-bottom p {
+        font-size: min(0.7813vw, 15px);
+        line-height: 1;
+        color: var(--text-primary);
+    }
+}
+
+/* ======== Desktop >=1024px redesign: index.html（首頁） ======== */
+/* 依據設計稿 Desktop-o_TOP 1.png（1920 設計 px，量測值 ÷3）重製
+   Hero／SCROLL 指示／紅框標語／關於我們拼貼／深入了解卡片／社員故事輪播 */
+@media (min-width: 1024px) {
+
+    /* ---------- Hero ---------- */
+    /* 設計稿：hero 圖 y142-1237.7，全幅 1920x1095 */
+    .hero-image {
+        aspect-ratio: 1920 / 1095;
+    }
+
+    /* 設計稿無左右箭頭與指示點 */
+    .hero-arrow,
+    .hero-dots {
+        display: none;
+    }
+
+    /* ---------- SCROLL 指示 ---------- */
+    /* 設計稿：紅線(103) 疊在 hero 下緣 y1134-1237 → SCROLL 字 y1258-1276 → 紅線(76) y1300-1376 */
+    .hero-indicator {
+        margin-top: calc(-1 * min(5.3646vw, 103px));
+        padding: 0;
+        gap: 0;
+    }
+
+    .hero-indicator::before {
+        content: '';
+        display: block;
+        width: 2px;
+        height: min(5.3646vw, 103px);
+        background-color: var(--color-secondary);
+    }
+
+    .scroll-text {
+        margin-top: min(0.8333vw, 16px);
+        font-size: min(1.25vw, 24px);
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        line-height: 1;
+        color: var(--color-secondary);
+    }
+
+    .scroll-line {
+        margin-top: min(1.0938vw, 21px);
+        width: 2px;
+        height: min(3.9583vw, 76px);
+    }
+
+    /* ---------- 紅框「2030年 百店規模」與紅色標語 ---------- */
+    /* 設計稿：紅框 848x124 @y1769；標語 y1971-2028；分隔直線 180 @y2309 */
+    .recruitment-highlight {
+        width: 100%;
+        margin: min(20.4688vw, 393px) auto 0;
+        padding-bottom: 0;
+    }
+
+    .highlight-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: min(44.1667vw, 848px);
+        height: min(6.4583vw, 124px);
+        padding: 0;
+        margin: 0 auto min(3.2292vw, 62px);
+        border-width: min(0.2083vw, 4px);
+    }
+
+    .highlight-title {
+        font-size: min(3.125vw, 60px);
+        letter-spacing: min(0.1042vw, 2px);
+        line-height: 1;
+    }
+
+    .highlight-heading {
+        font-size: min(3.125vw, 60px);
+        line-height: 1.5;
+    }
+
+    .highlight-divider {
+        width: 2px;
+        height: min(9.375vw, 180px);
+        margin: min(13.8021vw, 265px) auto 0;
+    }
+
+    /* ---------- 關於我們理想中的夥伴（拼貼） ---------- */
+    /* 設計稿：容器 1920x1645（y2597-4242）；分隔線下緣到容器頂 109 */
+    .about-section {
+        padding: min(5.6771vw, 109px) 0 0;
+    }
+
+    .about-collage {
+        position: relative;
+        display: block;
+        padding: 0;
+        height: min(85.6771vw, 1645px);
+        aspect-ratio: auto;
+        overflow: hidden;
+    }
+
+    .about-collage__image,
+    .about-collage__heading,
+    .about-collage__text {
+        position: absolute;
+        margin: 0;
+    }
+
+    .about-collage__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* 店招圖：右上（x1138.6, w787.6, h427.8，右緣出血由 overflow 裁切） */
+    .about-collage__image--sign {
+        left: min(59.3021vw, 1138.6px);
+        top: 0;
+        width: min(41.0208vw, 787.6px);
+        height: min(22.2813vw, 427.8px);
+    }
+
+    /* 直式球鞋圖：貼左（y2879 → 相對 282，567x948） */
+    .about-collage__image--shoes {
+        position: absolute;
+        left: 0;
+        top: min(14.6875vw, 282px);
+        width: min(29.5313vw, 567px);
+        height: min(49.375vw, 948px);
+        max-width: none;
+    }
+
+    /* 合照：右下（y3807 → 相對 1210，684x435，貼右緣） */
+    .about-collage__image--group {
+        left: auto;
+        right: 0;
+        top: min(63.0208vw, 1210px);
+        width: min(35.625vw, 684px);
+        height: min(22.6563vw, 435px);
+    }
+
+    /* 標題：置中（ink y3065-3116，字高 ~52） */
+    .about-collage__heading {
+        left: 50%;
+        top: min(23.9583vw, 460px);
+        width: max-content;
+        transform: translateX(-50%);
+    }
+
+    .about-collage__title {
+        font-size: min(2.7083vw, 52px);
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .about-collage__title-underline {
+        border-bottom-width: min(0.2083vw, 4px);
+        padding-bottom: min(0.4167vw, 8px);
+    }
+
+    /* 理念文字：置中（首行 ink y3209 → 相對 612；行距 48；群組間距 +46） */
+    .about-collage__text {
+        left: 50%;
+        top: min(31.1979vw, 599px);
+        width: max-content;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+
+    .about-collage__group {
+        margin-bottom: 0;
+    }
+
+    .about-collage__group + .about-collage__group {
+        margin-top: min(2.3958vw, 46px);
+    }
+
+    .about-collage__paragraph {
+        font-size: min(1.1458vw, 22px);
+        line-height: min(2.5vw, 48px);
+    }
+
+    .about-collage__paragraph--lead {
+        font-size: min(1.25vw, 24px);
+        line-height: min(2.5vw, 48px);
+        margin-bottom: 0;
+    }
+
+    /* ---------- 深入了解（標題區） ---------- */
+    /* 設計稿：直線 180 @y4312；「深入了解」ink y4536-4591；about 2nd STREET y4618-4640；圖 y4789 */
+    .deep-dive-title {
+        width: 100%;
+        margin: 0 auto;
+        padding: min(3.6458vw, 70px) 0 min(7.4479vw, 143px);
+    }
+
+    .deep-dive-title .highlight-line {
+        width: 2px;
+        height: min(9.375vw, 180px);
+        margin: 0 auto;
+    }
+
+    .deep-dive-title .section-title {
+        font-size: min(3.125vw, 60px);
+        line-height: 1.2;
+        color: var(--color-ink);
+        margin: min(1.875vw, 36px) 0 0;
+    }
+
+    .deep-dive-title .section-subtitle {
+        font-size: min(1.4583vw, 28px);
+        font-weight: 700;
+        color: var(--color-secondary);
+        line-height: 1.2;
+        margin: min(0.6771vw, 13px) 0 0;
+    }
+
+    /* ---------- 深入了解（三張 view more 卡片） ---------- */
+    /* 設計稿：大圖 1920x639；下排兩張 952x640、欄距 16、列距 20；下方留白 21 接灰底 */
+    .deep-dive-images {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 0 min(1.0938vw, 21px);
+    }
+
+    .image-single {
+        aspect-ratio: 1920 / 639;
+    }
+
+    .images-grid-two {
+        grid-template-columns: repeat(2, 1fr);
+        gap: min(0.8333vw, 16px);
+        margin-top: min(1.0417vw, 20px);
+    }
+
+    .image-item {
+        aspect-ratio: 952 / 640;
+    }
+
+    /* 紅框白底標籤：距圖頂 50、距右 41，高 92 */
+    .image-label {
+        top: min(2.6042vw, 50px);
+        right: min(2.1354vw, 41px);
+        left: auto;
+        height: min(4.7917vw, 92px);
+        padding: 0 min(1.6667vw, 32px);
+        gap: min(1.0417vw, 20px);
+        align-items: baseline;
+        border-width: min(0.2083vw, 4px);
+    }
+
+    .image-single .image-label {
+        right: min(2.1354vw, 41px);
+    }
+
+    .image-label__zh {
+        font-size: min(2.2917vw, 44px);
+        line-height: min(4.375vw, 84px);
+    }
+
+    .image-label__en {
+        font-size: min(1.5625vw, 30px);
+        line-height: 1;
+    }
+
+    /* 紅色 view more 膠囊鈕：距圖左 41、距圖底 41，299x77 */
+    .image-view-more {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        left: min(2.1354vw, 41px);
+        bottom: min(2.1354vw, 41px);
+        width: min(15.5729vw, 299px);
+        height: min(4.0104vw, 77px);
+        padding: 0;
+        font-size: min(1.3542vw, 26px);
+        font-weight: 500;
+        border-radius: min(2.0052vw, 38.5px);
+    }
+
+    /* ---------- 社員故事 ---------- */
+    /* 設計稿：灰底 #F2F2F2 y6109-8200；直線 180 @y6477；標題 ink y6709-6765；
+       卡片 y6972 起、寬 503 高 561、欄距 42、群組 1590 置中；圓形箭頭 60 於卡片圖垂直置中 */
+    .staff-stories-section {
+        padding: min(19.1667vw, 368px) 0 min(16.0417vw, 308px);
+        background-color: #F2F2F2;
+    }
+
+    .staff-stories-section .container {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+    }
+
+    .staff-stories-section .highlight-line {
+        width: 2px;
+        height: min(9.375vw, 180px);
+        margin: 0 auto;
+    }
+
+    .staff-stories-section .section-title {
+        font-size: min(3.125vw, 60px);
+        line-height: 1.2;
+        color: var(--color-ink);
+        margin: min(2.2917vw, 44px) 0 0;
+    }
+
+    .staff-stories-section .section-subtitle {
+        font-size: min(1.4583vw, 28px);
+        font-weight: 700;
+        color: var(--color-secondary);
+        line-height: 1.2;
+        margin: min(0.7292vw, 14px) 0 0;
+    }
+
+    .staff-carousel {
+        position: relative;
+        width: min(82.8125vw, 1590px);
+        margin: min(7.8125vw, 150px) auto 0;
+    }
+
+    /* 4 張卡片顯示 3 張：水平捲動 + snap，箭頭以 JS scrollBy 切換 */
+    .staff-grid {
+        display: flex;
+        gap: min(2.1875vw, 42px);
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .staff-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .staff-grid .staff-card {
+        flex: 0 0 calc((100% - 2 * min(2.1875vw, 42px)) / 3);
+        scroll-snap-align: start;
+    }
+
+    .staff-grid .card-image {
+        aspect-ratio: 503 / 561;
+    }
+
+    .staff-grid .card-content {
+        padding: min(2.1354vw, 41px) 0 0;
+    }
+
+    .staff-grid .card-title {
+        font-size: min(1.4583vw, 28px);
+        font-weight: 400;
+        line-height: min(2.3438vw, 45px);
+        color: var(--color-ink);
+        margin: 0;
+    }
+
+    .staff-grid .card-role {
+        font-size: min(1.4583vw, 28px);
+        font-weight: 400;
+        line-height: min(2.3438vw, 45px);
+        color: var(--color-ink);
+        margin: 0;
+    }
+
+    /* 紅色圓形左右箭頭鈕（設計稿 60px，位於卡片群組外側 41px、卡片圖垂直置中） */
+    .staff-nav {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: calc(min(29.2188vw, 561px) / 2);
+        transform: translateY(-50%);
+        width: min(3.125vw, 60px);
+        height: min(3.125vw, 60px);
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: var(--color-secondary);
+        color: #FFFFFF;
+        cursor: pointer;
+        z-index: 2;
+        transition: opacity 0.3s ease;
+    }
+
+    .staff-nav:hover {
+        opacity: 0.8;
+    }
+
+    .staff-nav--prev {
+        left: calc(-1 * min(5.2604vw, 101px));
+    }
+
+    .staff-nav--next {
+        right: calc(-1 * min(5.2604vw, 101px));
+    }
+
+    .staff-nav svg {
+        width: min(1.3542vw, 26px);
+        height: min(0.625vw, 12px);
+    }
+
+    /* view more 鈕：299x78 置中 */
+    .staff-stories-section .section-cta {
+        margin-top: min(7.8125vw, 150px);
+    }
+
+    .staff-stories-section .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: min(15.5729vw, 299px);
+        height: min(4.0625vw, 78px);
+        padding: 0;
+        font-size: min(1.3542vw, 26px);
+        font-weight: 500;
+        line-height: 1;
+        border-radius: min(2.0313vw, 39px);
+    }
+}
+
+/* ======== Desktop >=1024px redesign: 日常業務 daily-work ======== */
+/* 依 Desktop-o_日常業務 1.png（1920 設計）重量測；
+   hero / .hero-image / .hero-indicator / .scroll-text / .scroll-line 為共用樣式，
+   已對齊新設計稿（hero 1920x1086 全幅、SCROLL 18px 紅字＋垂直線），此處不重複輸出 */
+@media (min-width: 1024px) {
+
+    /* ----------------------------------------
+       Vision（「Reuse也很讚呢!從服務達人到經營專家」）
+       設計：標題 ink y1658、60px 粗體；副標 24px/行高2 兩行；
+       尾端紅色垂直分隔線 180px（y2309–2488）
+       ---------------------------------------- */
+    .daily-vision {
+        padding: min(14.1667vw, 272px) 0 0;
+    }
+
+    .daily-vision__title {
+        font-size: min(3.125vw, 60px);
+        font-weight: 700;
+        line-height: 1.3;
+        color: #1A1A1A;
+        /* 一行 ~1230px 超出容器：max-content + 50% 位移置中（Chrome nowrap 溢出只往右長） */
+        width: max-content;
+        max-width: none;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .daily-vision__subtitle {
+        margin-top: min(4.8438vw, 93px);
+        font-size: min(1.25vw, 24px);
+        line-height: 2;
+        color: #4D4D4D;
+    }
+
+    .daily-vision__divider {
+        width: min(0.1042vw, 2px);
+        height: min(9.375vw, 180px);
+        margin-top: min(20.5729vw, 395px);
+    }
+
+    /* ----------------------------------------
+       Category（關於販售 / 關於收購 / 關於賣場）
+       中文 56px 黑 + 英文 20px 紅粗體置中；
+       區塊間距：上一列圖底 → 標題約 308px；標頭 → 首列圖 95px
+       ---------------------------------------- */
+    .daily-category {
+        margin-top: min(16.0417vw, 308px);
+    }
+
+    .daily-category--first {
+        margin-top: min(1.875vw, 36px);
+    }
+
+    .daily-category:last-of-type {
+        padding-bottom: min(15.625vw, 300px);
+    }
+
+    .daily-category__header {
+        margin-bottom: min(4.9479vw, 95px);
+    }
+
+    .daily-category__title {
+        font-size: min(2.9167vw, 56px);
+        font-weight: 700;
+        color: #1A1A1A;
+        margin: 0 0 min(0.7292vw, 14px);
+    }
+
+    .daily-category__subtitle {
+        font-size: min(1.0417vw, 20px);
+        font-weight: 700;
+        color: var(--color-secondary);
+    }
+
+    /* ----------------------------------------
+       Job 圖文列（圖左 908x573 @x130；文右 @x1185）
+       ---------------------------------------- */
+    .daily-job {
+        flex-direction: row;
+        align-items: center;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .daily-job + .daily-job {
+        margin-top: min(5.2083vw, 100px);
+    }
+
+    .daily-job__figure {
+        flex: 0 0 min(47.2917vw, 908px);
+        width: auto;
+        margin-left: min(6.7708vw, 130px);
+        aspect-ratio: 908 / 573;
+    }
+
+    /* 紅框職務標籤（如「顧客應對 Customer Service」）：
+       距圖左 58、距圖底 48，白底 2px 紅框，高 86 */
+    .daily-job__label {
+        left: min(3.0208vw, 58px);
+        bottom: min(2.5vw, 48px);
+        gap: min(0.8333vw, 16px);
+        padding: min(1.0938vw, 21px) min(2.0833vw, 40px);
+        background-color: #FFFFFF;
+        border: min(0.1042vw, 2px) solid var(--color-secondary);
+    }
+
+    .daily-job__label-jp {
+        font-size: min(2.0833vw, 40px);
+        line-height: 1;
+        letter-spacing: min(0.2083vw, 4px);
+    }
+
+    .daily-job__label-en {
+        font-size: min(1.4583vw, 28px);
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .daily-job__body {
+        flex: 1;
+        margin-top: 0;
+        margin-left: min(7.6042vw, 146px);
+        margin-right: min(3.3333vw, 64px);
+        text-align: left;
+    }
+
+    .daily-job__heading {
+        font-size: min(1.6667vw, 32px);
+        font-weight: 700;
+        color: #4D4D4D;
+        margin: 0 0 min(2.5vw, 48px);
+    }
+
+    .daily-job__desc {
+        font-size: min(1.25vw, 24px);
+        line-height: 1.5;
+        color: #4D4D4D;
+    }
+
+    .daily-job__desc + .daily-job__desc {
+        margin-top: min(0.5208vw, 10px);
+    }
+}
+
+/* ======== Desktop >=1024px redesign: 人事評價制度 evaluation.html ======== */
+/* 設計稿：Desktop-o_人事評價制度 1.png（5760x26984，3x，÷3 = 1920 設計 px） */
+@media (min-width: 1024px) {
+
+    /* ----------------------------------------
+       Hero 捲動指示（設計：紅線 77px 疊在照片上 + SCROLL + 紅線 77px）
+       群組 y1142–1377，hero 圖底 y1242 → 上移 100px 疊圖
+       ---------------------------------------- */
+    .hero--eval + .hero-indicator {
+        margin-top: calc(-1 * min(5.2083vw, 100px));
+        padding: 0;
+        gap: 0;
+    }
+
+    .hero--eval + .hero-indicator::before {
+        content: '';
+        width: min(0.1042vw, 2px);
+        height: min(4.0104vw, 77px);
+        background-color: var(--color-secondary);
+        margin-bottom: min(1.7188vw, 33px);
+    }
+
+    .hero--eval + .hero-indicator .scroll-line {
+        width: min(0.1042vw, 2px);
+        height: min(4.0104vw, 77px);
+        margin-top: min(1.0417vw, 20px);
+    }
+
+    /* ----------------------------------------
+       Intro（尋找與我們相同頻率的你）
+       heading ink y1660–1717（fs60），內文 3 行 fs26/行距48
+       ---------------------------------------- */
+    .eval-intro {
+        padding: min(21.25vw, 408px) var(--spacing-md) 0;
+    }
+
+    .eval-intro__heading {
+        font-size: min(3.125vw, 60px);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        line-height: 1.3;
+        color: #1A1A1A;
+        margin: 0 0 min(4.8958vw, 94px);
+    }
+
+    .eval-intro__text {
+        max-width: none;
+    }
+
+    .eval-intro__text p {
+        font-size: min(1.3542vw, 26px);
+        line-height: min(2.5vw, 48px);
+        color: #4D4D4D;
+        margin: 0;
+    }
+
+    /* ----------------------------------------
+       紅色垂直分隔線（y2371–2551，高 180）
+       ---------------------------------------- */
+    .eval-part-time .highlight-line {
+        width: min(0.1042vw, 2px);
+        height: min(9.375vw, 180px);
+        margin: min(21.1458vw, 406px) auto min(1.875vw, 36px);
+    }
+
+    /* ----------------------------------------
+       區塊標題（兼職人員／正職人員 fs60 + 紅色英文副標 fs28）
+       ---------------------------------------- */
+    .eval-section-header__title {
+        font-size: min(3.125vw, 60px);
+        font-weight: 700;
+        line-height: 1.2;
+        color: #1A1A1A;
+    }
+
+    .eval-section-header__subtitle {
+        font-size: min(1.4583vw, 28px);
+        font-weight: 700;
+        color: var(--color-secondary);
+        margin-top: min(0.5208vw, 10px);
+    }
+
+    .eval-part-time .eval-section-header {
+        margin-bottom: min(15.8854vw, 305px);
+    }
+
+    .eval-full-time .eval-section-header {
+        margin-bottom: min(6.4063vw, 123px);
+    }
+
+    /* ----------------------------------------
+       階梯圖軌道：改為常流排版（覆寫基底 absolute + aspect-ratio）
+       紅標籤靠左（PT x388 / 店鋪·本部 x382，高 70）
+       ---------------------------------------- */
+    .eval-track {
+        aspect-ratio: auto;
+    }
+
+    .eval-track__tag {
+        position: static;
+        display: inline-block;
+        font-size: min(2.0833vw, 40px);
+        line-height: 1;
+        padding: min(0.7813vw, 15px) min(1.5625vw, 30px);
+    }
+
+    .eval-track__img {
+        position: static;
+        display: block;
+        height: auto;
+    }
+
+    /* --- 店鋪PT：tag y3012–3082、圖 x357 寬 1192（y3188–4017） --- */
+    .eval-pt__tag {
+        margin-left: min(20.2083vw, 388px);
+    }
+
+    .eval-pt__img {
+        width: min(62.0833vw, 1192px);
+        margin: min(5.5208vw, 106px) 0 0 min(18.5938vw, 357px);
+    }
+
+    /* --- 店鋪（正職）：tag y4930–5001、圖 x418 寬 1144（y5099–6088） --- */
+    .eval-ft__tag {
+        margin-left: min(19.8958vw, 382px);
+    }
+
+    .eval-ft__img {
+        width: min(59.5833vw, 1144px);
+        margin: min(5.1042vw, 98px) 0 0 min(21.7708vw, 418px);
+    }
+
+    /* --- 本部：tag y6403–6473、圖 x414 寬 1148（y6582–7548） --- */
+    .eval-hq {
+        margin-top: min(16.4063vw, 315px);
+    }
+
+    .eval-hq__tag {
+        margin-left: min(19.8958vw, 382px);
+    }
+
+    .eval-hq__img {
+        width: min(59.7917vw, 1148px);
+        margin: min(5.6771vw, 109px) 0 0 min(21.5625vw, 414px);
+    }
+
+    /* ----------------------------------------
+       兼職圖下說明（2 行 fs24/行距48，ink y4173–4244）
+       ---------------------------------------- */
+    .eval-caption {
+        margin: min(7.5vw, 144px) 0 0;
+        padding: 0 var(--spacing-md);
+        font-size: min(1.25vw, 24px);
+        line-height: min(2.5vw, 48px);
+        color: #4D4D4D;
+    }
+
+    /* ----------------------------------------
+       正職人員區塊：說明文字 → 標題間距 425
+       ---------------------------------------- */
+    .eval-full-time {
+        padding-top: min(22.1354vw, 425px);
+    }
+
+    /* ----------------------------------------
+       底部說明 3 行（fs26/行距48，ink y7701–7822；距 footer 543）
+       ---------------------------------------- */
+    .eval-closing {
+        padding: min(7.3958vw, 142px) var(--spacing-md) min(28.2813vw, 543px);
+    }
+
+    .eval-closing p {
+        margin: 0;
+        font-size: min(1.3542vw, 26px);
+        line-height: min(2.5vw, 48px);
+        color: #4D4D4D;
+    }
+}
+
+/* ======== Desktop >=1024px redesign: stories（社員故事列表） ======== */
+/* 依 Desktop-o_各社員 1.png（1920 設計）：照片 860x489 左緣 x235、
+   文字欄 x1257（圖文距 162）、卡片間距 170、首卡 y678（header 152 → 上內距 526）。
+   設計稿無箭頭 → .members-card__arrow 沿用既有桌機 display:none，不另處理。 */
+@media (min-width: 1024px) {
+    .members-stories {
+        padding: min(27.3958vw, 526px) 0 min(15.9896vw, 307px); /* 526 / 307 */
+    }
+
+    .members-list {
+        gap: min(8.8542vw, 170px); /* 170 */
+    }
+
+    .members-card {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: min(8.4375vw, 162px);           /* 圖右緣→文字 162 */
+        padding-left: min(12.2396vw, 235px); /* 235 */
+    }
+
+    .members-card__photo-link {
+        flex: none;
+    }
+
+    .members-card__photo {
+        width: min(44.7917vw, 860px); /* 860 */
+        height: auto;
+        aspect-ratio: 860 / 489;
+    }
+
+    .members-card__role {
+        font-size: min(1.7708vw, 34px);     /* 34 */
+        line-height: 1;
+        margin-bottom: min(0.7813vw, 15px); /* 15 */
+    }
+
+    .members-card__name {
+        font-size: min(2.5vw, 48px);        /* 48 */
+        line-height: 1;
+        margin-bottom: min(2.7083vw, 52px); /* 52 */
+    }
+
+    .members-card__badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: min(7.0833vw, 136px);        /* 136 */
+        height: min(2.7083vw, 52px);        /* 52 */
+        padding: 0;
+        font-size: min(1.5625vw, 30px);     /* 30 */
+        letter-spacing: 0.04em;
+        margin-bottom: min(0.5208vw, 10px); /* 10 */
+    }
+
+    .members-career__item {
+        font-size: min(1.875vw, 36px);  /* 36 */
+        line-height: min(2.5vw, 48px);  /* 48 */
+    }
+
+    .members-career__date {
+        width: min(7.3958vw, 142px);        /* 142 */
+        margin-right: min(1.25vw, 24px);    /* 24 */
+    }
+}
+
+/* ======== Desktop >=1024px redesign: job-intro（職缺介紹） ======== */
+@media (min-width: 1024px) {
+    /* ---- 版面容器：本頁兩區塊需要 1920 全幅，解除 .container 限寬 ---- */
+    .job-benefits .container,
+    .job-detail .container {
+        width: 100%;
+        max-width: none;
+        padding: 0;
+    }
+
+    /* ----------------------------------------
+       全員工享有福利
+       ---------------------------------------- */
+    .job-benefits {
+        padding: min(21.9271vw, 421px) 0 0;
+    }
+
+    .job-benefits .section-title {
+        font-size: min(3.125vw, 60px);
+        line-height: 1.2;
+        font-weight: 700;
+        color: var(--color-ink);
+        margin-bottom: 0;
+    }
+
+    .job-benefits__grid {
+        justify-content: center;
+        align-items: flex-start;
+        gap: min(5.8333vw, 112px);
+        margin-top: min(5.6771vw, 109px);
+    }
+
+    .job-benefit {
+        width: min(20.8333vw, 400px);
+        max-width: none;
+    }
+
+    .job-benefit__icon {
+        width: min(12.5vw, 240px);
+        height: min(12.5vw, 240px);
+        margin: 0 auto min(3.6458vw, 70px);
+    }
+
+    .job-benefit__title {
+        font-size: min(2.5vw, 48px);
+        line-height: 1;
+        padding-bottom: min(1.25vw, 24px);
+        margin-bottom: min(1.4583vw, 28px);
+    }
+
+    .job-benefit__title::after {
+        width: min(10.7292vw, 206px);
+        height: min(0.2604vw, 5px);
+    }
+
+    .job-benefit__desc {
+        font-size: min(1.6667vw, 32px);
+        line-height: 1.6;
+        color: var(--color-ink);
+    }
+
+    /* ----------------------------------------
+       職缺明細（紅色圓角卡片＋檔案夾式頁籤）
+       設計稿：卡片 1667 寬、頁籤高出卡片頂 126（選中）／83（未選中）
+       ---------------------------------------- */
+    .job-detail {
+        padding: min(16.875vw, 324px) 0 min(11.7708vw, 226px);
+    }
+
+    .job-detail__card {
+        position: relative;
+        width: min(86.8229vw, 1667px);
+        max-width: none;
+        margin: 0 auto;
+        background-color: var(--color-secondary);
+        border-radius: min(2.2917vw, 44px);
+        padding: 0 min(2.3438vw, 45px) min(2.8125vw, 54px);
+        display: flow-root; /* 阻止頁籤負邊距與卡片 margin collapse，讓頁籤凸出卡頂 */
+    }
+
+    /* 頁籤列：以負邊距凸出卡片頂 126px，兩籤各半、中縫 14px 露出底色 */
+    .job-tabs {
+        display: flex;
+        align-items: flex-end;
+        gap: min(0.7292vw, 14px);
+        height: min(9.6875vw, 186px);
+        padding: 0;
+        margin: calc(-1 * min(6.5625vw, 126px)) calc(-1 * min(2.3438vw, 45px)) 0;
+    }
+
+    .job-tabs__tab {
+        flex: 1 1 50%;
+        height: min(7.4479vw, 143px);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: min(1.5625vw, 30px) min(1.25vw, 24px) 0;
+        font-size: min(2.5vw, 48px);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--text-inverse);
+        background-color: var(--color-secondary);
+        border-radius: min(2.2917vw, 44px) min(2.2917vw, 44px) 0 0;
+        transition: filter 0.3s ease, height 0.3s ease;
+    }
+
+    .job-tabs__tab[aria-selected="true"] {
+        height: min(9.6875vw, 186px);
+        padding-top: min(1.5625vw, 30px);
+    }
+
+    .job-tabs__tab:not([aria-selected="true"]):hover {
+        filter: brightness(0.9);
+    }
+
+    /* 白色內容面板 */
+    .job-panels {
+        background-color: var(--bg-primary);
+        border: none;
+        border-radius: min(1.5625vw, 30px);
+        padding: min(10.5208vw, 202px) min(7.6042vw, 146px) min(9.8958vw, 190px);
+    }
+
+    /* 明細表格：左灰標籤 394 寬，行間 5px #CCC 分隔線（含首尾） */
+    .job-table__row {
+        flex-direction: row;
+        border-bottom: min(0.2604vw, 5px) solid #CCCCCC;
+    }
+
+    .job-table__row:first-child {
+        border-top: min(0.2604vw, 5px) solid #CCCCCC;
+    }
+
+    .job-table__term {
+        flex: 0 0 min(20.5208vw, 394px);
+        padding: min(1.25vw, 24px);
+        font-size: min(1.875vw, 36px);
+        font-weight: 700;
+    }
+
+    .job-table__desc {
+        flex: 1 1 auto;
+        padding: min(4.2708vw, 82px) min(1.5625vw, 30px) min(4.2708vw, 82px) min(3.5938vw, 69px);
+        font-size: min(1.4583vw, 28px);
+        line-height: min(2.5vw, 48px);
+    }
+
+    /* ○ 提供標記 */
+    .job-table__mark {
+        width: min(1.9792vw, 38px);
+        height: min(1.9792vw, 38px);
+        border-width: min(0.2083vw, 4px);
+    }
+}
+
+/* ======== Desktop >=1024px redesign: 社員故事（betty/sam/eating/aaren 四頁共用 story- 模板） ======== */
+/* 量測基準：Desktop_社員故事-o_沈 1.png（5760x25197，3x → 1920 設計 px），
+   其餘三頁（方/鄭/黃）已抽查：hero 卡片座標、字級、間距完全一致，僅內容（段落數/履歷筆數/圖片張數比例）不同。 */
+@media (min-width: 1024px) {
+
+    /* ---- Hero 覆蓋卡片：改為「頂端定位」（四頁 namebox 均位於 y=671.7、badge y=932，與履歷筆數無關） ---- */
+    .story-hero__card {
+        position: absolute;
+        left: min(8.8542vw, 170px);            /* 170 */
+        top: min(27.2083vw, 522.4px);          /* namebox 頂 671.7 - hero 頂 149.3 */
+        bottom: auto;                          /* 覆寫舊版 bottom 定位 */
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 紅色姓名盒（461x184，寬度隨內容） */
+    .story-hero__namebox {
+        width: fit-content;
+        padding: min(1.4063vw, 27px) min(2.6042vw, 50px) min(1.25vw, 24px);
+    }
+
+    .story-hero__name {
+        font-size: min(3.125vw, 60px);         /* 沈 ink 高 52 → fs 60 */
+        font-weight: 500;
+        line-height: 1.2;
+    }
+
+    .story-hero__role {
+        font-size: min(2.0833vw, 40px);        /* 字幅 advance ≈ 39.5 */
+        font-weight: 400;
+        line-height: 1.2;
+        margin-top: min(0.625vw, 12px);
+    }
+
+    /* 白色 career 盒（貼齊 namebox 左緣，寬度隨內容） */
+    .story-hero__careerbox {
+        width: fit-content;
+        border: none;
+        padding: min(1.1458vw, 22px) min(2.6042vw, 50px);
+        margin-top: min(2.8646vw, 55px);       /* 910.3 - 855.3 */
+    }
+
+    .story-hero__badge {
+        font-size: min(1.3542vw, 26px);        /* badge 盒 102x38.7 */
+        font-weight: 400;
+        line-height: 1;
+        padding: min(0.3125vw, 6px) min(0.6771vw, 13px);
+        margin-bottom: min(0.3646vw, 7px);
+    }
+
+    .story-hero__career-item {
+        color: #4D4D4D;
+        font-size: min(1.3542vw, 26px);        /* advance ≈ 26.5 */
+        line-height: 1.4;                      /* 行距 36.4 */
+    }
+
+    .story-hero__career-date {
+        width: min(5.2083vw, 100px);
+        margin-right: min(0.5208vw, 10px);     /* 職稱起點 x330.5（相對盒左 160.5） */
+    }
+
+    /* ---- 訪談區（Staff Interview） ---- */
+    .story-interview {
+        padding-top: min(12.0313vw, 231px);    /* scroll 線底 1376.3 → label 盒頂 ~1607.5 */
+        padding-bottom: min(15.4167vw, 296px); /* 末行 ink 底 7474.7 → footer 頂 7781（四頁一致 306-310） */
+    }
+
+    .story-interview > * + * {
+        margin-top: min(5.4167vw, 104px);      /* 圖片/問答塊間距（ink 差 115-117 換算盒距） */
+    }
+
+    /* 文字欄 1460 置中（x228.3-1689.7） */
+    .story-qa {
+        max-width: min(76.0417vw, 1460px);
+    }
+
+    .story-qa__label {
+        color: var(--color-secondary);
+        font-size: min(1.6667vw, 32px);        /* caps ink 23.7 → fs 32 */
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: min(0.6771vw, 13px);    /* label ink 底 1638.7 → 標題 ink 頂 1671.3 */
+    }
+
+    .story-qa__title {
+        color: var(--color-secondary);
+        font-size: min(3.0208vw, 58px);        /* advance ≈ 58.3 */
+        font-weight: 700;
+        line-height: min(4.0625vw, 78px);      /* 行距 77.7 */
+        margin-bottom: min(4.4792vw, 86px);    /* 標題 ink 底 1798 → 內文 ink 頂 1913.3 */
+    }
+
+    .story-qa__answer {
+        color: #4D4D4D;
+        font-size: min(1.3021vw, 25px);        /* advance ≈ 25.07 */
+        line-height: min(2.5vw, 48px);         /* 行距 ≈ 48 */
+    }
+
+    /* 內文黃底螢光筆重點（新設計稿：黃底 #CCCC00（匯出色）+ 粗體，緊貼字身） */
+    .story-qa__answer mark {
+        background-color: #CCCC00;
+        color: inherit;
+        font-weight: 700;
+        padding: min(0.1042vw, 2px) min(0.1042vw, 2px);
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+
+    /* 橫式照片 1575 寬置中（x172.7-1747.7；高度依素材比例自適應） */
+    .story-figure {
+        max-width: min(82.0313vw, 1575px);
+    }
+}
+
+/* 行動版：新加入的 <mark> 螢光筆重點沿用同一視覺（僅樣式，不影響既有行動版排版） */
+@media (max-width: 1023px) {
+    .story-qa__answer mark {
+        background-color: #CCCC00;
+        color: inherit;
+        font-weight: 700;
+        padding: 0 2px;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+}

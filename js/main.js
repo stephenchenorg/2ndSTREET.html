@@ -296,19 +296,17 @@ function initParallax() {
 }
 
 // ========================================
-// 8. 超寬螢幕等比縮放（>1920px 以 1920 版面放大）
+// 8. 行動版等比縮放（<1024px 以 700 版面縮放）
 // ========================================
 function initDesktopZoom() {
-    const BASE = 1920
     const MOBILE_BASE = 700
 
     const apply = () => {
         const w = window.innerWidth
-        // CSS 已用 min(vw, 設計px) 把桌機版面鎖在 1920 基準；
+        // 桌機 1024–1920 以 min(vw, 設計px) 等比縮小；>1920 不放大，
+        // 內容鎖 1920 置中、僅 header 延伸（見 style.css 末尾規則）
         // 行動版（<1024）以 700 設計 px 固定值撰寫，zoom = 寬/700 等比縮放
-        if (w > BASE) {
-            document.body.style.zoom = String(w / BASE)
-        } else if (w < 1024) {
+        if (w < 1024) {
             document.body.style.zoom = String(w / MOBILE_BASE)
         } else {
             document.body.style.zoom = ''
