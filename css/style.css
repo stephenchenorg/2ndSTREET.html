@@ -2599,10 +2599,6 @@ section {
         margin-bottom: var(--spacing-xs);
     }
 
-    .daily-category__subtitle {
-        font-size: 28px;
-    }
-
     .daily-job {
         flex-direction: row;
         align-items: center;
@@ -3855,7 +3851,7 @@ section {
     }
 
     .daily-category__subtitle {
-        font-size: 24px;
+        font-size: var(--font-size-lg);
         line-height: 1.4;
         font-weight: 700;
     }
@@ -5569,7 +5565,7 @@ section {
     }
 
     .daily-category__subtitle {
-        font-size: min(1.0417vw, 20px);
+        font-size: var(--font-size-lg);
         font-weight: 700;
         color: var(--color-secondary);
     }
