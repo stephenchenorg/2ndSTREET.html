@@ -3962,7 +3962,7 @@ section {
     .eval-part-time .highlight-line {
         width: 2px;
         height: 130px;
-        margin: 170px auto 24px;
+        margin: 122px auto 24px;
     }
 
     /* --- Section header（中文標題 + 紅色英文副標） --- */
@@ -3999,34 +3999,34 @@ section {
         height: auto;
     }
 
-    /* 店鋪PT：tag 與階梯圖之間留空（設計稿圖頂距 tag 頂 95px） */
+    /* 店鋪PT：新素材含 tag，整張置中 */
     .eval-pt {
         aspect-ratio: auto;
     }
 
     .eval-pt__img {
-        width: 656px;
-        margin: 95px auto 0;
+        width: 643px;
+        margin: 0 auto;
     }
 
-    /* 店鋪（正職）：階梯圖頂與 tag 同高，tag 直接疊圖上 */
+    /* 店鋪（正職）：新素材含 tag */
     .eval-ft {
         aspect-ratio: auto;
     }
 
     .eval-ft__img {
-        width: 618px;
+        width: 630px;
         margin: 0 auto;
     }
 
-    /* 本部 */
+    /* 本部：新素材含 tag */
     .eval-hq {
         aspect-ratio: auto;
-        margin-top: 146px;
+        margin-top: 74px;
     }
 
     .eval-hq__img {
-        width: 620px;
+        width: 623px;
         margin: 0 auto;
     }
 
@@ -5710,11 +5710,11 @@ section {
     }
 
     .eval-part-time .eval-section-header {
-        margin-bottom: min(15.8854vw, 305px);
+        margin-bottom: min(7.8646vw, 151px);
     }
 
     .eval-full-time .eval-section-header {
-        margin-bottom: min(6.4063vw, 123px);
+        margin-bottom: min(8.8542vw, 170px);
     }
 
     /* ----------------------------------------
@@ -5739,38 +5739,26 @@ section {
         height: auto;
     }
 
-    /* --- 店鋪PT：tag y3012–3082、圖 x357 寬 1192（y3188–4017） --- */
-    .eval-pt__tag {
-        margin-left: min(20.2083vw, 388px);
-    }
-
+    /* --- 店鋪PT：新素材含 tag，圖 x358 寬 1191 --- */
     .eval-pt__img {
-        width: min(62.0833vw, 1192px);
-        margin: min(5.5208vw, 106px) 0 0 min(18.5938vw, 357px);
+        width: min(62.0313vw, 1191px);
+        margin: 0 0 0 min(18.6458vw, 358px);
     }
 
-    /* --- 店鋪（正職）：tag y4930–5001、圖 x418 寬 1144（y5099–6088） --- */
-    .eval-ft__tag {
-        margin-left: min(19.8958vw, 382px);
-    }
-
+    /* --- 店鋪（正職）：新素材含 tag，圖 x382 寬 1179 --- */
     .eval-ft__img {
-        width: min(59.5833vw, 1144px);
-        margin: min(5.1042vw, 98px) 0 0 min(21.7708vw, 418px);
+        width: min(61.4063vw, 1179px);
+        margin: 0 0 0 min(19.8958vw, 382px);
     }
 
-    /* --- 本部：tag y6403–6473、圖 x414 寬 1148（y6582–7548） --- */
+    /* --- 本部：新素材含 tag，圖 x383 寬 1179 --- */
     .eval-hq {
-        margin-top: min(16.4063vw, 315px);
-    }
-
-    .eval-hq__tag {
-        margin-left: min(19.8958vw, 382px);
+        margin-top: min(15.8333vw, 304px);
     }
 
     .eval-hq__img {
-        width: min(59.7917vw, 1148px);
-        margin: min(5.6771vw, 109px) 0 0 min(21.5625vw, 414px);
+        width: min(61.4063vw, 1179px);
+        margin: 0 0 0 min(19.9479vw, 383px);
     }
 
     /* ----------------------------------------
