@@ -254,49 +254,7 @@ function initScrollFadeIn() {
 }
 
 // ========================================
-// 7. 視差滾動效果
-// ========================================
-function initParallax() {
-    const parallaxImages = document.querySelectorAll('.parallax-image')
-    if (!parallaxImages.length) return
-
-    const handleParallax = () => {
-        parallaxImages.forEach(image => {
-            const parent = image.parentElement
-            const rect = parent.getBoundingClientRect()
-            const speed = parseFloat(image.dataset.speed) || 0.5
-
-            // 只在圖片進入視窗時才計算
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                // 計算容器相對於視窗的滾動進度 (0 到 1)
-                const scrollProgress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height)
-
-                // 計算移動範圍（-10% 到 +10%）
-                const translateY = (scrollProgress - 0.5) * 20 * speed
-
-                // 使用 CSS 變數，這樣不會覆蓋其他 transform
-                image.style.setProperty('--parallax-y', `${translateY}%`)
-            }
-        })
-    }
-
-    // 使用 throttle 優化效能
-    let ticking = false
-    window.addEventListener('scroll', () => {
-        if (ticking) return
-        ticking = true
-        requestAnimationFrame(() => {
-            handleParallax()
-            ticking = false
-        })
-    })
-
-    // 初始執行一次
-    handleParallax()
-}
-
-// ========================================
-// 8. 行動版等比縮放（<1024px 以 700 版面縮放）
+// 7. 行動版等比縮放（<1024px 以 700 版面縮放）
 // ========================================
 function initDesktopZoom() {
     const MOBILE_BASE = 700
@@ -357,7 +315,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initJobIntroTabs()
     initHeroSlider()
     initScrollFadeIn()
-    initParallax()
     initDesktopZoom()
     initStaffCarousel()
 })
