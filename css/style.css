@@ -184,14 +184,15 @@ ol {
     .logo {
         position: absolute;
         left: min(6.6667vw, 128px);
-        top: min(4.1667vw, 80px);
+        /* 中心 y 對齊 nav-menu（同 min(3.3333vw, 64px)） */
+        top: min(3.3333vw, 64px);
         transform: translateY(-50%);
-        max-width: min(21.3542vw, 410px);
+        max-width: 240px; /* 固定尺寸，不隨視窗寬縮放 */
     }
 
     .logo img {
         width: 100%;
-        max-width: min(21.3542vw, 410px);
+        max-width: 240px;
         height: auto;
     }
 }
