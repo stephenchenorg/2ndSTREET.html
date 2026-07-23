@@ -6146,14 +6146,24 @@ section {
         line-height: min(2.5vw, 48px);         /* 行距 ≈ 48 */
     }
 
-    /* 內文黃底螢光筆重點（新設計稿：黃底 #CCCC00（匯出色）+ 粗體，緊貼字身） */
+    /* 內文黃底螢光筆重點（黃底 #CCCC00 + 粗體，緊貼字身）
+       背景改漸層，size 由 0% 動畫到 100%，捲入視窗時如螢光筆由左至右畫過 */
     .story-qa__answer mark {
-        background-color: #CCCC00;
+        background-color: transparent; /* 蓋掉 UA 預設黃底，只留漸層那層 */
+        background-image: linear-gradient(#CCCC00, #CCCC00);
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 0% 100%;
         color: inherit;
         font-weight: 700;
         padding: min(0.1042vw, 2px) min(0.1042vw, 2px);
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
+        transition: background-size 0.6s ease-out;
+    }
+
+    .story-qa__answer mark.is-visible {
+        background-size: 100% 100%;
     }
 
     /* 橫式照片 1575 寬置中（x172.7-1747.7；高度依素材比例自適應） */
@@ -6162,14 +6172,23 @@ section {
     }
 }
 
-/* 行動版：新加入的 <mark> 螢光筆重點沿用同一視覺（僅樣式，不影響既有行動版排版） */
+/* 行動版：新加入的 <mark> 螢光筆重點沿用同一視覺＋由左至右畫過動畫 */
 @media (max-width: 1023px) {
     .story-qa__answer mark {
-        background-color: #CCCC00;
+        background-color: transparent; /* 蓋掉 UA 預設黃底，只留漸層那層 */
+        background-image: linear-gradient(#CCCC00, #CCCC00);
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 0% 100%;
         color: inherit;
         font-weight: 700;
         padding: 0 2px;
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
+        transition: background-size 0.6s ease-out;
+    }
+
+    .story-qa__answer mark.is-visible {
+        background-size: 100% 100%;
     }
 }

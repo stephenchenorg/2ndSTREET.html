@@ -229,7 +229,7 @@ function initHeroSlider() {
 // 6. 滾動淡入動畫
 // ========================================
 function initScrollFadeIn() {
-    const animatedElements = document.querySelectorAll('.fade-in-down, .fade-in-up, .fade-in, .fade-in-down-scale, .char-animation, .expand-down, .title-rise, .ms-fade, .ms-img')
+    const animatedElements = document.querySelectorAll('.fade-in-down, .fade-in-up, .fade-in, .fade-in-down-scale, .char-animation, .expand-down, .title-rise, .ms-fade, .ms-img, .story-qa__answer mark')
 
     if (!animatedElements.length) return
 
