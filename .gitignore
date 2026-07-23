@@ -84,3 +84,4 @@ coverage/
 
 # 交接文件不納入版控
 docs/HANDOFF.md
+.playwright-mcp/

@@ -292,10 +292,37 @@ function initStaffCarousel() {
     if (!carousel) return
 
     const grid = carousel.querySelector('.staff-grid')
-    const step = () => {
-        const card = grid.querySelector('.staff-card')
-        return card ? card.offsetWidth + parseFloat(getComputedStyle(grid).gap || 0) : grid.clientWidth
+    const originals = [...grid.children]
+    if (!originals.length) return
+
+    // 前後各補一組 clone，達成無限循環（clone 不需進場動畫、不可聚焦）
+    const clone = (node) => {
+        const c = node.cloneNode(true)
+        c.classList.remove('fade-in-up')
+        c.setAttribute('aria-hidden', 'true')
+        c.setAttribute('tabindex', '-1')
+        return c
     }
+    originals.forEach(node => grid.append(clone(node)))
+    originals.slice().reverse().forEach(node => grid.prepend(clone(node)))
+
+    const gap = () => parseFloat(getComputedStyle(grid).gap) || 0
+    const step = () => originals[0].offsetWidth + gap()
+    const setWidth = () => originals.length * step() // 一組寬度
+
+    // 初始定位到中間（原始）組
+    grid.scrollLeft = setWidth()
+
+    // 捲動落定後若停在 clone 區，無縫平移一組寬度（±sw 內容完全相同）
+    let timer
+    grid.addEventListener('scroll', () => {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+            const sw = setWidth()
+            if (grid.scrollLeft < sw) grid.scrollLeft += sw
+            else if (grid.scrollLeft >= 2 * sw) grid.scrollLeft -= sw
+        }, 150)
+    })
 
     carousel.querySelector('.staff-nav--prev').addEventListener('click', () => {
         grid.scrollBy({ left: -step(), behavior: 'smooth' })
