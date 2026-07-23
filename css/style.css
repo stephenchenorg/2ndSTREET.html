@@ -4663,7 +4663,7 @@ section {
     }
 
     .image-single {
-        aspect-ratio: 700 / 806;
+        aspect-ratio: 700 / 829;
     }
 
     .images-grid-two {
@@ -4672,8 +4672,13 @@ section {
         margin-top: 22px;
     }
 
-    .image-item {
-        aspect-ratio: 700 / 660;
+    /* 兩張手機直式圖高度不同：人事評價 745、職缺 688 */
+    .image-item:nth-child(1) {
+        aspect-ratio: 700 / 745;
+    }
+
+    .image-item:nth-child(2) {
+        aspect-ratio: 700 / 688;
     }
 
     /* 白底紅框標籤：貼右 30、距頂 40、框線 3 */
