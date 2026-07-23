@@ -4745,6 +4745,7 @@ section {
     .staff-grid {
         display: flex;
         overflow-x: auto;
+        overflow-y: hidden; /* 只允許水平捲動，避免觸控板上下捲 */
         scroll-snap-type: x mandatory;
         gap: 40px;
         margin: 55px -24px 0;
@@ -5384,6 +5385,7 @@ section {
         margin: 0;
         padding: 0;
         overflow-x: auto;
+        overflow-y: hidden; /* 只允許水平捲動，避免觸控板上下捲 */
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
     }
