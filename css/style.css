@@ -1467,10 +1467,20 @@ section {
 }
 
 .scroll-line {
+    position: relative;
     width: 1px;
     height: 60px;
+    background-color: #b3b3b3; /* 底線灰 */
+    overflow: hidden;
+}
+
+/* 紅色填充層：上→下填滿、再上→下退去，露出底灰，形成流動感 */
+.scroll-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
     background-color: var(--color-secondary);
-    animation: scrollIndicator 2s infinite;
+    animation: scrollFlow 2s infinite;
 }
 
 @media (min-width: 1024px) {
@@ -1479,15 +1489,11 @@ section {
     }
 }
 
-@keyframes scrollIndicator {
-    0%, 100% {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes scrollFlow {
+    0%    { clip-path: inset(0 0 100% 0); }  /* 紅：無 */
+    25%   { clip-path: inset(0 0 0 0); }      /* 紅由上至下填滿（0.5s） */
+    50%   { clip-path: inset(100% 0 0 0); }   /* 灰由上至下填充、紅退去（0.5s） */
+    100%  { clip-path: inset(100% 0 0 0); }   /* 等待 1s 後重複 */
 }
 
 /* Recruitment Highlight Box (白底紅框，紅字置中) */
