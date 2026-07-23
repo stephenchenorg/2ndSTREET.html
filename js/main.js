@@ -333,6 +333,25 @@ function initStaffCarousel() {
 }
 
 // ========================================
+// 10. 桌機 header 捲動收縮（下滑後縮至應徵鈕高度）
+// ========================================
+function initHeaderShrink() {
+    const header = document.querySelector('.header')
+    if (!header) return
+    // 遲滯雙門檻：向下過 SHRINK 才收縮、向上回到 EXPAND 以下才展開，
+    // 中間死區吸收收縮造成的版面位移，避免門檻附近來回抖動
+    const SHRINK = 120
+    const EXPAND = 40
+    const onScroll = () => {
+        const y = window.scrollY
+        if (y > SHRINK) header.classList.add('is-scrolled')
+        else if (y < EXPAND) header.classList.remove('is-scrolled')
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+}
+
+// ========================================
 // 初始化所有功能
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -344,4 +363,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollFadeIn()
     initDesktopZoom()
     initStaffCarousel()
+    initHeaderShrink()
 })

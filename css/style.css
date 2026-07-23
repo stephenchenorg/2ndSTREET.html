@@ -168,7 +168,13 @@ ol {
     .header {
         /* 總高鎖 100（1920 下）；內部元素皆由 152 等比縮 k=100/152≈0.6579 */
         height: min(5.2083vw, 100px);
+        transition: height 0.3s ease; /* 捲動收縮動態 */
         box-shadow: none;
+    }
+
+    /* 下滑後 header 收縮至應徵鈕高度（70）；logo/nav 因 top:50% 自動上移對齊 entry */
+    .header.is-scrolled {
+        height: min(3.6458vw, 70px);
     }
 
     .header .container {
@@ -184,8 +190,8 @@ ol {
     .logo {
         position: absolute;
         left: min(4.3750vw, 84px);
-        /* 中心 y 對齊 nav-menu（同 min(2.1875vw, 42px)） */
-        top: min(2.1875vw, 42px);
+        /* 置中於 container；container 收縮時中心隨之上移對齊 entry */
+        top: 50%;
         transform: translateY(-50%);
         max-width: 158px; /* 固定尺寸（240 等比縮），不隨視窗寬縮放 */
     }
@@ -307,7 +313,7 @@ ol {
     .nav-menu {
         display: flex;
         position: absolute;
-        top: min(2.1875vw, 42px);
+        top: 50%;
         transform: translateY(-50%);
         flex-direction: row;
         align-items: center;
@@ -354,8 +360,6 @@ ol {
         justify-content: center;
         width: min(15.625vw, 300px);
         height: min(3.6458vw, 70px);
-        /* italic + line-height:1 使文字視覺偏上，向下微調光學置中 */
-        padding-top: 6px;
         background: var(--color-ink);
         color: var(--text-inverse);
         transition: background var(--transition-base);
