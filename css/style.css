@@ -3724,7 +3724,8 @@ section {
     }
 
     .footer-column a {
-        font-size: 24px;
+        font-size: 26px;
+        font-weight: 300;
         line-height: 1.5;
     }
 
@@ -4481,7 +4482,8 @@ section {
     }
 
     .highlight-title {
-        font-size: 44px;
+        font-size: 43px;
+        font-weight: 700;
         line-height: 1;
         letter-spacing: 2px;
     }
@@ -4491,7 +4493,8 @@ section {
     }
 
     .highlight-heading {
-        font-size: 40px;
+        font-size: 43px;
+        font-weight: 700;
         line-height: 66px;
         margin: 60px 0 0;
     }
@@ -4592,13 +4595,14 @@ section {
     }
 
     .about-collage__paragraph {
-        font-size: 26px;
+        font-size: 23px;
+        font-weight: 400;
         line-height: 48px;
         color: #4D4D4D;
     }
 
     .about-collage__paragraph--lead {
-        font-size: 26px;
+        font-size: 23px;
         font-weight: 400;
         margin-bottom: 0;
     }
@@ -4624,7 +4628,7 @@ section {
     }
 
     .deep-dive-title .section-subtitle {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 700;
         margin: 8px 0 0;
     }
@@ -4664,11 +4668,13 @@ section {
     }
 
     .image-label__zh {
-        font-size: 34px;
+        font-size: 32px;
+        font-weight: 700;
     }
 
     .image-label__en {
         font-size: 22px;
+        font-weight: 700;
     }
 
     /* 紅色 view more 膠囊：左 28、距底 40、240x64 */
@@ -4682,8 +4688,8 @@ section {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 28px;
-        font-weight: 400;
+        font-size: 36px;
+        font-weight: 500;
         letter-spacing: 0.02em;
     }
 
@@ -4709,7 +4715,7 @@ section {
     }
 
     .staff-stories-section .section-subtitle {
-        font-size: 24px;
+        font-size: 20px;
         font-weight: 700;
         margin: 8px 0 0;
     }
@@ -4771,8 +4777,8 @@ section {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 30px;
-        font-weight: 400;
+        font-size: 44px;
+        font-weight: 500;
         line-height: 1;
         border-radius: 10px;
     }
@@ -4938,7 +4944,7 @@ section {
 
     /* 欄標題：24px 粗體 + 下方灰色分隔線 */
     .footer-column h4 {
-        font-size: min(1.25vw, 24px);
+        font-size: min(1.4583vw, 28px);
         font-weight: 700;
         line-height: 1;
         color: var(--text-primary);
@@ -4963,7 +4969,8 @@ section {
     }
 
     .footer-column a {
-        font-size: min(0.9375vw, 18px);
+        font-size: min(1.0417vw, 20px);
+        font-weight: 300;
         line-height: 1;
         color: var(--text-primary);
         transition: var(--transition-base);
@@ -5169,7 +5176,8 @@ section {
     }
 
     .about-collage__title {
-        font-size: min(2.7083vw, 52px);
+        font-size: min(2.8646vw, 55px);
+        font-weight: 700;
         line-height: 1.2;
         white-space: nowrap;
     }
@@ -5200,12 +5208,14 @@ section {
     }
 
     .about-collage__paragraph {
-        font-size: min(1.1458vw, 22px);
+        font-size: min(1.1979vw, 23px);
+        font-weight: 400;
         line-height: min(2.5vw, 48px);
     }
 
     .about-collage__paragraph--lead {
         font-size: min(1.25vw, 24px);
+        font-weight: 500;
         line-height: min(2.5vw, 48px);
         margin-bottom: 0;
     }
@@ -5232,7 +5242,7 @@ section {
     }
 
     .deep-dive-title .section-subtitle {
-        font-size: min(1.4583vw, 28px);
+        font-size: min(1.4063vw, 27px);
         font-weight: 700;
         color: var(--color-secondary);
         line-height: 1.2;
@@ -5278,12 +5288,14 @@ section {
     }
 
     .image-label__zh {
-        font-size: min(2.2917vw, 44px);
+        font-size: min(2.3958vw, 46px);
+        font-weight: 700;
         line-height: min(4.375vw, 84px);
     }
 
     .image-label__en {
-        font-size: min(1.5625vw, 30px);
+        font-size: min(1.6146vw, 31px);
+        font-weight: 700;
         line-height: 1;
     }
 
@@ -5297,7 +5309,7 @@ section {
         width: min(15.5729vw, 299px);
         height: min(4.0104vw, 77px);
         padding: 0;
-        font-size: min(1.3542vw, 26px);
+        font-size: min(1.7188vw, 33px);
         font-weight: 500;
         border-radius: min(2.0052vw, 38.5px);
     }
@@ -5330,7 +5342,7 @@ section {
     }
 
     .staff-stories-section .section-subtitle {
-        font-size: min(1.4583vw, 28px);
+        font-size: min(1.4063vw, 27px);
         font-weight: 700;
         color: var(--color-secondary);
         line-height: 1.2;
@@ -5373,7 +5385,7 @@ section {
     }
 
     .staff-grid .card-title {
-        font-size: min(1.4583vw, 28px);
+        font-size: min(1.5625vw, 30px);
         font-weight: 400;
         line-height: min(2.3438vw, 45px);
         color: var(--color-ink);
@@ -5381,7 +5393,7 @@ section {
     }
 
     .staff-grid .card-role {
-        font-size: min(1.4583vw, 28px);
+        font-size: min(1.5625vw, 30px);
         font-weight: 400;
         line-height: min(2.3438vw, 45px);
         color: var(--color-ink);
@@ -5437,7 +5449,7 @@ section {
         width: min(15.5729vw, 299px);
         height: min(4.0625vw, 78px);
         padding: 0;
-        font-size: min(1.3542vw, 26px);
+        font-size: min(2.0833vw, 40px);
         font-weight: 500;
         line-height: 1;
         border-radius: min(2.0313vw, 39px);
