@@ -6054,13 +6054,13 @@ section {
     }
 
     .story-hero__name {
-        font-size: min(1.25vw, 24px);
+        font-size: min(3.125vw, 60px);
         font-weight: 500;
         line-height: 1.2;
     }
 
     .story-hero__role {
-        font-size: min(0.7813vw, 15px);
+        font-size: min(1.9792vw, 38px);
         font-weight: 500;
         line-height: 1.2;
         margin-top: min(0.625vw, 12px);
@@ -6075,7 +6075,7 @@ section {
     }
 
     .story-hero__badge {
-        font-size: min(0.625vw, 12px);
+        font-size: min(1.3021vw, 25px);
         font-weight: 500;
         line-height: 1;
         padding: min(0.3125vw, 6px) min(0.6771vw, 13px);
@@ -6084,7 +6084,7 @@ section {
 
     .story-hero__career-item {
         color: #4D4D4D;
-        font-size: min(0.7813vw, 15px);
+        font-size: min(1.3021vw, 25px);
         font-weight: 400;
         line-height: 1.4;                      /* 行距 36.4 */
     }
@@ -6092,6 +6092,12 @@ section {
     .story-hero__career-date {
         width: min(5.2083vw, 100px);
         margin-right: min(0.5208vw, 10px);     /* 職稱起點 x330.5（相對盒左 160.5） */
+    }
+
+    /* SCROLL：故事頁桌機 24px（依 sam.html 備註；其他頁維持共用 18px） */
+    .story-hero + .hero-indicator .scroll-text {
+        font-size: min(1.25vw, 24px);
+        font-weight: 400;
     }
 
     /* ---- 訪談區（Staff Interview） ---- */
@@ -6111,7 +6117,7 @@ section {
 
     .story-qa__label {
         color: var(--color-secondary);
-        font-size: min(1.0417vw, 20px);
+        font-size: min(1.5625vw, 30px);
         font-weight: 500;
         line-height: 1.2;
         margin-bottom: min(0.6771vw, 13px);    /* label ink 底 1638.7 → 標題 ink 頂 1671.3 */
@@ -6119,7 +6125,7 @@ section {
 
     .story-qa__title {
         color: var(--color-secondary);
-        font-size: min(1.6667vw, 32px);
+        font-size: min(2.8646vw, 55px);
         font-weight: 700;
         line-height: min(4.0625vw, 78px);      /* 行距 77.7 */
         margin-bottom: min(4.4792vw, 86px);    /* 標題 ink 底 1798 → 內文 ink 頂 1913.3 */
@@ -6127,7 +6133,7 @@ section {
 
     .story-qa__answer {
         color: #4D4D4D;
-        font-size: min(1.0417vw, 20px);
+        font-size: min(1.25vw, 24px);
         font-weight: 500;
         line-height: min(2.5vw, 48px);         /* 行距 ≈ 48 */
     }
