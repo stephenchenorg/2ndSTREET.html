@@ -319,6 +319,7 @@ ol {
         transition: none;
         /* 最後一項右緣距應徵鈕左緣 47px（1920-1379=541） */
         right: min(28.1771vw, 541px);
+        overflow: visible; /* 桌機水平列不需捲動，覆寫 base 的 overflow-y:auto，避免行高溢出冒出捲軸 */
         box-shadow: none;
     }
 
