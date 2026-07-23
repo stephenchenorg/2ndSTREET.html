@@ -3797,7 +3797,8 @@ section {
     }
 
     .daily-vision__title {
-        font-size: 44px;
+        font-size: 43px;
+        font-weight: 700;
         line-height: 1.5;
     }
 
@@ -3805,6 +3806,7 @@ section {
         max-width: none;
         margin-top: 46px;
         font-size: 24px;
+        font-weight: 400;
         line-height: 2;
     }
 
@@ -3869,13 +3871,14 @@ section {
     }
 
     .daily-job__label-jp {
-        font-size: 36px;
+        font-size: 38px;
+        font-weight: 700;
         line-height: 1;
         letter-spacing: 2px;
     }
 
     .daily-job__label-en {
-        font-size: 24px;
+        font-size: 26px;
         font-weight: 700;
     }
 
@@ -3886,12 +3889,14 @@ section {
 
     .daily-job__heading {
         font-size: 36px;
+        font-weight: 700;
         line-height: 1.3;
         margin-bottom: 26px;
     }
 
     .daily-job__desc {
-        font-size: 24px;
+        font-size: 23px;
+        font-weight: 400;
         line-height: 2;
     }
 }
@@ -5486,6 +5491,7 @@ section {
     .daily-vision__subtitle {
         margin-top: min(4.8438vw, 93px);
         font-size: min(1.25vw, 24px);
+        font-weight: 500;
         line-height: 2;
         color: #4D4D4D;
     }
@@ -5564,13 +5570,14 @@ section {
     }
 
     .daily-job__label-jp {
-        font-size: min(2.0833vw, 40px);
+        font-size: min(2.2396vw, 43px);
+        font-weight: 700;
         line-height: 1;
         letter-spacing: min(0.2083vw, 4px);
     }
 
     .daily-job__label-en {
-        font-size: min(1.4583vw, 28px);
+        font-size: min(1.5104vw, 29px);
         font-weight: 700;
         line-height: 1;
     }
@@ -5591,7 +5598,8 @@ section {
     }
 
     .daily-job__desc {
-        font-size: min(1.25vw, 24px);
+        font-size: min(1.4063vw, 27px);
+        font-weight: 400;
         line-height: 1.5;
         color: #4D4D4D;
     }
