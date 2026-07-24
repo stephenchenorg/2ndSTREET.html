@@ -372,7 +372,6 @@ ol {
     .entry-btn__ch {
         font-family: "Noto Sans TC", sans-serif;
         font-size: min(1.875vw, 36px);
-        font-weight: 500;
         font-style: italic;
         line-height: 1;
     }
@@ -388,8 +387,8 @@ ol {
     }
 
     .entry-btn__en {
+        font-family: "Noto Sans TC", sans-serif;
         font-size: min(1.875vw, 36px);
-        font-weight: 500;
         font-style: italic;
         line-height: 1;
     }
