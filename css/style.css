@@ -3217,6 +3217,11 @@ section {
     margin-right: 16px;
 }
 
+/* 讓含空格的英文詞組整體換行（如 Aaren「Super star店長」不從空格斷開） */
+.members-career__nowrap {
+    white-space: nowrap;
+}
+
 /* ≥1024px：依 1920 設計稿等比呈現（1px = 100/1920 vw；1920 下即設計值：照片 860x489、內容左緣 x235） */
 @media (min-width: 1024px) {
     .members-stories {
@@ -4158,14 +4163,18 @@ section {
         margin: 0 52px;
     }
 
+    /* 覆寫 base flex 為常流：event 換行時回到項目左緣（對齊日期），如設計稿 */
     .members-career__item {
-        font-size: 25px;
+        display: block;
+        font-size: 24px;
         font-weight: 400;
         line-height: 40px;
         break-inside: avoid;
     }
 
     .members-career__date {
+        display: inline-block;
+        vertical-align: top;
         width: 100px;
         margin-right: 12px;
     }
