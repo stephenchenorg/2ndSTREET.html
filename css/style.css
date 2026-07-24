@@ -4193,33 +4193,48 @@ section {
     }
 
     .job-benefits__grid {
-        gap: 52px;
+        gap: 97px;
         margin-top: 62px;
     }
 
+    /* 新版：icon 靠左、標題＋說明置中於右側，整組水平置中（無底線）。
+       固定寬 428（於 600 內容區置中＝icon 左緣 136，對齊設計稿三列 icon） */
     .job-benefit {
-        max-width: none;
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        column-gap: 44px;
+        align-items: center;
+        width: 428px;
+        max-width: 100%;
+        text-align: center;
     }
 
     .job-benefit__icon {
+        grid-column: 1;
+        grid-row: 1 / 3;
         width: 150px;
         height: 150px;
-        margin: 0 auto 46px;
+        margin: 0;
     }
 
     .job-benefit__title {
+        grid-column: 2;
+        grid-row: 1;
         font-size: 30px;
         font-weight: 700;
-        padding-bottom: 20px;
-        margin-bottom: 22px;
+        padding-bottom: 27px;
+        margin-bottom: 9px;
     }
 
+    /* 標題與說明間紅色橫線：寬度同 desc 欄（滿欄），置中於 title、desc 之間 */
     .job-benefit__title::after {
-        width: 133px;
-        height: 3px;
+        width: 100%;
+        height: 4px;
     }
 
     .job-benefit__desc {
+        grid-column: 2;
+        grid-row: 2;
         font-size: 22px;
         font-weight: 400;
         line-height: 1.5;
