@@ -249,6 +249,8 @@ function initScrollFadeIn() {
     }, observerOptions)
 
     animatedElements.forEach(element => {
+        // 輪播卡片由 initStaffCarousel 專責（需可重複觸發），略過一次性觀察器
+        if (element.closest('.staff-carousel')) return
         observer.observe(element)
     })
 }
@@ -295,16 +297,18 @@ function initStaffCarousel() {
     const originals = [...grid.children]
     if (!originals.length) return
 
-    // 前後各補一組 clone，達成無限循環（clone 不需進場動畫、不可聚焦）
+    // 前後各補一組 clone，達成無限循環；clone 保留 fade-in-up，
+    // 讓它跟原卡一樣能在從邊緣滑入時重播進入動畫（僅不可聚焦）
     const clone = (node) => {
         const c = node.cloneNode(true)
-        c.classList.remove('fade-in-up')
         c.setAttribute('aria-hidden', 'true')
         c.setAttribute('tabindex', '-1')
         return c
     }
     originals.forEach(node => grid.append(clone(node)))
     originals.slice().reverse().forEach(node => grid.prepend(clone(node)))
+
+    const cards = [...grid.children]
 
     const gap = () => parseFloat(getComputedStyle(grid).gap) || 0
     const step = () => originals[0].offsetWidth + gap()
@@ -313,14 +317,49 @@ function initStaffCarousel() {
     // 初始定位到中間（原始）組
     grid.scrollLeft = setWidth()
 
+    // 卡片有 35% 進入 grid 可視範圍（且區塊在視窗內）→ 播進入動畫；
+    // 完全離開即重置 → 下次再從邊緣出現時重播（不論之前有沒有顯示過）
+    let sectionInView = false
+    const REVEAL = 0.35
+    const syncVisibility = () => {
+        const box = grid.getBoundingClientRect()
+        cards.forEach(card => {
+            const r = card.getBoundingClientRect()
+            const shown = Math.min(r.right, box.right) - Math.max(r.left, box.left)
+            const ratio = r.width ? shown / r.width : 0
+            if (sectionInView && ratio >= REVEAL) card.classList.add('is-visible')
+            else if (!sectionInView || shown <= 0) card.classList.remove('is-visible')
+        })
+    }
+
+    // 垂直進出視窗用 IntersectionObserver 判定；水平捲動另由 scroll 事件驅動
+    new IntersectionObserver((entries) => {
+        sectionInView = entries[0].isIntersecting
+        syncVisibility()
+    }, { threshold: 0 }).observe(carousel)
+
+    let ticking = false
+    const onScroll = () => {
+        if (ticking) return
+        ticking = true
+        requestAnimationFrame(() => { syncVisibility(); ticking = false })
+    }
+
     // 捲動落定後若停在 clone 區，無縫平移一組寬度（±sw 內容完全相同）
     let timer
     grid.addEventListener('scroll', () => {
+        onScroll()
         clearTimeout(timer)
         timer = setTimeout(() => {
             const sw = setWidth()
             if (grid.scrollLeft < sw) grid.scrollLeft += sw
             else if (grid.scrollLeft >= 2 * sw) grid.scrollLeft -= sw
+            // ponytail: 平移後位置視覺不變，但接手的 clone 尚未 is-visible。
+            // 暫關過渡、瞬時同步類別，避免接縫處閃現一次重播
+            grid.classList.add('is-jumping')
+            syncVisibility()
+            void grid.offsetWidth // 強制 reflow 讓瞬時狀態生效
+            grid.classList.remove('is-jumping')
         }, 150)
     })
 

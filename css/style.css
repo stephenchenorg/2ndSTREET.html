@@ -2129,6 +2129,11 @@ section {
     text-decoration: none;
 }
 
+/* 無限輪播接縫平移時暫關卡片過渡，瞬時同步 is-visible（見 initStaffCarousel） */
+.staff-grid.is-jumping .staff-card {
+    transition: none;
+}
+
 /* 卡片圖：直式 577.3 x 649.2（≈1:1.125） */
 .staff-grid .card-image {
     aspect-ratio: 577 / 649;
