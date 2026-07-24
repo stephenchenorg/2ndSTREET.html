@@ -4017,7 +4017,7 @@ section {
         height: auto;
     }
 
-    /* 店鋪PT：新素材含 tag，整張置中 */
+    /* 店鋪PT：完整自帶版式的圖，置中 */
     .eval-pt {
         aspect-ratio: auto;
     }
@@ -4027,24 +4027,13 @@ section {
         margin: 0 auto;
     }
 
-    /* 店鋪（正職）：新素材含 tag */
+    /* 店鋪＋本部合併圖（含兩段階梯與間距），置中 */
     .eval-ft {
         aspect-ratio: auto;
     }
 
     .eval-ft__img {
-        width: 630px;
-        margin: 0 auto;
-    }
-
-    /* 本部：新素材含 tag */
-    .eval-hq {
-        aspect-ratio: auto;
-        margin-top: 74px;
-    }
-
-    .eval-hq__img {
-        width: 623px;
+        width: 643px;
         margin: 0 auto;
     }
 
@@ -5762,26 +5751,16 @@ section {
         height: auto;
     }
 
-    /* --- 店鋪PT：新素材含 tag，圖 x358 寬 1191 --- */
+    /* --- 店鋪PT：完整自帶版式的圖，置中 --- */
     .eval-pt__img {
-        width: min(62.0313vw, 1191px);
-        margin: 0 0 0 min(18.6458vw, 358px);
+        width: min(72.9167vw, 1400px);
+        margin: 0 auto;
     }
 
-    /* --- 店鋪（正職）：新素材含 tag，圖 x382 寬 1179 --- */
+    /* --- 店鋪＋本部合併圖（含兩段階梯與間距），置中 --- */
     .eval-ft__img {
-        width: min(61.4063vw, 1179px);
-        margin: 0 0 0 min(19.8958vw, 382px);
-    }
-
-    /* --- 本部：新素材含 tag，圖 x383 寬 1179 --- */
-    .eval-hq {
-        margin-top: min(15.8333vw, 304px);
-    }
-
-    .eval-hq__img {
-        width: min(61.4063vw, 1179px);
-        margin: 0 0 0 min(19.9479vw, 383px);
+        width: min(72.9167vw, 1400px);
+        margin: 0 auto;
     }
 
     /* ----------------------------------------
