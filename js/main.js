@@ -275,6 +275,18 @@ function initDesktopZoom() {
 
     apply()
 
+    // Firefox（Android）初次載入不會套用 JS 設定的 body zoom，要等捲動才生效
+    // → 版面初見會以未縮放尺寸呈現（跑掉）。輕推 1px 捲動逼它重新套用（同使用者
+    // 手動下滑一下才正常的現象）；分兩個 rAF 位移避免被合併，載入完成後再補一次。
+    const nudge = () => {
+        if (window.innerWidth >= 1024) return
+        const y = window.scrollY
+        window.scrollTo(0, y + 1)
+        requestAnimationFrame(() => window.scrollTo(0, y))
+    }
+    requestAnimationFrame(() => requestAnimationFrame(nudge))
+    window.addEventListener('load', () => { apply(); nudge() })
+
     let ticking = false
     window.addEventListener('resize', () => {
         if (ticking) return
