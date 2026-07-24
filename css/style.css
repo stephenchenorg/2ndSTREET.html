@@ -5425,7 +5425,7 @@ section {
 
     .staff-grid .staff-card {
         flex: 0 0 calc((100% - 2 * min(2.1875vw, 42px)) / 3);
-        scroll-snap-align: start;
+        scroll-snap-align: center;
     }
 
     .staff-grid .card-image {
