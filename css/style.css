@@ -359,7 +359,7 @@ ol {
         align-items: center;
         justify-content: center;
         width: min(15.625vw, 300px);
-        height: min(3.6458vw, 70px);
+        height: 100%; /* 與 container 等高；is-scrolled 時隨 header 收縮自動同步 */
         background: var(--color-ink);
         color: var(--text-inverse);
         transition: background var(--transition-base);
@@ -388,7 +388,7 @@ ol {
     }
 
     .entry-btn__en {
-        font-size: min(1.25vw, 24px);
+        font-size: min(1.875vw, 36px);
         font-weight: 500;
         font-style: italic;
         line-height: 1;
