@@ -3618,8 +3618,7 @@ section {
     .nav-menu__entry::before {
         content: '應徵';
         font-family: "Noto Sans TC", sans-serif;
-        font-size: 64px;
-        font-weight: 500;
+        font-size: 56px;
         font-style: italic;
         line-height: 1;
         color: var(--text-inverse);
@@ -3629,16 +3628,16 @@ section {
     .nav-menu__entry::after {
         /* \00a0 後接空白作為 escape 終止符（E 是十六進位字元，直接相連會被吃進 escape） */
         content: '|\00a0\00a0 Entry';
+        font-family: "Noto Sans TC", sans-serif;
         position: relative;
-        top: 8px;
+        top: 0;
         bottom: auto;
         left: auto;
         width: auto;
         height: auto;
         background: none;
         margin-left: 42px;
-        font-size: 40px;
-        font-weight: 500;
+        font-size: 56px;
         font-style: italic;
         line-height: 1;
         color: var(--text-inverse);
