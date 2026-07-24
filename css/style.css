@@ -5333,6 +5333,23 @@ section {
         line-height: 1;
     }
 
+    /* 第二排（兩張並列）標籤整體較小：字級、高度、內距、間距等比縮 */
+    .image-item .image-label {
+        height: min(3.9583vw, 76px);
+        padding: 0 min(1.3542vw, 26px);
+        gap: min(0.8333vw, 16px);
+        align-items: center; /* 覆寫共用 baseline，讓中英文垂直置中 */
+    }
+
+    .image-item .image-label__zh {
+        font-size: min(1.9792vw, 38px);
+        line-height: 1; /* 覆寫共用 84px 行高（高於標籤盒導致偏移） */
+    }
+
+    .image-item .image-label__en {
+        font-size: min(1.3542vw, 26px);
+    }
+
     /* 紅色 view more 膠囊鈕：距圖左 41、距圖底 41，299x77 */
     .image-view-more {
         display: inline-flex;
