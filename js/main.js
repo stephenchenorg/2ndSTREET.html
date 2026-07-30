@@ -56,7 +56,13 @@ function initSmoothScroll() {
             e.preventDefault()
             const targetId = link.getAttribute('href')
 
-            if (targetId === '#') return
+            if (targetId === '#') {
+                // 僅 TOP 回頂連結捲回頂端，其餘 "#" 佔位連結維持無作用
+                if (link.classList.contains('back-to-top')) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                }
+                return
+            }
 
             const target = document.querySelector(targetId)
 
