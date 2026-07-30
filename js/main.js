@@ -474,16 +474,24 @@ function initHeroPin() {
         })
     }, { rootMargin: '0px 0px -15% 0px' }).observe(reveal)
 
-    // 釘選期間（sticky 撐出的 100vh 捲動距離）後段淡出：
-    // 捲過 0.5 屏開始、0.95 屏淡完，之後隱藏避免透明層擋住點擊
+    // 釘選期間（sticky 撐出的 100vh 捲動距離）分兩段淡出：
+    // 疊字先淡（0.25 屏開始、0.5 屏淡完）→ 圖片接續（0.5 屏開始、0.95 屏淡完），
+    // 淡完後隱藏避免透明層擋住點擊
+    const text = pin.querySelector('.hero-overlay, .daily-vision, .eval-intro')
     const update = () => {
         if (window.innerWidth < 1024) {
             pin.style.opacity = ''
             pin.style.visibility = ''
+            if (text) text.style.opacity = ''
             return
         }
         const vh = window.innerHeight
-        const t = Math.min(1, Math.max(0, (window.scrollY - vh * 0.5) / (vh * 0.45)))
+        const y = window.scrollY
+        if (text) {
+            const tText = Math.min(1, Math.max(0, (y - vh * 0.25) / (vh * 0.25)))
+            text.style.opacity = String(+(1 - tText).toFixed(3))
+        }
+        const t = Math.min(1, Math.max(0, (y - vh * 0.5) / (vh * 0.45)))
         pin.style.opacity = String(+(1 - t).toFixed(3))
         pin.style.visibility = t >= 1 ? 'hidden' : ''
     }
