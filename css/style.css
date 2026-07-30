@@ -4913,6 +4913,50 @@ section {
         aspect-ratio: 1920 / 1095;
     }
 
+    /* ---------- Hero 滿版釘選＋捲動淡出（js initHeroPin，仿 fastretailing/careers） ---------- */
+    /* 區塊高度 = 滿版一屏 + 100vh 釘選捲動距離；slider sticky 原地固定，
+       捲動後段由 JS 淡出。sticky 在 overflow:hidden 祖先內不作用，需改 visible */
+    .hero:has(.hero-slider) {
+        overflow: visible;
+        height: calc(200vh - min(5.2083vw, 100px));
+    }
+
+    .hero-slider {
+        position: sticky;
+        top: min(5.2083vw, 100px);
+        height: calc(100vh - min(5.2083vw, 100px));
+        transition: top 0.3s ease, height 0.3s ease; /* 跟隨 header 收縮 */
+    }
+
+    /* header 收縮時同步貼齊，避免 header 下緣露出空隙 */
+    .header.is-scrolled ~ main .hero-slider {
+        top: min(3.6458vw, 70px);
+        height: calc(100vh - min(3.6458vw, 70px));
+    }
+
+    .hero-slides,
+    .hero-slide {
+        height: 100%;
+    }
+
+    /* 滿版高度由視窗決定，圖片 cover 置中 */
+    .hero-slide .hero-image {
+        height: 100%;
+        aspect-ratio: auto;
+    }
+
+    /* ---------- About 區進場（initHeroPin 掛 pending、進視窗加 is-revealed） ---------- */
+    .about-section--pending {
+        opacity: 0;
+        transform: translateY(80px);
+        transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+    }
+
+    .about-section--pending.is-revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     /* 設計稿無左右箭頭與指示點 */
     .hero-arrow,
     .hero-dots {
@@ -4957,9 +5001,16 @@ section {
     /* ---------- SCROLL 指示 ---------- */
     /* 設計稿：紅線(103) 疊在 hero 下緣 y1134-1237 → SCROLL 字 y1258-1276 → 紅線(76) y1300-1376 */
     .hero-indicator {
-        margin-top: calc(-1 * min(5.3646vw, 103px));
+        /* hero 淡出約 50% 時 SCROLL 字樣進入視窗底。
+           SCROLL 字頂 = 收縮後header高 + hero高(2vh−header高) + margin + 紅線與間距，
+           令其進場捲動量 = fadeStart(0.5vh) + 0.5×fade區間(0.45vh)
+           → margin = −0.275vh − (header收縮差 + 紅線 + 間距) ≈ −27.5vh − 4.64vw（1920 內精準） */
+        margin-top: calc(-36.5vh - 4.64vw);
         padding: 0;
         gap: 0;
+        /* 疊在淡出中的 hero 之上，紅色指標清晰可見 */
+        position: relative;
+        z-index: 1;
     }
 
     .hero-indicator::before {
@@ -4992,9 +5043,15 @@ section {
     }
 
     /* ---------- 關於我們理想中的夥伴（拼貼） ---------- */
-    /* 設計稿：容器 1920x1645（y2597-4242）；SCROLL 線底 y1377 → 容器頂留白 1220 */
+    /* 原設計稿留白 1220 是靜態版面的值；hero 改滿版釘選淡出後，
+       縮短留白讓 about 區在 hero 淡出後隨即進場。
+       背景改透明：進場時只有內容上移（仿參考站），淡出後的白色頁面即為背景；
+       z-index 疊在淡出中的 hero 之上，內容不被半透明圖片洗淡 */
     .about-section {
-        padding: min(63.5417vw, 1220px) 0 0;
+        padding: min(4.1667vw, 80px) 0 0;
+        background: transparent;
+        position: relative;
+        z-index: 1;
     }
 
     .about-collage {

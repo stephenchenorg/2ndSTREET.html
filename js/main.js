@@ -448,6 +448,54 @@ function initHeaderShrink() {
 }
 
 // ========================================
+// 12. 首頁桌機 hero 釘選淡出（仿 fastretailing/careers：
+//     捲動時 hero 原地固定，過一段距離後淡出、about 區 fade in up）
+// ========================================
+function initHeroPin() {
+    const slider = document.querySelector('.hero .hero-slider')
+    const about = document.querySelector('.about-section')
+    if (!slider || !about) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    // about 區整體進場：桌機樣式限定（.about-section--pending 只定義於 >=1024px）
+    about.classList.add('about-section--pending')
+    new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed')
+                obs.unobserve(entry.target)
+            }
+        })
+    }, { rootMargin: '0px 0px -15% 0px' }).observe(about)
+
+    // 釘選期間（sticky 撐出的 100vh 捲動距離）後段淡出：
+    // 捲過 0.5 屏開始、0.95 屏淡完，之後隱藏避免透明層擋住點擊
+    const update = () => {
+        if (window.innerWidth < 1024) {
+            slider.style.opacity = ''
+            slider.style.visibility = ''
+            return
+        }
+        const vh = window.innerHeight
+        const t = Math.min(1, Math.max(0, (window.scrollY - vh * 0.5) / (vh * 0.45)))
+        slider.style.opacity = String(+(1 - t).toFixed(3))
+        slider.style.visibility = t >= 1 ? 'hidden' : ''
+    }
+
+    let ticking = false
+    window.addEventListener('scroll', () => {
+        if (ticking) return
+        ticking = true
+        requestAnimationFrame(() => {
+            update()
+            ticking = false
+        })
+    }, { passive: true })
+    window.addEventListener('resize', update)
+    update()
+}
+
+// ========================================
 // 初始化所有功能
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -461,4 +509,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initStaffCarousel()
     initCollageParallax()
     initHeaderShrink()
+    initHeroPin()
 })
