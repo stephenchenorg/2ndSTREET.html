@@ -1483,9 +1483,9 @@ section {
     100%  { clip-path: inset(100% 0 0 0); }   /* 等待 1s 後重複 */
 }
 
-/* 首頁 Hero 文案疊層與社員故事 TOP 連結：
+/* 首頁 Hero 文案（沿用 daily-vision 架構）與社員故事 TOP 連結：
    行動版不顯示（維持既有版面），桌機版於 redesign 區塊開啟 */
-.hero-overlay,
+.daily-vision--index,
 .back-to-top {
     display: none;
 }
@@ -4951,41 +4951,6 @@ section {
         display: none;
     }
 
-    /* ---------- Hero 文案疊層 ---------- */
-    /* 設計稿：標題 x196.5、cap y846.5-926（字級 ~110）；
-       紅槓 8x111.5 @x192 y988.5-1100（距 hero 底 137.7）；標語 43/行高 59.5 */
-    .hero-overlay {
-        display: block;
-        position: absolute;
-        left: min(10.2344vw, 196.5px);
-        bottom: min(7.1719vw, 137.7px);
-        z-index: 2;
-        color: #FFFFFF;
-        font-family: "Noto Sans TC", sans-serif; /* 設計稿英文字形為 Noto Sans */
-        text-shadow: var(--hero-text-shadow);
-        pointer-events: none;
-    }
-
-    .hero-overlay__title {
-        margin: 0 0 min(1.0417vw, 20px);
-        font-size: min(5.7292vw, 110px);
-        font-weight: 700;
-        line-height: 1.1;
-        white-space: nowrap;
-    }
-
-    .hero-overlay__tagline {
-        border-left: min(0.4167vw, 8px) solid var(--color-secondary);
-        padding-left: min(1.3281vw, 25.5px);
-    }
-
-    .hero-overlay__tagline p {
-        margin: 0;
-        font-size: min(2.2396vw, 43px);
-        font-weight: 700;
-        line-height: min(3.0990vw, 59.5px);
-    }
-
     /* ---------- SCROLL 指示 ---------- */
     /* 設計稿：紅線(103) 疊在 hero 下緣 y1134-1237 → SCROLL 字 y1258-1276 → 紅線(76) y1300-1376 */
     .hero-indicator {
@@ -6243,12 +6208,24 @@ section {
         height: calc(100vh - min(3.6458vw, 70px));
     }
 
-    /* 疊字由 JS 移入釘選容器後：貼齊滿版圖左下，與圖片一起固定、淡出 */
+    /* 疊字由 JS 移入釘選容器後：貼齊滿版圖左下，與圖片一起固定、淡出
+       （index 的釘選容器是 .hero-slider，daily／eval 是 .hero-image） */
     .hero-image .daily-vision,
+    .hero-slider .daily-vision,
     .hero-image .eval-intro {
         top: auto;
         bottom: min(7.1719vw, 137.7px);
         padding-top: 0;
+    }
+
+    /* index 版 vision：桌機開啟（行動版由基底規則隱藏，訊息由紅框標語區呈現）；
+       標題非「開頭，不需要 daily 的負縮排 */
+    .daily-vision--index {
+        display: block;
+    }
+
+    .daily-vision--index .daily-vision__title {
+        text-indent: 0;
     }
 
     /* SCROLL 指標：hero 淡出約 50% 時 SCROLL 字樣進入視窗底（同首頁推導；
