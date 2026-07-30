@@ -1573,6 +1573,19 @@ section {
 .about-collage__image {
     margin: 0;
     width: 100%;
+    overflow: hidden;
+    /* 視差：圖片高度放大係數，捲動時由 JS 於框內上下位移（initCollageParallax） */
+    --plx-scale: 1.08;
+}
+
+/* index3 合照人頭距圖片上緣僅 ~28px，縮小位移量避免裁到頭 */
+.about-collage__image--group {
+    --plx-scale: 1.05;
+}
+
+/* cover 的內部裁切集中到底部（衣物區），頂部人頭不被裁 */
+.about-collage__image--group img {
+    object-position: top;
 }
 
 .about-collage__image img {
@@ -4387,8 +4400,9 @@ section {
 
     .about-collage__image img {
         width: 100%;
-        height: 100%;
+        height: calc(100% * var(--plx-scale, 1));
         object-fit: cover;
+        will-change: transform;
     }
 
     .about-collage__image--shoes {
@@ -5001,8 +5015,9 @@ section {
 
     .about-collage__image img {
         width: 100%;
-        height: 100%;
+        height: calc(100% * var(--plx-scale, 1));
         object-fit: cover;
+        will-change: transform;
     }
 
     /* 店招圖：右上（x1138.6, w787.6, h427.8，右緣出血由 overflow 裁切） */

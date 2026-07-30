@@ -390,7 +390,46 @@ function initStaffCarousel() {
 }
 
 // ========================================
-// 10. 桌機 header 捲動收縮（下滑後縮至應徵鈕高度）
+// 10. 首頁 About 拼貼圖片視差（捲動時於框內上下位移）
+// ========================================
+function initCollageParallax() {
+    const figures = document.querySelectorAll('.about-collage__image')
+    if (!figures.length) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const update = () => {
+        const vh = window.innerHeight
+        figures.forEach(figure => {
+            const rect = figure.getBoundingClientRect()
+            if (rect.bottom < 0 || rect.top > vh) return
+
+            const img = figure.querySelector('img')
+            if (!img) return
+
+            // 圖片比外框高出的量（--plx-scale 控制），依「從視窗底進入(0)
+            // 到頂端離開(1)」的進度往上位移；進入時圖片頂緣貼齊框頂，
+            // 全程不會位移超過出血量，index3 的人頭不會被裁到
+            const bleed = img.offsetHeight - figure.clientHeight
+            const progress = Math.min(1, Math.max(0, (vh - rect.top) / (vh + rect.height)))
+            img.style.transform = `translateY(${(-bleed * progress).toFixed(1)}px)`
+        })
+    }
+
+    let ticking = false
+    window.addEventListener('scroll', () => {
+        if (ticking) return
+        ticking = true
+        requestAnimationFrame(() => {
+            update()
+            ticking = false
+        })
+    }, { passive: true })
+    window.addEventListener('resize', update)
+    update()
+}
+
+// ========================================
+// 11. 桌機 header 捲動收縮（下滑後縮至應徵鈕高度）
 // ========================================
 function initHeaderShrink() {
     const header = document.querySelector('.header')
@@ -420,5 +459,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollFadeIn()
     initDesktopZoom()
     initStaffCarousel()
+    initCollageParallax()
     initHeaderShrink()
 })
