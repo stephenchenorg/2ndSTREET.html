@@ -53,6 +53,7 @@
     --font-family-base: "Inter", "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif;
     
     /* Shadows */
+    --hero-text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
     --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -940,24 +941,9 @@ section {
 /* ========================================
    Recruitment Highlight Section
    ======================================== */
+/* 僅行動版顯示；桌機版已依 0729 設計稿移除（見 redesign 區塊 display:none） */
 .recruitment-highlight {
     text-align: center;
-}
-
-@media (min-width: 1024px) {
-    .recruitment-highlight {
-        width: min(1180px, 100%);
-        margin: 0 auto;
-    }
-}
-
-@media (min-width: 1024px) {
-    /* Figma: ~395px gap between the scroll indicator and the vision tagline,
-       beyond what the section's own top padding already provides */
-    .recruitment-highlight {
-        margin-top: 200px;
-        padding-bottom: 108px;
-    }
 }
 
 .highlight-content {
@@ -1497,6 +1483,13 @@ section {
     100%  { clip-path: inset(100% 0 0 0); }   /* 等待 1s 後重複 */
 }
 
+/* 首頁 Hero 文案疊層與社員故事 TOP 連結：
+   行動版不顯示（維持既有版面），桌機版於 redesign 區塊開啟 */
+.hero-overlay,
+.back-to-top {
+    display: none;
+}
+
 /* Recruitment Highlight Box (白底紅框，紅字置中) */
 .highlight-box {
     display: inline-block;
@@ -1519,21 +1512,6 @@ section {
     }
 }
 
-@media (min-width: 1024px) {
-    /* Figma: 盒 844x119 @x=538-1382, y=1772-1891；文字群組 510x56 */
-    .highlight-box {
-        padding: min(1.2vw, 23.04px) min(8.3vw, 159.4px);
-        border-width: 3px;
-        margin-bottom: min(4.17vw, 80.06px);
-    }
-
-    .highlight-title {
-        font-size: min(3.1vw, 59.52px);
-        letter-spacing: min(0.3vw, 5.76px);
-        line-height: 1.1;
-    }
-}
-
 .highlight-heading {
     font-size: var(--font-size-xl);
     font-weight: 700;
@@ -1545,20 +1523,6 @@ section {
 @media (min-width: 768px) {
     .highlight-heading {
         font-size: var(--font-size-xl);
-    }
-}
-
-@media (min-width: 1024px) {
-    /* Figma: 群組 1289x57 @x=311, y=1971 */
-    .highlight-heading {
-        font-size: min(3.2vw, 61.44px);
-        margin-bottom: 0;
-        white-space: nowrap;
-        /* Inter 讓整行比容器寬（1920 實寬 ~1372 > 1020）：
-           以自身寬度對父層中心置中，溢出才會左右對稱 */
-        width: max-content;
-        margin-left: 50%;
-        transform: translateX(-50%);
     }
 }
 
@@ -1575,13 +1539,6 @@ section {
     height: 100px;
     margin: var(--spacing-xl) auto 0;
     background-color: var(--color-secondary);
-}
-
-@media (min-width: 1024px) {
-    .highlight-divider {
-        height: 180px;
-        margin-top: 280px;
-    }
 }
 
 /* ========================================
@@ -2546,6 +2503,11 @@ section {
     text-align: center;
 }
 
+/* 桌機版職務標題（紅字＋紅底線，行動版隱藏；行動版沿用圖上 .daily-job__label） */
+.daily-job__title {
+    display: none;
+}
+
 .daily-job__heading {
     font-size: var(--font-size-xl);
     font-weight: 700;
@@ -2560,97 +2522,8 @@ section {
     margin: 0;
 }
 
-/* ----------------------------------------
-   Desktop（≥1024px，以 1920 設計稿為基準）
-   ---------------------------------------- */
-@media (min-width: 1024px) {
-    .daily-vision {
-        padding: 291px 0 0;
-    }
-
-    .daily-vision__title {
-        font-size: 58px;
-        line-height: 1.3;
-    }
-
-    .daily-vision__subtitle {
-        max-width: none;
-        margin-top: 98px;
-        font-size: 24px;
-    }
-
-    .daily-vision__divider {
-        height: 225px;
-        margin-top: 378px;
-    }
-
-    .daily-category {
-        margin-top: 320px;
-    }
-
-    .daily-category--first {
-        margin-top: 25px;
-    }
-
-    .daily-category:last-of-type {
-        padding-bottom: 180px;
-    }
-
-    .daily-category__header {
-        margin-bottom: 55px;
-    }
-
-    .daily-category__title {
-        font-size: 60px;
-        margin-bottom: var(--spacing-xs);
-    }
-
-    .daily-job {
-        flex-direction: row;
-        align-items: center;
-        max-width: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .daily-job + .daily-job {
-        margin-top: 100px;
-    }
-
-    .daily-job__figure {
-        flex: 0 0 49.48%;
-        width: auto;
-        margin-left: 4.69%;
-    }
-
-    .daily-job__label {
-        padding: 12px 22px;
-    }
-
-    .daily-job__label-jp {
-        font-size: 28px;
-    }
-
-    .daily-job__label-en {
-        font-size: 18px;
-    }
-
-    .daily-job__body {
-        flex: 1;
-        margin-top: 0;
-        margin-left: 5.05%;
-        text-align: left;
-    }
-
-    .daily-job__heading {
-        font-size: 38px;
-        margin-bottom: 40px;
-    }
-
-    .daily-job__desc {
-        font-size: 30px;
-    }
-}
+/* 桌機版（≥1024px）樣式統一收於檔案後段
+   「Desktop >=1024px redesign: 日常業務 daily-work」區塊 */
 
 /* ======== Evaluation Page ======== */
 
@@ -2713,16 +2586,6 @@ section {
     }
 }
 
-@media (min-width: 1024px) {
-    .eval-section-header__title {
-        font-size: 56px;
-    }
-
-    .eval-section-header__subtitle {
-        font-size: 28px;
-    }
-}
-
 /* --- Career track diagram (階梯示意圖 + 標籤) --- */
 .eval-track {
     position: relative;
@@ -2737,34 +2600,30 @@ section {
     height: auto;
 }
 
-.eval-track__tag {
-    position: absolute;
-    display: inline-block;
-    padding: 0.75cqw 1.6cqw;
-    background: var(--color-secondary);
-    color: var(--text-inverse);
-    font-size: max(14px, min(2.2cqw, 42px));
-    font-weight: 700;
-    line-height: 1;
-    white-space: nowrap;
+/* 紅色區塊標籤（店鋪PT／店鋪／本部）：桌機版以 CSS 呈現；
+   行動版圖素材已內建標籤，故預設隱藏、僅於 ≥1024px 顯示 */
+.eval-track__label {
+    display: none;
+}
+
+/* 本部階梯（桌機專用素材）：行動版以合併圖呈現，故預設隱藏 */
+.eval-track .eval-hq__img {
+    display: none;
 }
 
 /* 級別/職稱/年資/引線文字皆已內建於階梯圖素材（2x），不另用 HTML 重疊 */
 
-/* --- Track: 店鋪PT (part-time) --- */
-.eval-pt { aspect-ratio: 1920 / 787; }
-.eval-pt__tag { left: 21.09%; top: 0; }
-.eval-pt__img { left: 30.47%; top: 24.78%; width: 39.06%; }
+/* --- Track: 店鋪PT (part-time)；容器上緣＝標籤上緣、下緣＝階梯圖下緣（1920 設計） --- */
+.eval-pt { aspect-ratio: 1920 / 1006; }
+.eval-pt__label { left: 19.93%; top: 0; }
+.eval-pt__img { left: 19.27%; top: 17.30%; width: 62.19%; }
 
-/* --- Track: 店鋪 (full-time store) --- */
-.eval-ft { aspect-ratio: 1920 / 880; }
-.eval-ft__tag { left: 26.30%; top: 0; }
-.eval-ft__img { left: 23.23%; top: 11.14%; width: 53.54%; }
-
-/* --- Track: 本部 (headquarters) --- */
-.eval-hq { aspect-ratio: 1920 / 890; }
-.eval-hq__tag { left: 24.74%; top: 0; }
-.eval-hq__img { left: 24.90%; top: 11.24%; width: 51.30%; }
+/* --- Track: 店鋪＋本部（單一容器，桌機為兩張裁切圖＋兩個標籤） --- */
+.eval-ft { aspect-ratio: 1920 / 2619.3; }
+.eval-ft__label--store { left: 19.93%; top: 0; }
+.eval-ft__img { left: 21.61%; top: 6.33%; width: 59.90%; }
+.eval-ft__label--hq { left: 19.93%; top: 56.20%; }
+.eval-hq__img { left: 21.41%; top: 62.99%; width: 60.10%; }
 
 /* --- Caption (single line under a track) --- */
 .eval-caption {
@@ -2801,61 +2660,6 @@ section {
     }
 }
 
-/* --- ≥1024px：垂直節奏依 1920 設計稿實測值（覆寫全域 section 內距）--- */
-@media (min-width: 1024px) {
-    .eval-intro {
-        padding: 273px var(--spacing-md) 48px;
-    }
-
-    .eval-intro__heading {
-        margin-bottom: 60px;
-    }
-
-    .eval-part-time,
-    .eval-full-time {
-        padding: 0;
-    }
-
-    .eval-part-time .highlight-line {
-        height: 190px;
-        margin: 350px auto 40px;
-    }
-
-    .eval-part-time .eval-section-header {
-        margin-bottom: 318px;
-    }
-
-    .eval-full-time {
-        padding-top: 278px;
-    }
-
-    .eval-full-time .eval-section-header {
-        margin-bottom: 322px;
-    }
-
-    .eval-caption {
-        margin-top: 285px;
-        padding: 0 var(--spacing-md);
-        font-size: 30px;
-    }
-
-    .eval-hq {
-        margin-top: 390px;
-    }
-
-    .eval-closing {
-        padding: 270px var(--spacing-md) 210px;
-    }
-
-    .eval-closing p {
-        margin-bottom: 24px;
-        font-size: 32px;
-    }
-
-    .eval-closing p:last-child {
-        margin-bottom: 0;
-    }
-}
 
 /* ======== Job Intro Page ======== */
 
@@ -5101,6 +4905,41 @@ section {
         display: none;
     }
 
+    /* ---------- Hero 文案疊層 ---------- */
+    /* 設計稿：標題 x196.5、cap y846.5-926（字級 ~110）；
+       紅槓 8x111.5 @x192 y988.5-1100（距 hero 底 137.7）；標語 43/行高 59.5 */
+    .hero-overlay {
+        display: block;
+        position: absolute;
+        left: min(10.2344vw, 196.5px);
+        bottom: min(7.1719vw, 137.7px);
+        z-index: 2;
+        color: #FFFFFF;
+        font-family: "Noto Sans TC", sans-serif; /* 設計稿英文字形為 Noto Sans */
+        text-shadow: var(--hero-text-shadow);
+        pointer-events: none;
+    }
+
+    .hero-overlay__title {
+        margin: 0 0 min(1.0417vw, 20px);
+        font-size: min(5.7292vw, 110px);
+        font-weight: 700;
+        line-height: 1.1;
+        white-space: nowrap;
+    }
+
+    .hero-overlay__tagline {
+        border-left: min(0.4167vw, 8px) solid var(--color-secondary);
+        padding-left: min(1.3281vw, 25.5px);
+    }
+
+    .hero-overlay__tagline p {
+        margin: 0;
+        font-size: min(2.2396vw, 43px);
+        font-weight: 700;
+        line-height: min(3.0990vw, 59.5px);
+    }
+
     /* ---------- SCROLL 指示 ---------- */
     /* 設計稿：紅線(103) 疊在 hero 下緣 y1134-1237 → SCROLL 字 y1258-1276 → 紅線(76) y1300-1376 */
     .hero-indicator {
@@ -5132,46 +4971,16 @@ section {
         height: min(3.9583vw, 76px);
     }
 
-    /* ---------- 紅框「2030年 百店規模」與紅色標語 ---------- */
-    /* 設計稿：紅框 848x124 @y1769；標語 y1971-2028；分隔直線 180 @y2309 */
+    /* ---------- 紅框標語區 ---------- */
+    /* 0729 設計稿已移除本區（標語移入 hero 疊層），桌機隱藏、行動版維持原樣 */
     .recruitment-highlight {
-        width: 100%;
-        margin: min(20.4688vw, 393px) auto 0;
-        padding-bottom: 0;
-    }
-
-    .highlight-box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: min(44.1667vw, 848px);
-        height: min(6.4583vw, 124px);
-        padding: 0;
-        margin: 0 auto min(3.2292vw, 62px);
-        border-width: min(0.2083vw, 4px);
-    }
-
-    .highlight-title {
-        font-size: min(3.125vw, 60px);
-        letter-spacing: min(0.1042vw, 2px);
-        line-height: 1;
-    }
-
-    .highlight-heading {
-        font-size: min(3.125vw, 60px);
-        line-height: 1.5;
-    }
-
-    .highlight-divider {
-        width: 2px;
-        height: min(9.375vw, 180px);
-        margin: min(13.8021vw, 265px) auto 0;
+        display: none;
     }
 
     /* ---------- 關於我們理想中的夥伴（拼貼） ---------- */
-    /* 設計稿：容器 1920x1645（y2597-4242）；分隔線下緣到容器頂 109 */
+    /* 設計稿：容器 1920x1645（y2597-4242）；SCROLL 線底 y1377 → 容器頂留白 1220 */
     .about-section {
-        padding: min(5.6771vw, 109px) 0 0;
+        padding: min(63.5417vw, 1220px) 0 0;
     }
 
     .about-collage {
@@ -5391,7 +5200,7 @@ section {
     /* 設計稿：灰底 #F2F2F2 y6109-8200；直線 180 @y6477；標題 ink y6709-6765；
        卡片 y6972 起、寬 503 高 561、欄距 42、群組 1590 置中；圓形箭頭 60 於卡片圖垂直置中 */
     .staff-stories-section {
-        padding: min(19.1667vw, 368px) 0 min(16.0417vw, 308px);
+        padding: min(19.1667vw, 368px) 0 min(2.1615vw, 41.5px);
         background-color: #F2F2F2;
     }
 
@@ -5528,226 +5337,368 @@ section {
         line-height: 1;
         border-radius: min(2.0313vw, 39px);
     }
+
+    /* TOP 回頂連結：view more 下 ~230、灰 #999、上箭頭＋TOP 字置中 */
+    .back-to-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: min(0.4167vw, 8px);
+        width: fit-content;
+        margin: min(12.0052vw, 230.5px) auto 0;
+        color: #999999;
+        font-size: min(0.9375vw, 18px);
+        line-height: 1;
+        letter-spacing: 0.05em;
+        transition: color var(--transition-base);
+    }
+
+    .back-to-top:hover {
+        color: var(--color-secondary);
+    }
+
+    .back-to-top__arrow {
+        width: min(0.9375vw, 18px);
+        height: min(0.9375vw, 18px);
+        border-top: 2px solid currentColor;
+        border-right: 2px solid currentColor;
+        transform: rotate(-45deg);
+    }
 }
 
 /* ======== Desktop >=1024px redesign: 日常業務 daily-work ======== */
-/* 依 Desktop-o_日常業務 1.png（1920 設計）重量測；
-   hero / .hero-image / .hero-indicator / .scroll-text / .scroll-line 為共用樣式，
-   已對齊新設計稿（hero 1920x1086 全幅、SCROLL 18px 紅字＋垂直線），此處不重複輸出 */
+/* 設計稿：Desktop_日常業務 1.png（3840 寬 2x，÷2 = 1920 設計 px）；
+   尺寸採 min(vw, 設計px) 流式縮放（1px = 100/1920 vw），1440 檢視即為設計值 × 0.75 */
 @media (min-width: 1024px) {
 
     /* ----------------------------------------
-       Vision（「Reuse也很讚呢!從服務達人到經營專家」）
-       設計：標題 ink y1658、60px 粗體；副標 24px/行高2 兩行；
-       尾端紅色垂直分隔線 180px（y2309–2488）
+       Hero 捲動指示（設計：紅線 75px 疊在照片上 + SCROLL + 紅線 76px）
+       群組上緣在 hero 圖底上方 97px（與 evaluation 同款）
        ---------------------------------------- */
+    .hero--daily + .hero-indicator {
+        margin-top: calc(-1 * min(5.05vw, 97px));
+        padding: 0;
+        gap: 0;
+    }
+
+    .hero--daily + .hero-indicator::before {
+        content: '';
+        width: 2px;
+        height: min(3.9vw, 75px);
+        background-color: var(--color-secondary);
+        margin-bottom: min(1.66vw, 32px);
+    }
+
+    .hero--daily + .hero-indicator .scroll-line {
+        width: 2px;
+        height: min(3.96vw, 76px);
+        margin-top: min(0.79vw, 15px);
+    }
+
+    /* ----------------------------------------
+       Vision（「Reuse也很讚呢!從服務達人到經營專家」）：
+       白字疊於 hero 圖左下，絕對定位錨定 main 頂端（＝hero 上緣），不佔常流空間；
+       標題 fs72 粗體一行、副標 fs42 兩行＋左側紅色豎線
+       ---------------------------------------- */
+    main:has(> .hero--daily) {
+        position: relative;
+    }
+
     .daily-vision {
-        padding: min(14.1667vw, 272px) 0 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        text-align: left;
+        padding: min(36.875vw, 708px) min(2.5vw, 48px) 0 min(10vw, 192px);
+        text-shadow: var(--hero-text-shadow);
+    }
+
+    .daily-vision .container {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
     }
 
     .daily-vision__title {
-        font-size: min(3.125vw, 60px);
+        font-size: min(3.75vw, 72px);
         font-weight: 700;
         line-height: 1.3;
-        color: #1A1A1A;
-        /* 一行 ~1230px 超出容器：max-content + 50% 位移置中（Chrome nowrap 溢出只往右長） */
-        width: max-content;
-        max-width: none;
-        margin-left: 50%;
-        transform: translateX(-50%);
+        color: var(--text-inverse);
+        margin: 0 0 min(1.875vw, 36px);
+        /* 首字「開括號的字面在字身右半，抵銷半個字寬對齊左緣 */
+        text-indent: -0.5em;
     }
 
     .daily-vision__subtitle {
-        margin-top: min(4.8438vw, 93px);
-        font-size: min(1.25vw, 24px);
+        position: relative;
+        max-width: none;
+        margin: 0;
+        padding-left: min(1.875vw, 36px);
+        font-size: min(2.0833vw, 40px);
         font-weight: 500;
-        line-height: 2;
-        color: #4D4D4D;
+        line-height: 1.43;
+        color: var(--text-inverse);
     }
 
+    /* 副標左側紅色豎線 */
+    .daily-vision__subtitle::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: min(0.52vw, 10px);
+        bottom: min(0.52vw, 10px);
+        width: min(0.47vw, 9px);
+        background-color: var(--color-secondary);
+    }
+
+    /* 常流中的紅色分隔線改由 .daily-category--first::before 呈現 */
     .daily-vision__divider {
-        width: min(0.1042vw, 2px);
-        height: min(9.375vw, 180px);
-        margin-top: min(20.5729vw, 395px);
+        display: none;
     }
 
     /* ----------------------------------------
        Category（關於販售 / 關於收購 / 關於賣場）
-       中文 56px 黑 + 英文 20px 紅粗體置中；
-       區塊間距：上一列圖底 → 標題約 308px；標頭 → 首列圖 95px
+       中文 60px 黑 + 英文 26px 紅粗體置中；
+       首區塊：SCROLL 群組底 → 紅色垂直分隔線 935，線高 179、線底 → 標題 47
+       其後區塊：上一列圖底 → 標題約 400
        ---------------------------------------- */
     .daily-category {
-        margin-top: min(16.0417vw, 308px);
+        margin-top: min(19.8vw, 380px);
     }
 
     .daily-category--first {
-        margin-top: min(1.875vw, 36px);
+        margin-top: min(48.68vw, 935px);
+    }
+
+    .daily-category--first::before {
+        content: '';
+        display: block;
+        width: 2px;
+        height: min(9.32vw, 179px);
+        margin: 0 auto min(1.4583vw, 28px);
+        background-color: var(--color-secondary);
     }
 
     .daily-category:last-of-type {
-        padding-bottom: min(15.625vw, 300px);
+        padding-bottom: min(5vw, 96px);
     }
 
     .daily-category__header {
-        margin-bottom: min(4.9479vw, 95px);
+        margin-bottom: min(5.73vw, 110px);
     }
 
     .daily-category__title {
-        font-size: min(2.9167vw, 56px);
+        font-size: min(3.125vw, 60px);
         font-weight: 700;
         color: #1A1A1A;
-        margin: 0 0 min(0.7292vw, 14px);
+        margin: 0;
     }
 
     .daily-category__subtitle {
-        font-size: var(--font-size-lg);
+        font-size: min(1.4583vw, 28px);
         font-weight: 700;
         color: var(--color-secondary);
     }
 
     /* ----------------------------------------
-       Job 圖文列（圖左 908x573 @x130；文右 @x1185）
+       Job 圖文列（灰底文字卡 831 + 照片 916x515，左右邊距 87）
+       預設文左圖右（row-reverse）；--media-left 修飾類為圖左文右
        ---------------------------------------- */
     .daily-job {
-        flex-direction: row;
-        align-items: center;
+        flex-direction: row-reverse;
+        align-items: stretch;
         max-width: none;
-        margin: 0;
+        margin: 0 min(4.5313vw, 87px);
         padding: 0;
+        background-color: #F2F2F2;
+    }
+
+    .daily-job--media-left {
+        flex-direction: row;
     }
 
     .daily-job + .daily-job {
         margin-top: min(5.2083vw, 100px);
     }
 
+    /* 關於賣場：兩列間距較大（設計 159） */
+    .daily-category:last-of-type .daily-job + .daily-job {
+        margin-top: min(8.2813vw, 159px);
+    }
+
     .daily-job__figure {
-        flex: 0 0 min(47.2917vw, 908px);
+        flex: 0 0 min(47.7083vw, 916px);
         width: auto;
-        margin-left: min(6.7708vw, 130px);
-        aspect-ratio: 908 / 573;
+        margin: 0;
+        aspect-ratio: 916 / 515;
     }
 
-    /* 紅框職務標籤（如「顧客應對 Customer Service」）：
-       距圖左 58、距圖底 48，白底 2px 紅框，高 86 */
+    /* 圖上紅框標籤改為文字卡內 .daily-job__title，桌機隱藏 */
     .daily-job__label {
-        left: min(3.0208vw, 58px);
-        bottom: min(2.5vw, 48px);
-        gap: min(0.8333vw, 16px);
-        padding: min(1.0938vw, 21px) min(2.0833vw, 40px);
-        background-color: #FFFFFF;
-        border: min(0.1042vw, 2px) solid var(--color-secondary);
-    }
-
-    .daily-job__label-jp {
-        font-size: min(2.2396vw, 43px);
-        font-weight: 700;
-        line-height: 1;
-        letter-spacing: min(0.2083vw, 4px);
-    }
-
-    .daily-job__label-en {
-        font-size: min(1.5104vw, 29px);
-        font-weight: 700;
-        line-height: 1;
+        display: none;
     }
 
     .daily-job__body {
         flex: 1;
-        margin-top: 0;
-        margin-left: min(7.6042vw, 146px);
-        margin-right: min(3.3333vw, 64px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0;
+        padding: 0 min(2.6vw, 50px) 0 min(7.4479vw, 143px);
         text-align: left;
+    }
+
+    /* 職務標題：紅字中文 43 + 英文 24，下方紅底線 */
+    .daily-job__title {
+        display: flex;
+        align-items: baseline;
+        gap: min(1.0938vw, 21px);
+        width: fit-content;
+        margin: 0 0 min(1.25vw, 24px);
+        padding-bottom: min(0.68vw, 13px);
+        border-bottom: 3px solid var(--color-secondary);
+    }
+
+    .daily-job__title-jp {
+        font-size: min(2.2396vw, 43px);
+        font-weight: 700;
+        line-height: 1;
+        color: var(--color-secondary);
+    }
+
+    .daily-job__title-en {
+        font-size: min(1.4583vw, 28px);
+        font-weight: 700;
+        line-height: 1;
+        color: var(--color-secondary);
     }
 
     .daily-job__heading {
         font-size: min(1.6667vw, 32px);
         font-weight: 700;
-        color: #4D4D4D;
-        margin: 0 0 min(2.5vw, 48px);
+        color: #333333;
+        margin: 0 0 min(2.0833vw, 40px);
     }
 
     .daily-job__desc {
-        font-size: min(1.4063vw, 27px);
+        font-size: min(1.25vw, 24px);
         font-weight: 400;
-        line-height: 1.5;
+        line-height: 1.9;
         color: #4D4D4D;
-    }
-
-    .daily-job__desc + .daily-job__desc {
-        margin-top: min(0.5208vw, 10px);
+        margin: 0;
     }
 }
 
 /* ======== Desktop >=1024px redesign: 人事評價制度 evaluation.html ======== */
-/* 設計稿：Desktop-o_人事評價制度 1.png（5760x26984，3x，÷3 = 1920 設計 px） */
+/* 設計稿：Desktop-o_人事評價制度 1.png（3840x17990，2x，÷2 = 1920 設計 px）；
+   尺寸採 min(vw, 設計px) 流式縮放（1px = 100/1920 vw），1440 檢視即為設計值 × 0.75 */
 @media (min-width: 1024px) {
 
     /* ----------------------------------------
-       Hero 捲動指示（設計：紅線 77px 疊在照片上 + SCROLL + 紅線 77px）
-       群組 y1142–1377，hero 圖底 y1242 → 上移 100px 疊圖
+       Hero 捲動指示（設計：紅線 75px 疊在照片上 + SCROLL + 紅線 76px）
+       群組上緣在 hero 圖底上方 97px（1920 設計）
        ---------------------------------------- */
     .hero--eval + .hero-indicator {
-        margin-top: calc(-1 * min(5.2083vw, 100px));
+        margin-top: calc(-1 * min(5.05vw, 97px));
         padding: 0;
         gap: 0;
     }
 
     .hero--eval + .hero-indicator::before {
         content: '';
-        width: min(0.1042vw, 2px);
-        height: min(4.0104vw, 77px);
+        width: 2px;
+        height: min(3.9vw, 75px);
         background-color: var(--color-secondary);
-        margin-bottom: min(1.7188vw, 33px);
+        margin-bottom: min(1.66vw, 32px);
     }
 
     .hero--eval + .hero-indicator .scroll-line {
-        width: min(0.1042vw, 2px);
-        height: min(4.0104vw, 77px);
-        margin-top: min(1.0417vw, 20px);
+        width: 2px;
+        height: min(3.96vw, 76px);
+        margin-top: min(0.79vw, 15px);
     }
 
     /* ----------------------------------------
-       Intro（尋找與我們相同頻率的你）
-       heading ink y1660–1717（fs60），內文 3 行 fs26/行距48
+       Intro（尋找與我們相同頻率的你）：白字疊於 hero 圖左下，
+       絕對定位錨定 main 頂端（＝hero 上緣），不佔常流空間
+       heading fs72（ink y855@1440x4/3）、內文 4 行 fs42/行距60、左側紅豎線
        ---------------------------------------- */
+    main:has(> .hero--eval) {
+        position: relative;
+    }
+
     .eval-intro {
-        padding: min(21.25vw, 408px) var(--spacing-md) 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        text-align: left;
+        padding: min(32.6vw, 626px) min(2.5vw, 48px) 0 min(10vw, 192px);
+        text-shadow: var(--hero-text-shadow);
     }
 
     .eval-intro__heading {
-        font-size: min(3.125vw, 60px);
+        font-size: min(3.75vw, 72px);
         font-weight: 700;
-        letter-spacing: 0.04em;
         line-height: 1.3;
-        color: #1A1A1A;
-        margin: 0 0 min(4.8958vw, 94px);
+        color: var(--text-inverse);
+        margin: 0 0 min(1.8vw, 35px);
     }
 
     .eval-intro__text {
+        position: relative;
         max-width: none;
+        margin: 0;
+        padding-left: min(1.875vw, 36px);
+    }
+
+    /* 段落左側紅色豎線 */
+    .eval-intro__text::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: min(0.52vw, 10px);
+        bottom: min(0.52vw, 10px);
+        width: min(0.47vw, 9px);
+        background-color: var(--color-secondary);
     }
 
     .eval-intro__text p {
-        font-size: min(1.3542vw, 26px);
-        line-height: min(2.5vw, 48px);
-        color: #4D4D4D;
+        font-size: min(2.1875vw, 42px);
+        font-weight: 500;
+        line-height: 1.43;
+        color: var(--text-inverse);
         margin: 0;
     }
 
-    /* ----------------------------------------
-       紅色垂直分隔線（y2371–2551，高 180）
-       ---------------------------------------- */
-    .eval-part-time .highlight-line {
-        width: min(0.1042vw, 2px);
-        height: min(9.375vw, 180px);
-        margin: min(21.1458vw, 406px) auto min(1.875vw, 36px);
+    /* 桌機版換行點（.m-br 於桌機隱藏，帶 .d-br 者恢復換行） */
+    .m-br.d-br {
+        display: inline;
     }
 
     /* ----------------------------------------
-       區塊標題（兼職人員／正職人員 fs60 + 紅色英文副標 fs28）
+       紅色垂直分隔線（高 179；SCROLL 群組底 → 線頂 997）
+       ---------------------------------------- */
+    .eval-part-time,
+    .eval-full-time {
+        padding: 0;
+    }
+
+    .eval-part-time .highlight-line {
+        width: 2px;
+        height: min(9.3vw, 179px);
+        margin: min(51.9vw, 997px) auto min(1.9vw, 37px);
+    }
+
+    /* ----------------------------------------
+       區塊標題（兼職人員／正職人員 fs56 + 紅色英文副標 fs28）
        ---------------------------------------- */
     .eval-section-header__title {
-        font-size: min(3.125vw, 60px);
+        font-size: min(2.9167vw, 56px);
         font-weight: 700;
         line-height: 1.2;
         color: #1A1A1A;
@@ -5757,81 +5708,73 @@ section {
         font-size: min(1.4583vw, 28px);
         font-weight: 700;
         color: var(--color-secondary);
-        margin-top: min(0.5208vw, 10px);
+        margin-top: min(0.52vw, 10px);
     }
 
     .eval-part-time .eval-section-header {
-        margin-bottom: min(7.8646vw, 151px);
+        margin-bottom: min(16.15vw, 310px);
     }
 
     .eval-full-time .eval-section-header {
-        margin-bottom: min(8.8542vw, 170px);
+        margin-bottom: min(7vw, 134px);
     }
 
     /* ----------------------------------------
-       階梯圖軌道：改為常流排版（覆寫基底 absolute + aspect-ratio）
-       紅標籤靠左（PT x388 / 店鋪·本部 x382，高 70）
+       階梯圖軌道：沿用基底 absolute + aspect-ratio 版式，
+       紅色區塊標籤（店鋪PT／店鋪／本部）以 CSS 呈現（fs48、高 70）
        ---------------------------------------- */
-    .eval-track {
-        aspect-ratio: auto;
-    }
-
-    .eval-track__tag {
-        position: static;
+    .eval-track__label {
         display: inline-block;
-        font-size: min(2.0833vw, 40px);
+        position: absolute;
+        padding: min(0.573vw, 11px) min(1.354vw, 26px);
+        background: var(--color-secondary);
+        color: var(--text-inverse);
+        font-size: min(2.5vw, 48px);
+        font-weight: 700;
         line-height: 1;
-        padding: min(0.7813vw, 15px) min(1.5625vw, 30px);
+        white-space: nowrap;
     }
 
-    .eval-track__img {
-        position: static;
+    /* 本部階梯（桌機專用素材）顯示 */
+    .eval-track .eval-hq__img {
         display: block;
-        height: auto;
-    }
-
-    /* --- 店鋪PT：完整自帶版式的圖，置中 --- */
-    .eval-pt__img {
-        width: min(72.9167vw, 1400px);
-        margin: 0 auto;
-    }
-
-    /* --- 店鋪＋本部合併圖（含兩段階梯與間距），置中 --- */
-    .eval-ft__img {
-        width: min(72.9167vw, 1400px);
-        margin: 0 auto;
     }
 
     /* ----------------------------------------
-       兼職圖下說明（2 行 fs24/行距48，ink y4173–4244）
+       兼職圖下說明（2 行 fs32/行距49）
        ---------------------------------------- */
     .eval-caption {
-        margin: min(7.5vw, 144px) 0 0;
+        margin: min(7.6vw, 146px) 0 0;
         padding: 0 var(--spacing-md);
-        font-size: min(1.25vw, 24px);
-        line-height: min(2.5vw, 48px);
-        color: #4D4D4D;
+        font-size: min(1.6667vw, 32px);
+        line-height: 1.55;
     }
 
     /* ----------------------------------------
-       正職人員區塊：說明文字 → 標題間距 425
+       正職人員區塊：說明文字 → 標題間距 428
        ---------------------------------------- */
     .eval-full-time {
-        padding-top: min(22.1354vw, 425px);
+        padding-top: min(22.3vw, 428px);
+        padding-bottom: min(2.97vw, 57px);
     }
 
     /* ----------------------------------------
-       底部說明 3 行（fs26/行距48，ink y7701–7822；距 footer 543）
+       底部說明 3 行（fs32/行距48 灰字）＋ TOP 回頂連結
        ---------------------------------------- */
     .eval-closing {
-        padding: min(7.3958vw, 142px) var(--spacing-md) min(28.2813vw, 543px);
+        padding: min(7.45vw, 143px) var(--spacing-md) 0;
     }
 
     .eval-closing p {
         margin: 0;
-        font-size: min(1.3542vw, 26px);
-        line-height: min(2.5vw, 48px);
+        font-size: min(1.6667vw, 32px);
+        line-height: 1.5;
         color: #4D4D4D;
+    }
+
+    /* TOP 樣式沿用首頁 .back-to-top，覆寫上邊距 */
+    .eval-full-time .back-to-top {
+        margin-top: min(23.5vw, 452px);
     }
 }
 

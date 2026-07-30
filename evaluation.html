@@ -83,7 +83,7 @@
         <div class="eval-intro__text">
             <p>評價制度對我們而言，<br class="m-br">不只是考核，<br class="m-br">更是對「職人精神」的肯定</p>
             <p>我們在乎你的實績，<br class="m-br">更在乎你對每一件二手物品的尊重</p>
-            <p>如果你也熱愛 REUSE 文化，<br class="m-br">具備積極誠實的工作態度，<br class="m-br">這裡將是你發揮影響力、實踐永續理想的最佳舞台</p>
+            <p>如果你也熱愛 REUSE 文化，<br class="m-br">具備積極誠實的工作態度，<br class="m-br d-br">這裡將是你發揮影響力、實踐永續理想的最佳舞台</p>
         </div>
     </section>
 
@@ -96,12 +96,15 @@
         </div>
 
         <div class="eval-track eval-pt">
-            <img class="eval-track__img eval-pt__img" src="assets/images/evaluation/parttime.webp"
-                 alt="兼職人員（店鋪PT）升遷階梯示意圖：C級別、B級別、A級別、S級別" loading="lazy">
-
+            <span class="eval-track__label eval-pt__label" aria-hidden="true">店鋪PT</span>
+            <picture>
+                <source media="(min-width: 1024px)" srcset="assets/images/evaluation/parttime-desktop.webp">
+                <img class="eval-track__img eval-pt__img" src="assets/images/evaluation/parttime.webp"
+                     alt="兼職人員（店鋪PT）升遷階梯示意圖：C級別、B級別、A級別、S級別" loading="lazy">
+            </picture>
         </div>
 
-        <p class="eval-caption">入職滿3個月，依個人業務熟悉度達考試資格者，<br class="m-br">分別進行考試與面談，並視最終成果調整薪資。</p>
+        <p class="eval-caption">入職滿3個月，依個人業務熟悉度達考試資格者，<br class="m-br d-br">分別進行考試與面談，並視最終成果調整薪資。</p>
     </section>
 
     <!-- 正職人員 Full-time -->
@@ -111,17 +114,29 @@
             <p class="eval-section-header__subtitle">Full-time</p>
         </div>
 
-        <!-- 店鋪＋本部（單張合併圖，含兩段階梯與間距） -->
+        <!-- 行動版：店鋪＋本部單張合併圖；桌機版：店鋪／本部分別裁切定位，紅色標籤改以 CSS 呈現 -->
         <div class="eval-track eval-ft">
-            <img class="eval-track__img eval-ft__img" src="assets/images/evaluation/fulltime-and-headquarter.webp"
-                 alt="正職人員升遷階梯示意圖：店鋪（正職社員、店長、區經理）與本部（正職人員、專員、資深專員、副理、經理）" loading="lazy">
+            <span class="eval-track__label eval-ft__label--store" aria-hidden="true">店鋪</span>
+            <span class="eval-track__label eval-ft__label--hq" aria-hidden="true">本部</span>
+            <picture>
+                <source media="(min-width: 1024px)" srcset="assets/images/evaluation/store-desktop.webp">
+                <img class="eval-track__img eval-ft__img" src="assets/images/evaluation/fulltime-and-headquarter.webp"
+                     alt="正職人員升遷階梯示意圖：店鋪（正職社員、店長、區經理）與本部（正職人員、專員、資深專員、副理、經理）" loading="lazy">
+            </picture>
+            <img class="eval-track__img eval-hq__img" src="assets/images/evaluation/headquarter-desktop.webp"
+                 alt="" aria-hidden="true" loading="lazy">
         </div>
 
         <div class="eval-closing">
             <p>每年兩次調薪 (每半年一次)</p>
             <p>依據成果與行為表現進行考核 (職位越高，成果所佔的比重越大)</p>
-            <p>每年兩次的考核，透過回饋 (Feedback 促進員工成長)</p>
+            <p>每年兩次的考核，透過回饋 (Feedback) 促進員工成長</p>
         </div>
+
+        <a href="#" class="back-to-top" aria-label="回到頁面頂端">
+            <span class="back-to-top__arrow" aria-hidden="true"></span>
+            <span class="back-to-top__text">TOP</span>
+        </a>
     </section>
 </main>
 
