@@ -4945,18 +4945,6 @@ section {
         aspect-ratio: auto;
     }
 
-    /* ---------- About 區進場（initHeroPin 掛 pending、進視窗加 is-revealed） ---------- */
-    .about-section--pending {
-        opacity: 0;
-        transform: translateY(80px);
-        transition: opacity 0.9s ease-out, transform 0.9s ease-out;
-    }
-
-    .about-section--pending.is-revealed {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
     /* 設計稿無左右箭頭與指示點 */
     .hero-arrow,
     .hero-dots {
@@ -6228,5 +6216,70 @@ section {
 
     .story-qa__answer mark.is-visible {
         background-size: 100% 100%;
+    }
+}
+
+/* ======== Desktop >=1024px: daily-work／evaluation hero 釘選淡出（與首頁同款，js initHeroPin） ======== */
+@media (min-width: 1024px) {
+    /* 區塊高度 = 滿版一屏 + 100vh 釘選捲動距離；sticky 在 overflow:hidden 內不作用 */
+    .hero--daily,
+    .hero--eval {
+        overflow: visible;
+        height: calc(200vh - min(5.2083vw, 100px));
+    }
+
+    .hero--daily > .hero-image,
+    .hero--eval > .hero-image {
+        position: sticky;
+        top: min(5.2083vw, 100px);
+        height: calc(100vh - min(5.2083vw, 100px));
+        aspect-ratio: auto;
+        transition: top 0.3s ease, height 0.3s ease; /* 跟隨 header 收縮 */
+    }
+
+    .header.is-scrolled ~ main .hero--daily > .hero-image,
+    .header.is-scrolled ~ main .hero--eval > .hero-image {
+        top: min(3.6458vw, 70px);
+        height: calc(100vh - min(3.6458vw, 70px));
+    }
+
+    /* 疊字由 JS 移入釘選容器後：貼齊滿版圖左下，與圖片一起固定、淡出 */
+    .hero-image .daily-vision,
+    .hero-image .eval-intro {
+        top: auto;
+        bottom: min(7.1719vw, 137.7px);
+        padding-top: 0;
+    }
+
+    /* SCROLL 指標：hero 淡出約 50% 時 SCROLL 字樣進入視窗底（同首頁推導；
+       此兩頁紅線 75 + 間距 32 = 107 → 補償 = header收縮差 30 − 107 = −77px ≈ −4.01vw） */
+    .hero--daily + .hero-indicator,
+    .hero--eval + .hero-indicator {
+        margin-top: calc(-27.5vh - 4.01vw);
+        position: relative;
+        z-index: 1;
+    }
+
+    /* 首個內容區塊：縮短靜態設計留白，內容緊接淡出後出現 */
+    .daily-category--first {
+        margin-top: min(4.1667vw, 80px);
+    }
+
+    .eval-part-time .highlight-line {
+        margin-top: min(4.1667vw, 80px);
+    }
+
+    /* 進場動畫（js 掛 .hero-reveal、進視窗加 .is-revealed；三頁共用） */
+    .hero-reveal {
+        opacity: 0;
+        transform: translateY(80px);
+        transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-reveal.is-revealed {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

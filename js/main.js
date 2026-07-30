@@ -448,17 +448,23 @@ function initHeaderShrink() {
 }
 
 // ========================================
-// 12. 首頁桌機 hero 釘選淡出（仿 fastretailing/careers：
-//     捲動時 hero 原地固定，過一段距離後淡出、about 區 fade in up）
+// 12. 桌機 hero 釘選淡出（仿 fastretailing/careers：捲動時 hero 原地固定，
+//     過一段距離後淡出、首個內容區塊 fade in up）
+//     index 釘選 .hero-slider；daily-work／evaluation 釘選 .hero-image
 // ========================================
 function initHeroPin() {
-    const slider = document.querySelector('.hero .hero-slider')
-    const about = document.querySelector('.about-section')
-    if (!slider || !about) return
+    const pin = document.querySelector('.hero .hero-slider, .hero--daily > .hero-image, .hero--eval > .hero-image')
+    const reveal = document.querySelector('.about-section, .daily-category--first, .eval-part-time')
+    if (!pin || !reveal) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    // about 區整體進場：桌機樣式限定（.about-section--pending 只定義於 >=1024px）
-    about.classList.add('about-section--pending')
+    // daily／eval 的 hero 疊字原本錨定 main 頂端，桌機時移入釘選容器內，
+    // 與圖片一起固定、淡出（定位樣式見 .hero-image .daily-vision/.eval-intro）
+    const overlay = document.querySelector('main > .daily-vision, main > .eval-intro')
+    if (overlay && window.innerWidth >= 1024) pin.appendChild(overlay)
+
+    // 首個內容區塊整體進場：桌機樣式限定（.hero-reveal 只定義於 >=1024px）
+    reveal.classList.add('hero-reveal')
     new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -466,20 +472,20 @@ function initHeroPin() {
                 obs.unobserve(entry.target)
             }
         })
-    }, { rootMargin: '0px 0px -15% 0px' }).observe(about)
+    }, { rootMargin: '0px 0px -15% 0px' }).observe(reveal)
 
     // 釘選期間（sticky 撐出的 100vh 捲動距離）後段淡出：
     // 捲過 0.5 屏開始、0.95 屏淡完，之後隱藏避免透明層擋住點擊
     const update = () => {
         if (window.innerWidth < 1024) {
-            slider.style.opacity = ''
-            slider.style.visibility = ''
+            pin.style.opacity = ''
+            pin.style.visibility = ''
             return
         }
         const vh = window.innerHeight
         const t = Math.min(1, Math.max(0, (window.scrollY - vh * 0.5) / (vh * 0.45)))
-        slider.style.opacity = String(+(1 - t).toFixed(3))
-        slider.style.visibility = t >= 1 ? 'hidden' : ''
+        pin.style.opacity = String(+(1 - t).toFixed(3))
+        pin.style.visibility = t >= 1 ? 'hidden' : ''
     }
 
     let ticking = false
