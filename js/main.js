@@ -169,7 +169,7 @@ function initHeroSlider() {
 
     // 自動播放
     const startAutoPlay = () => {
-        autoPlayInterval = setInterval(nextSlide, 5000) // 5秒切換一次
+        autoPlayInterval = setInterval(nextSlide, 3500) // 3.5秒切換一次
     }
 
     const stopAutoPlay = () => {
