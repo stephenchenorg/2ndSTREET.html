@@ -445,6 +445,80 @@ ol {
 }
 
 /* ========================================
+   行動版：footer 上方 TOP 連結 + 右下常駐 104 應徵鈕
+   （僅 <=1023px；數值為 手機版w700 設計稿 px，body zoom 等比縮放）
+   桌機的 TOP 沿用頁面內既有 .back-to-top
+   ======================================== */
+.page-top-link,
+.entry-fab {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+
+    /* TOP：浮貼在 footer 頂線上方 58、置中、灰 #999；不佔版面高度，
+       直接落在前一區塊既有的下留白裡（設計稿即為此配置） */
+    .footer {
+        position: relative;
+    }
+
+    .page-top-link {
+        position: absolute;
+        left: 50%;
+        bottom: 100%;
+        transform: translateX(-50%);
+        margin-bottom: 58px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 13px;
+        color: #999999;
+        font-size: 18px;
+        line-height: 1;
+        letter-spacing: 0.05em;
+    }
+
+    .page-top-link__arrow {
+        width: 12px;
+        height: 12px;
+        border-top: 2px solid currentColor;
+        border-right: 2px solid currentColor;
+        transform: rotate(-45deg);
+    }
+
+    /* 104 應徵：右下常駐紅色圓鈕 130，距右 10、距底 20 */
+    .entry-fab {
+        position: fixed;
+        right: 10px;
+        bottom: 20px;
+        z-index: 990;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: var(--color-secondary);
+        color: var(--text-inverse);
+        line-height: 1;
+    }
+
+    .entry-fab__ch {
+        padding-bottom: 6px;
+        border-bottom: 2px solid currentColor;
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    .entry-fab__en {
+        margin-top: 8px;
+        font-size: 20px;
+        font-style: italic;
+    }
+}
+
+/* ========================================
    Footer
    ======================================== */
 .footer {
@@ -3929,9 +4003,9 @@ section {
         padding: 168px 0 0;
     }
 
-    /* --- 結語（灰字三行） --- */
+    /* --- 結語（灰字三行）：下留白讓 TOP 落在設計稿位置（末行距 footer 線 164） --- */
     .eval-closing {
-        padding: 62px 24px 140px;
+        padding: 62px 24px 152px;
     }
 
     .eval-closing p {
@@ -4127,8 +4201,9 @@ section {
     /* ----------------------------------------
        職缺明細卡片 + 頁籤
        ---------------------------------------- */
+    /* 下留白依設計稿：卡片紅框底距 footer 頂線 160 */
     .job-detail {
-        padding: 146px 0 90px;
+        padding: 146px 0 158px;
     }
 
     .job-detail__card {
@@ -4295,8 +4370,9 @@ section {
 
     /* ---- 訪談 Q&A ---- */
     .story-interview {
-        /* 圖片左右留白 52；文字再內縮 42（合計 94） */
-        padding: 84px 52px 120px;
+        /* 圖片左右留白 52；文字再內縮 42（合計 94）
+           下留白讓 TOP 落在設計稿位置（末行距 footer 線 212） */
+        padding: 84px 52px 204px;
     }
 
     /* 間距改由相鄰規則個別控制 */
