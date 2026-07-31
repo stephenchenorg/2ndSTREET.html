@@ -428,6 +428,9 @@ function initCollageParallax() {
     update()
 }
 
+// header 收縮門檻（hero 淡出時機以此為起點，見 initHeroPin）
+const HEADER_SHRINK_Y = 120
+
 // ========================================
 // 11. 桌機 header 捲動收縮（下滑後縮至應徵鈕高度）
 // ========================================
@@ -436,7 +439,7 @@ function initHeaderShrink() {
     if (!header) return
     // 遲滯雙門檻：向下過 SHRINK 才收縮、向上回到 EXPAND 以下才展開，
     // 中間死區吸收收縮造成的版面位移，避免門檻附近來回抖動
-    const SHRINK = 120
+    const SHRINK = HEADER_SHRINK_Y
     const EXPAND = 40
     const onScroll = () => {
         const y = window.scrollY
@@ -458,9 +461,9 @@ function initHeroPin() {
     if (!pin || !reveal) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    // daily／eval 的 hero 疊字原本錨定 main 頂端，桌機時移入釘選容器內，
-    // 與圖片一起固定、淡出（定位樣式見 .hero-image .daily-vision/.eval-intro）
-    const overlay = document.querySelector('main > .daily-vision, main > .eval-intro')
+    // hero 疊字原本錨定 main 頂端，桌機時移入釘選容器內，與圖片一起固定、淡出
+    // （index 是標題＋副標同一區塊 .daily-vision--index；daily／eval 是只含標題的 .hero-copy）
+    const overlay = document.querySelector('main > .hero-copy, main > .daily-vision--index')
     if (overlay && window.innerWidth >= 1024) pin.appendChild(overlay)
 
     // 首個內容區塊整體進場：桌機樣式限定（.hero-reveal 只定義於 >=1024px）
@@ -474,26 +477,51 @@ function initHeroPin() {
         })
     }, { rootMargin: '0px 0px -15% 0px' }).observe(reveal)
 
-    // 釘選期間（sticky 撐出的 100vh 捲動距離）分兩段淡出：
-    // 疊字先淡（0.25 屏開始、0.5 屏淡完）→ 圖片接續（0.5 屏開始、0.95 屏淡完），
+    // 釘選期間（sticky 撐出的 100vh 捲動距離）淡出，兩種節奏：
+    // ・index：疊字先淡（0.25 屏開始、0.5 屏淡完）→ 圖片接續（0.5 屏開始、0.95 屏淡完）
+    // ・daily-work／evaluation：header 收縮（捲過 HEADER_SHRINK_Y）後再捲 FADE_DELAY 屏高
+    //   才開始；標題在圖上以 bottom 定位、全程不移動，並在起點先行淡掉
+    //   （TITLE_FADE_DISTANCE 屏，淡完的那一刻副標文字剛好從視窗底出現，見 css
+    //   --hero-title-fade-end）；圖片則一路淡到「副標文字中心抵達可視區正中」才歸零
     // 淡完後隱藏避免透明層擋住點擊
-    const text = pin.querySelector('.hero-overlay, .daily-vision, .eval-intro')
+    const isIndex = pin.classList.contains('hero-slider')
+    const FADE_DELAY = 0.1
+    const FADE_DISTANCE = 0.45 // 量不到副標時的後備淡出距離（屏）
+    const TITLE_FADE_DISTANCE = 0.2
+    const title = pin.querySelector('.hero-copy, .daily-vision--index')
+    const header = document.querySelector('.header')
+    const leadText = document.querySelector('.daily-lead__text, .eval-lead__text')
+    const clamp = (value) => Math.min(1, Math.max(0, value))
+
+    // 副標文字中心對齊可視區（扣掉 sticky header）正中時的捲動量
+    const fadeEnd = (vh) => {
+        if (!leadText || !header) return HEADER_SHRINK_Y + vh * (FADE_DELAY + FADE_DISTANCE)
+        const rect = leadText.getBoundingClientRect()
+        const headerH = header.getBoundingClientRect().height
+        return rect.top + window.scrollY + rect.height / 2 - (headerH + (vh - headerH) / 2)
+    }
+
     const update = () => {
         if (window.innerWidth < 1024) {
             pin.style.opacity = ''
             pin.style.visibility = ''
-            if (text) text.style.opacity = ''
+            if (title) title.style.opacity = ''
             return
         }
         const vh = window.innerHeight
         const y = window.scrollY
-        if (text) {
-            const tText = Math.min(1, Math.max(0, (y - vh * 0.25) / (vh * 0.25)))
-            text.style.opacity = String(+(1 - tText).toFixed(3))
+        if (isIndex) {
+            if (title) title.style.opacity = String(+(1 - clamp((y - vh * 0.25) / (vh * 0.25))).toFixed(3))
+            const tIndex = clamp((y - vh * 0.5) / (vh * 0.45))
+            pin.style.opacity = String(+(1 - tIndex).toFixed(3))
+            pin.style.visibility = tIndex >= 1 ? 'hidden' : ''
+            return
         }
-        const t = Math.min(1, Math.max(0, (y - vh * 0.5) / (vh * 0.45)))
+        const start = HEADER_SHRINK_Y + vh * FADE_DELAY
+        const t = clamp((y - start) / Math.max(1, fadeEnd(vh) - start))
         pin.style.opacity = String(+(1 - t).toFixed(3))
         pin.style.visibility = t >= 1 ? 'hidden' : ''
+        if (title) title.style.opacity = String(+(1 - clamp((y - start) / (vh * TITLE_FADE_DISTANCE))).toFixed(3))
     }
 
     let ticking = false

@@ -52,6 +52,11 @@
     --font-size-3xl: clamp(32px, 6vw, 56px);
     --font-family-base: "Inter", "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif;
     
+    /* 桌機 hero 標題淡完的捲動量：須與 js initHeroPin 的
+       HEADER_SHRINK_Y + (FADE_DELAY + TITLE_FADE_DISTANCE) × 一屏 一致。
+       副標區塊以此定位，讓副標文字接在標題淡完的那一刻從視窗底出現 */
+    --hero-title-fade-end: calc(120px + 30vh);
+
     /* Shadows */
     --hero-text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -1488,7 +1493,7 @@ section {
     100%  { clip-path: inset(100% 0 0 0); }   /* 等待 1s 後重複 */
 }
 
-/* 首頁 Hero 文案（沿用 daily-vision 架構）與社員故事 TOP 連結：
+/* 首頁 Hero 疊字（標題／副標）與社員故事 TOP 連結：
    行動版不顯示（維持既有版面），桌機版於 redesign 區塊開啟 */
 .daily-vision--index,
 .back-to-top {
@@ -2397,8 +2402,16 @@ section {
     margin: 0;
 }
 
-.daily-vision__subtitle {
-    margin: var(--spacing-md) auto 0;
+/* ----------------------------------------
+   Lead Section（願景副標，獨立於標題區塊）
+   ---------------------------------------- */
+.daily-lead {
+    text-align: center;
+    padding: var(--spacing-md) var(--spacing-md) 0;
+}
+
+.daily-lead__text {
+    margin: 0 auto;
     max-width: 900px;
     font-size: var(--font-size-base);
     line-height: 2;
@@ -2406,7 +2419,7 @@ section {
 }
 
 /* 願景與第一個分類之間的紅色垂直分隔線 */
-.daily-vision__divider {
+.daily-lead__divider {
     width: 1px;
     height: 100px;
     margin: var(--spacing-xl) auto 0;
@@ -2548,7 +2561,7 @@ section {
 /* --- Intro (尋找與我們相同頻率的你) --- */
 .eval-intro {
     text-align: center;
-    padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-lg);
+    padding: var(--spacing-2xl) var(--spacing-md) 0;
 }
 
 .eval-intro__heading {
@@ -2559,12 +2572,18 @@ section {
     margin: 0 0 var(--spacing-lg);
 }
 
-.eval-intro__text {
+/* --- Lead (內文，獨立於標題區塊) --- */
+.eval-lead {
+    text-align: center;
+    padding: 0 var(--spacing-md) var(--spacing-lg);
+}
+
+.eval-lead__text {
     max-width: 1400px;
     margin: 0 auto;
 }
 
-.eval-intro__text p {
+.eval-lead__text p {
     font-size: clamp(15px, min(1.5vw, 28.8px), 28px);
     line-height: 2;
     color: var(--color-ink);
@@ -3610,6 +3629,29 @@ section {
     }
 }
 
+/* ======== Mobile <=1023px: hero 疊字回到常流（daily-work／evaluation 共用） ======== */
+@media (max-width: 1023px) {
+    /* 標題（.hero-copy）與副標於 DOM 位在 hero 與 SCROLL 之間（桌機一個疊在圖上、
+       一個接在圖下方）；行動版改以 flex order 排回 SCROLL 下方，維持既有版面 */
+    main:has(> .hero--daily),
+    main:has(> .hero--eval) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero-copy,
+    .daily-lead,
+    .eval-lead {
+        order: 1;
+    }
+
+    .daily-category,
+    .eval-part-time,
+    .eval-full-time {
+        order: 2;
+    }
+}
+
 /* ======== Mobile <=1023px: 日常業務 daily-work ======== */
 @media (max-width: 1023px) {
     /* ---- Hero（滿版 700x433）---- */
@@ -3645,15 +3687,19 @@ section {
         line-height: 1.5;
     }
 
-    .daily-vision__subtitle {
+    /* ---- Lead（願景副標）---- */
+    .daily-lead {
+        padding: 46px 25px 0;
+    }
+
+    .daily-lead__text {
         max-width: none;
-        margin-top: 46px;
         font-size: 24px;
         font-weight: 400;
         line-height: 2;
     }
 
-    .daily-vision__divider {
+    .daily-lead__divider {
         width: 2px;
         height: 130px;
         margin-top: 173px;
@@ -3765,17 +3811,17 @@ section {
     }
 
     /* --- Scroll indicator（hero 正下方） --- */
-    .hero--eval + .hero-indicator {
+    .hero--eval ~ .hero-indicator {
         gap: 14px;
         padding: 14px 0 0;
     }
 
-    .hero--eval + .hero-indicator .scroll-text {
+    .hero--eval ~ .hero-indicator .scroll-text {
         font-size: 18px;
         letter-spacing: 4px;
     }
 
-    .hero--eval + .hero-indicator .scroll-line {
+    .hero--eval ~ .hero-indicator .scroll-line {
         width: 2px;
         height: 58px;
     }
@@ -3791,7 +3837,12 @@ section {
         margin: 0 0 48px;
     }
 
-    .eval-intro__text p {
+    /* --- Lead（內文） --- */
+    .eval-lead {
+        padding: 0 24px;
+    }
+
+    .eval-lead__text p {
         font-size: 24px;
         line-height: 2;
         margin: 0;
@@ -5405,13 +5456,13 @@ section {
        Hero 捲動指示（設計：紅線 75px 疊在照片上 + SCROLL + 紅線 76px）
        群組上緣在 hero 圖底上方 97px（與 evaluation 同款）
        ---------------------------------------- */
-    .hero--daily + .hero-indicator {
+    .hero--daily ~ .hero-indicator {
         margin-top: calc(-1 * min(5.05vw, 97px));
         padding: 0;
         gap: 0;
     }
 
-    .hero--daily + .hero-indicator::before {
+    .hero--daily ~ .hero-indicator::before {
         content: '';
         width: 2px;
         height: min(3.9vw, 75px);
@@ -5419,33 +5470,24 @@ section {
         margin-bottom: min(1.66vw, 32px);
     }
 
-    .hero--daily + .hero-indicator .scroll-line {
+    .hero--daily ~ .hero-indicator .scroll-line {
         width: 2px;
         height: min(3.96vw, 76px);
         margin-top: min(0.79vw, 15px);
     }
 
     /* ----------------------------------------
-       Vision（「Reuse也很讚呢!從服務達人到經營專家」）：
-       白字疊於 hero 圖左下，絕對定位錨定 main 頂端（＝hero 上緣），不佔常流空間；
-       標題 fs72 粗體一行、副標 fs42 兩行＋左側紅色豎線
+       Vision（「Reuse也很讚呢!從服務達人到經營專家」）／Lead（副標）：
+       白字疊於 hero 圖左下（定位由 .hero-copy 負責），標題 fs72 粗體一行、
+       副標 fs40 兩行＋左側紅色豎線
        ---------------------------------------- */
-    main:has(> .hero--daily) {
-        position: relative;
-    }
-
     .daily-vision {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 2;
         text-align: left;
-        padding: min(36.875vw, 708px) min(2.5vw, 48px) 0 min(10vw, 192px);
-        text-shadow: var(--hero-text-shadow);
+        padding: min(36.875vw, 708px) 0 0;
     }
 
-    .daily-vision .container {
+    .daily-vision .container,
+    .daily-lead .container {
         width: 100%;
         max-width: none;
         margin: 0;
@@ -5462,19 +5504,38 @@ section {
         text-indent: -0.5em;
     }
 
-    .daily-vision__subtitle {
+    /* 副標移出 hero 圖片，改為圖下方常流內容：深色字、左緣對齊標題 */
+    .daily-lead {
+        position: relative;
+        z-index: 1;
+        /* 常流起點在 hero 區塊底（200vh），上拉到「標題淡完時，垂直置中的副標文字
+           剛好從視窗底出現」。min(3.3854vw, 65px) = 半個收縮後 header + header 收縮差；
+           末項 = 半個文字高（2 行 × 40 × 1.85 = 148），行數變動時需一併調整 */
+        margin-top: calc(var(--hero-title-fade-end) - 150vh + min(3.3854vw, 65px) + min(3.8542vw, 74px));
+        /* 撐滿一屏、文字垂直置中：區塊在淡出起點進場，文字則等升到畫面中段才現身，
+           此時 hero 已淡完，文字落在白底上（同參考站 fastretailing/careers 作法） */
+        /* 扣掉收縮後的 sticky header，置中以「header 以下的可視區」為準 */
+        min-height: calc(100vh - min(3.6458vw, 70px));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 min(2.5vw, 48px) 0 min(10vw, 192px);
+        text-align: left;
+    }
+
+    .daily-lead__text {
         position: relative;
         max-width: none;
         margin: 0;
         padding-left: min(1.875vw, 36px);
         font-size: min(2.0833vw, 40px);
         font-weight: 500;
-        line-height: 1.43;
-        color: var(--text-inverse);
+        line-height: 1.85;
+        color: #4D4D4D;
     }
 
     /* 副標左側紅色豎線 */
-    .daily-vision__subtitle::before {
+    .daily-lead__text::before {
         content: '';
         position: absolute;
         left: 0;
@@ -5485,7 +5546,7 @@ section {
     }
 
     /* 常流中的紅色分隔線改由 .daily-category--first::before 呈現 */
-    .daily-vision__divider {
+    .daily-lead__divider {
         display: none;
     }
 
@@ -5631,13 +5692,13 @@ section {
        Hero 捲動指示（設計：紅線 75px 疊在照片上 + SCROLL + 紅線 76px）
        群組上緣在 hero 圖底上方 97px（1920 設計）
        ---------------------------------------- */
-    .hero--eval + .hero-indicator {
+    .hero--eval ~ .hero-indicator {
         margin-top: calc(-1 * min(5.05vw, 97px));
         padding: 0;
         gap: 0;
     }
 
-    .hero--eval + .hero-indicator::before {
+    .hero--eval ~ .hero-indicator::before {
         content: '';
         width: 2px;
         height: min(3.9vw, 75px);
@@ -5645,30 +5706,20 @@ section {
         margin-bottom: min(1.66vw, 32px);
     }
 
-    .hero--eval + .hero-indicator .scroll-line {
+    .hero--eval ~ .hero-indicator .scroll-line {
         width: 2px;
         height: min(3.96vw, 76px);
         margin-top: min(0.79vw, 15px);
     }
 
     /* ----------------------------------------
-       Intro（尋找與我們相同頻率的你）：白字疊於 hero 圖左下，
-       絕對定位錨定 main 頂端（＝hero 上緣），不佔常流空間
-       heading fs72（ink y855@1440x4/3）、內文 4 行 fs42/行距60、左側紅豎線
+       Intro（尋找與我們相同頻率的你）／Lead（內文）：白字疊於 hero 圖左下
+       （定位由 .hero-copy 負責）
+       heading fs72（ink y855@1440x4/3）、內文 3 段 fs42/行距60、左側紅豎線
        ---------------------------------------- */
-    main:has(> .hero--eval) {
-        position: relative;
-    }
-
     .eval-intro {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 2;
         text-align: left;
-        padding: min(32.6vw, 626px) min(2.5vw, 48px) 0 min(10vw, 192px);
-        text-shadow: var(--hero-text-shadow);
+        padding: min(32.6vw, 626px) 0 0;
     }
 
     .eval-intro__heading {
@@ -5679,7 +5730,26 @@ section {
         margin: 0 0 min(1.8vw, 35px);
     }
 
-    .eval-intro__text {
+    /* 內文移出 hero 圖片，改為圖下方常流內容：深色字、左緣對齊標題 */
+    .eval-lead {
+        position: relative;
+        z-index: 1;
+        /* 常流起點在 hero 區塊底（200vh），上拉到「標題淡完時，垂直置中的副標文字
+           剛好從視窗底出現」。min(3.3854vw, 65px) = 半個收縮後 header + header 收縮差；
+           末項 = 半個文字高（4 行 × 42 × 1.85 = 310.8），行數變動時需一併調整 */
+        margin-top: calc(var(--hero-title-fade-end) - 150vh + min(3.3854vw, 65px) + min(8.0938vw, 155.4px));
+        /* 撐滿一屏、文字垂直置中：區塊在淡出起點進場，文字則等升到畫面中段才現身，
+           此時 hero 已淡完，文字落在白底上（同參考站 fastretailing/careers 作法） */
+        /* 扣掉收縮後的 sticky header，置中以「header 以下的可視區」為準 */
+        min-height: calc(100vh - min(3.6458vw, 70px));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 min(2.5vw, 48px) 0 min(10vw, 192px);
+        text-align: left;
+    }
+
+    .eval-lead__text {
         position: relative;
         max-width: none;
         margin: 0;
@@ -5687,7 +5757,7 @@ section {
     }
 
     /* 段落左側紅色豎線 */
-    .eval-intro__text::before {
+    .eval-lead__text::before {
         content: '';
         position: absolute;
         left: 0;
@@ -5697,11 +5767,11 @@ section {
         background-color: var(--color-secondary);
     }
 
-    .eval-intro__text p {
+    .eval-lead__text p {
         font-size: min(2.1875vw, 42px);
         font-weight: 500;
-        line-height: 1.43;
-        color: var(--text-inverse);
+        line-height: 1.85;
+        color: var(--color-ink);
         margin: 0;
     }
 
@@ -6232,31 +6302,96 @@ section {
         height: calc(100vh - min(3.6458vw, 70px));
     }
 
-    /* 疊字由 JS 移入釘選容器後：貼齊滿版圖左下，與圖片一起固定、淡出
-       （index 的釘選容器是 .hero-slider，daily／eval 是 .hero-image） */
-    .hero-image .daily-vision,
-    .hero-slider .daily-vision,
-    .hero-image .eval-intro {
+    /* 疊字容器（標題＋副標兩區塊）：白字疊於 hero 圖左下，絕對定位錨定 main 頂端
+       （＝hero 上緣），不佔常流空間；上方留白由內部標題區塊的 padding-top 決定 */
+    main:has(> .hero-copy) {
+        position: relative;
+    }
+
+    .hero-copy {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        padding: 0 min(2.5vw, 48px) 0 min(10vw, 192px);
+        text-shadow: var(--hero-text-shadow);
+    }
+
+    /* 由 JS 移入釘選容器後：貼齊滿版圖左下，與圖片一起固定、淡出
+       bottom = 原設計的圖底留白 137.7 + 已移出的副標高度 114.4（2 行 × 40）；
+       副標搬出圖片後兩頁共用同一高度，標題視覺位置才會一致 */
+    .hero--daily .hero-copy,
+    .hero--eval .hero-copy {
+        top: auto;
+        bottom: min(13.1302vw, 252.1px);
+    }
+
+    .hero-image .hero-copy > * {
+        padding-top: 0;
+    }
+
+    /* 副標的出現時機改由捲動位置決定（見各頁 lead 的 margin-top），
+       桌機不再套用 IntersectionObserver 的進場淡入，否則會多壓一段位移與延遲 */
+    .daily-lead .fade-in-up,
+    .eval-lead.fade-in-up {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    /* index 版疊字：桌機開啟（行動版由基底規則隱藏，訊息由紅框標語區呈現）。
+       本頁維持改版前的做法：標題＋副標同一絕對定位區塊，整塊疊在 hero 圖左下，
+       由 JS 移入 .hero-slider 後與圖片一起釘選、分兩段淡出 */
+    .daily-vision--index {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        padding: min(36.875vw, 708px) min(2.5vw, 48px) 0 min(10vw, 192px);
+        text-shadow: var(--hero-text-shadow);
+    }
+
+    /* 標題非「開頭，不需要 daily 的負縮排 */
+    .daily-vision--index .daily-vision__title {
+        text-indent: 0;
+    }
+
+    .daily-vision--index .daily-vision__subtitle {
+        position: relative;
+        max-width: none;
+        margin: 0;
+        padding-left: min(1.875vw, 36px);
+        font-size: min(2.0833vw, 40px);
+        font-weight: 500;
+        line-height: 1.43;
+        color: var(--text-inverse);
+    }
+
+    /* 副標左側紅色豎線 */
+    .daily-vision--index .daily-vision__subtitle::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: min(0.52vw, 10px);
+        bottom: min(0.52vw, 10px);
+        width: min(0.47vw, 9px);
+        background-color: var(--color-secondary);
+    }
+
+    /* 疊字移入釘選容器後貼齊圖左下 */
+    .hero-slider .daily-vision--index {
         top: auto;
         bottom: min(7.1719vw, 137.7px);
         padding-top: 0;
     }
 
-    /* index 版 vision：桌機開啟（行動版由基底規則隱藏，訊息由紅框標語區呈現）；
-       標題非「開頭，不需要 daily 的負縮排 */
-    .daily-vision--index {
-        display: block;
-    }
-
-    .daily-vision--index .daily-vision__title {
-        text-indent: 0;
-    }
-
-    /* SCROLL 指標：hero 淡出約 50% 時 SCROLL 字樣進入視窗底（同首頁推導；
-       此兩頁紅線 75 + 間距 32 = 107 → 補償 = header收縮差 30 − 107 = −77px ≈ −4.01vw） */
-    .hero--daily + .hero-indicator,
-    .hero--eval + .hero-indicator {
-        margin-top: calc(-27.5vh - 4.01vw);
+    /* SCROLL 指標：進場時機的補償已移到副標區塊，此處留出副標與 SCROLL 之間的白色區域 */
+    .hero--daily ~ .hero-indicator,
+    .hero--eval ~ .hero-indicator {
+        margin-top: min(15.625vw, 300px);
         position: relative;
         z-index: 1;
     }
