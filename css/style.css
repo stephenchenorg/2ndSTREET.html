@@ -57,6 +57,9 @@
        副標區塊以此定位，讓副標文字接在標題淡完的那一刻從視窗底出現 */
     --hero-title-fade-end: calc(120px + 30vh);
 
+    /* 桌機 hero 釘選距離的緩衝（見 .hero--daily / .hero--eval） */
+    --hero-pin-extra: 20vh;
+
     /* Shadows */
     --hero-text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -5511,7 +5514,7 @@ section {
         /* 常流起點在 hero 區塊底（200vh），上拉到「標題淡完時，垂直置中的副標文字
            剛好從視窗底出現」。min(3.3854vw, 65px) = 半個收縮後 header + header 收縮差；
            末項 = 半個文字高（2 行 × 40 × 1.85 = 148），行數變動時需一併調整 */
-        margin-top: calc(var(--hero-title-fade-end) - 150vh + min(3.3854vw, 65px) + min(3.8542vw, 74px));
+        margin-top: calc(var(--hero-title-fade-end) - 150vh + min(3.3854vw, 65px) + min(3.8542vw, 74px) - var(--hero-pin-extra));
         /* 撐滿一屏、文字垂直置中：區塊在淡出起點進場，文字則等升到畫面中段才現身，
            此時 hero 已淡完，文字落在白底上（同參考站 fastretailing/careers 作法） */
         /* 扣掉收縮後的 sticky header，置中以「header 以下的可視區」為準 */
@@ -5737,7 +5740,7 @@ section {
         /* 常流起點在 hero 區塊底（200vh），上拉到「標題淡完時，垂直置中的副標文字
            剛好從視窗底出現」。min(3.3854vw, 65px) = 半個收縮後 header + header 收縮差；
            末項 = 半個文字高（4 行 × 42 × 1.85 = 310.8），行數變動時需一併調整 */
-        margin-top: calc(var(--hero-title-fade-end) - 150vh + min(3.3854vw, 65px) + min(8.0938vw, 155.4px));
+        margin-top: calc(var(--hero-title-fade-end) - 150vh + min(3.3854vw, 65px) + min(8.0938vw, 155.4px) - var(--hero-pin-extra));
         /* 撐滿一屏、文字垂直置中：區塊在淡出起點進場，文字則等升到畫面中段才現身，
            此時 hero 已淡完，文字落在白底上（同參考站 fastretailing/careers 作法） */
         /* 扣掉收縮後的 sticky header，置中以「header 以下的可視區」為準 */
@@ -6281,10 +6284,14 @@ section {
 /* ======== Desktop >=1024px: daily-work／evaluation hero 釘選淡出（與首頁同款，js initHeroPin） ======== */
 @media (min-width: 1024px) {
     /* 區塊高度 = 滿版一屏 + 100vh 釘選捲動距離；sticky 在 overflow:hidden 內不作用 */
+    /* 區塊高度 = 滿版一屏 + 100vh 釘選捲動距離 + 緩衝。
+       緩衝是為了讓 sticky 撐到圖片淡完（終點見 js fadeEnd，會隨副標行數／視窗而變）
+       才解除釘選，否則圖片會在還有殘留不透明度時就跟著上移、下方露出白底。
+       副標的 margin-top 會扣掉同一個緩衝，後續常流內容位置不受影響 */
     .hero--daily,
     .hero--eval {
         overflow: visible;
-        height: calc(200vh - min(5.2083vw, 100px));
+        height: calc(200vh - min(5.2083vw, 100px) + var(--hero-pin-extra));
     }
 
     .hero--daily > .hero-image,
@@ -6388,21 +6395,30 @@ section {
         padding-top: 0;
     }
 
-    /* SCROLL 指標：進場時機的補償已移到副標區塊，此處留出副標與 SCROLL 之間的白色區域 */
-    .hero--daily ~ .hero-indicator,
+    /* SCROLL 指標：以負 margin 拉進副標區塊的一屏高度內，與副標共用同一屏，
+       兩者之間留 160 的間距。負值 = 間距 −（區塊底 → 文字底的距離），
+       其中「區塊底 → 文字底」= (100vh − header − 文字高) ÷ 2；
+       min(10.1563vw, 195px) = 間距 160 + 半個收縮後 header 35，末項為半個文字高。
+       副標文字本身仍是區塊內的置中元素，淡出終點（js 以文字中心量測）不受影響 */
+    .hero--daily ~ .hero-indicator {
+        margin-top: calc(min(10.1563vw, 195px) + min(3.8542vw, 74px) - 50vh);
+        position: relative;
+        z-index: 1;
+    }
+
     .hero--eval ~ .hero-indicator {
-        margin-top: min(15.625vw, 300px);
+        margin-top: calc(min(10.1563vw, 195px) + min(8.0938vw, 155.4px) - 50vh);
         position: relative;
         z-index: 1;
     }
 
     /* 首個內容區塊：縮短靜態設計留白，內容緊接淡出後出現 */
     .daily-category--first {
-        margin-top: min(4.1667vw, 80px);
+        margin-top: min(8.3333vw, 160px);
     }
 
     .eval-part-time .highlight-line {
-        margin-top: min(4.1667vw, 80px);
+        margin-top: min(8.3333vw, 160px);
     }
 
     /* 進場動畫（js 掛 .hero-reveal、進視窗加 .is-revealed；三頁共用） */
