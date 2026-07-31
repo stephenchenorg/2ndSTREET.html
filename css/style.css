@@ -3736,21 +3736,30 @@ section {
         aspect-ratio: 700 / 433;
     }
 
-    /* ---- Scroll Indicator ---- */
-    .hero-indicator {
-        margin: 20px auto 0;
+    /* ---- Scroll Indicator（設計稿 2：紅線 51 壓在照片下緣上 → SCROLL → 紅線 58）----
+       以 .hero--daily ~ 提高權重，避免被其他頁行動版的 .hero-indicator 規則覆蓋 */
+    .hero--daily ~ .hero-indicator {
+        margin: -58px auto 0;
         padding: 0;
-        gap: 15px;
+        gap: 0;
     }
 
-    .scroll-text {
-        font-size: 16px;
-        letter-spacing: 4px;
+    .hero--daily ~ .hero-indicator::before {
+        height: 51px;
+        margin-bottom: 28px;
     }
 
-    .scroll-line {
+    .hero--daily ~ .hero-indicator .scroll-text {
+        font-size: 18px;
+        letter-spacing: 1px;
+        line-height: 1;
+        margin-bottom: 16px;
+    }
+
+    .hero--daily ~ .hero-indicator .scroll-line {
         width: 2px;
         height: 58px;
+        margin-top: 0;
     }
 
     /* ---- Vision（願景標語）---- */
@@ -3783,20 +3792,22 @@ section {
     }
 
     /* ---- Category（關於販售 / 收購 / 賣場）---- */
+    /* 上一個職務照片底 → 大類中文標題 192 */
     .daily-category {
-        margin-top: 168px;
+        margin-top: 184px;
     }
 
     .daily-category--first {
         margin-top: 25px;
     }
 
+    /* 末段照片底 → footer 頂線 161 */
     .daily-category:last-of-type {
-        padding-bottom: 150px;
+        padding-bottom: 161px;
     }
 
     .daily-category__header {
-        margin-bottom: 62px;
+        margin-bottom: 82px;
     }
 
     .daily-category__title {
@@ -3811,57 +3822,70 @@ section {
         font-weight: 700;
     }
 
-    /* ---- Job Block（滿版圖 + 置中文字）---- */
+    /* ---- Job Block（設計稿 2：灰底文字區在上、滿版橫幅照片在下）----
+       DOM 順序是 figure → body，改以 column-reverse 讓文字區排到照片上方 */
     .daily-job {
         max-width: none;
         padding: 0;
+        flex-direction: column-reverse;
     }
 
     .daily-job + .daily-job {
-        margin-top: 46px;
+        margin-top: 90px;
     }
 
+    /* 照片：滿版 700×322 */
     .daily-job__figure {
-        aspect-ratio: 700 / 573;
+        aspect-ratio: 700 / 322;
     }
 
-    /* 標籤：置中、貼近圖片下緣 */
+    /* 圖上紅框標籤停用，改用文字區內的 .daily-job__title（同桌機） */
     .daily-job__label {
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 40px;
-        gap: 14px;
-        padding: 18px 40px;
-        border-width: 2px;
-        white-space: nowrap;
+        display: none;
     }
 
-    .daily-job__label-jp {
-        font-size: 38px;
+    /* 文字區：灰底、靠左（左留白 120），高 314 */
+    .daily-job__body {
+        margin-top: 0;
+        padding: 53px 60px 30px 120px;
+        background-color: #F2F2F2;
+        text-align: left;
+    }
+
+    /* 職務標題：紅字中文 39 + 英文 25，下方紅底線 */
+    .daily-job__title {
+        display: flex;
+        align-items: baseline;
+        gap: 13px;
+        width: fit-content;
+        margin: 0 0 16px;
+        padding-bottom: 10px;
+        border-bottom: 4px solid var(--color-secondary);
+    }
+
+    .daily-job__title-jp {
+        font-size: 39px;
         font-weight: 700;
         line-height: 1;
-        letter-spacing: 2px;
+        color: var(--color-secondary);
     }
 
-    .daily-job__label-en {
-        font-size: 26px;
+    .daily-job__title-en {
+        font-size: 25px;
         font-weight: 700;
-    }
-
-    .daily-job__body {
-        margin-top: 49px;
-        padding: 0 25px;
+        line-height: 1;
+        color: var(--color-secondary);
     }
 
     .daily-job__heading {
-        font-size: 36px;
+        font-size: 31px;
         font-weight: 700;
-        line-height: 1.3;
-        margin-bottom: 26px;
+        line-height: 1;
+        margin-bottom: 36px;
     }
 
     .daily-job__desc {
-        font-size: 23px;
+        font-size: 24px;
         font-weight: 400;
         line-height: 2;
     }
