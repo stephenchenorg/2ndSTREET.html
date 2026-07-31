@@ -733,6 +733,11 @@ ol {
     height: 100%;
 }
 
+/* 首頁／日常業務／人事評價 hero 對齊頂端，避免裁到人物頭部（社員故事 story-hero 不套用） */
+.hero:not(.story-hero) .hero-image img {
+    object-position: top;
+}
+
 /* Hero Slider */
 .hero-slider {
     position: relative;
