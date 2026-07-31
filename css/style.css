@@ -447,21 +447,22 @@ ol {
 /* ========================================
    行動版：footer 上方 TOP 連結 + 右下常駐 104 應徵鈕
    （僅 <=1023px；數值為 手機版w700 設計稿 px，body zoom 等比縮放）
-   桌機的 TOP 沿用頁面內既有 .back-to-top
+   桌機的 TOP：頁面內有 .back-to-top 的沿用之，沒有的改用這顆（見文末桌機規則）
    ======================================== */
 .page-top-link,
 .entry-fab {
     display: none;
 }
 
+/* .page-top-link 以 footer 為定位基準 */
+.footer {
+    position: relative;
+}
+
 @media (max-width: 1023px) {
 
     /* TOP：浮貼在 footer 頂線上方 58、置中、灰 #999；不佔版面高度，
        直接落在前一區塊既有的下留白裡（設計稿即為此配置） */
-    .footer {
-        position: relative;
-    }
-
     .page-top-link {
         position: absolute;
         left: 50%;
@@ -515,6 +516,39 @@ ol {
         margin-top: 8px;
         font-size: 20px;
         font-style: italic;
+    }
+}
+
+/* 桌機：頁面內沒有 .back-to-top 的頁（職缺介紹／社員故事／各社員故事／招募），
+   改用 footer 頂線上方這顆；視覺沿用 .back-to-top（灰 #999、上箭頭＋TOP） */
+@media (min-width: 1024px) {
+    body:not(:has(main .back-to-top)) .page-top-link {
+        position: absolute;
+        left: 50%;
+        bottom: 100%;
+        transform: translateX(-50%);
+        margin-bottom: min(2.9688vw, 57px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: min(0.4167vw, 8px);
+        color: #999999;
+        font-size: min(0.9375vw, 18px);
+        line-height: 1;
+        letter-spacing: 0.05em;
+        transition: color var(--transition-base);
+    }
+
+    body:not(:has(main .back-to-top)) .page-top-link:hover {
+        color: var(--color-secondary);
+    }
+
+    body:not(:has(main .back-to-top)) .page-top-link__arrow {
+        width: min(0.9375vw, 18px);
+        height: min(0.9375vw, 18px);
+        border-top: 2px solid currentColor;
+        border-right: 2px solid currentColor;
+        transform: rotate(-45deg);
     }
 }
 
