@@ -3755,16 +3755,16 @@ section {
         aspect-ratio: 700 / 433;
     }
 
-    /* ---- Scroll Indicator（設計稿 2：紅線 51 壓在照片下緣上 → SCROLL → 紅線 58）----
+    /* ---- Scroll Indicator（0803 設計稿：上線 463-521 壓在照片下緣上 → SCROLL → 下線 582-640）----
        以 .hero--daily ~ 提高權重，避免被其他頁行動版的 .hero-indicator 規則覆蓋 */
     .hero--daily ~ .hero-indicator {
-        margin: -58px auto 0;
+        margin: -66px auto 0;
         padding: 0;
         gap: 0;
     }
 
     .hero--daily ~ .hero-indicator::before {
-        height: 51px;
+        height: 58px;
         margin-bottom: 28px;
     }
 
@@ -3783,13 +3783,13 @@ section {
 
     /* ---- Vision（願景標語）---- */
     .daily-vision {
-        padding: 107px 25px 0;
+        padding: 105px 25px 0;
     }
 
     .daily-vision__title {
         font-size: 43px;
         font-weight: 700;
-        line-height: 1.5;
+        line-height: 1.56;
     }
 
     /* ---- Lead（願景副標）---- */
@@ -3810,35 +3810,23 @@ section {
         margin-top: 173px;
     }
 
-    /* ---- Category（關於販售 / 收購 / 賣場）---- */
-    /* 上一個職務照片底 → 大類中文標題 192 */
+    /* ---- Category（0803 設計稿：取消大類標題，五列職務等距 88）---- */
     .daily-category {
-        margin-top: 184px;
+        margin-top: 88px;
     }
 
+    /* 紅色分隔線底 → 首列灰底文字卡 35 */
     .daily-category--first {
-        margin-top: 25px;
+        margin-top: 35px;
     }
 
-    /* 末段照片底 → footer 頂線 161 */
+    /* 末段照片底 → footer 頂線 159 */
     .daily-category:last-of-type {
-        padding-bottom: 161px;
+        padding-bottom: 159px;
     }
 
     .daily-category__header {
-        margin-bottom: 82px;
-    }
-
-    .daily-category__title {
-        font-size: 44px;
-        line-height: 1.3;
-        margin: 0 0 6px;
-    }
-
-    .daily-category__subtitle {
-        font-size: var(--font-size-lg);
-        line-height: 1.4;
-        font-weight: 700;
+        display: none;
     }
 
     /* ---- Job Block（設計稿 2：灰底文字區在上、滿版橫幅照片在下）----
@@ -3850,12 +3838,12 @@ section {
     }
 
     .daily-job + .daily-job {
-        margin-top: 90px;
+        margin-top: 88px;
     }
 
-    /* 照片：滿版 700×322 */
+    /* 照片：滿版 700×325 */
     .daily-job__figure {
-        aspect-ratio: 700 / 322;
+        aspect-ratio: 700 / 325;
     }
 
     /* 圖上紅框標籤停用，改用文字區內的 .daily-job__title（同桌機） */
@@ -3863,10 +3851,10 @@ section {
         display: none;
     }
 
-    /* 文字區：灰底、靠左（左留白 120），高 314 */
+    /* 文字區：灰底、靠左（左留白 120），高 312 */
     .daily-job__body {
         margin-top: 0;
-        padding: 53px 60px 30px 120px;
+        padding: 50px 60px 30px 120px;
         background-color: #F2F2F2;
         text-align: left;
     }
