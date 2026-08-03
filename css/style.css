@@ -2734,44 +2734,29 @@ section {
     }
 }
 
-/* --- Career track diagram (階梯示意圖 + 標籤) --- */
+/* --- Career track diagram (階梯示意圖 + 標籤) ---
+   三張階梯素材皆為無標籤裁切圖（2x），級別/職稱/年資/引線文字內建；
+   紅色標籤（正職人員／兼職人員）一律以 CSS 疊在左上角，行動版與桌機共用同一組素材。
+   容器上緣＝標籤上緣，padding-top 讓出標籤與圖之間的留白 */
 .eval-track {
     position: relative;
-    width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-    container-type: inline-size;
 }
 
 .eval-track__img {
-    position: absolute;
+    display: block;
     height: auto;
 }
 
-/* 紅色區塊標籤（店鋪PT／店鋪／本部）：桌機版以 CSS 呈現；
-   行動版圖素材已內建標籤，故預設隱藏、僅於 ≥1024px 顯示 */
 .eval-track__label {
-    display: none;
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    background: var(--color-secondary);
+    color: var(--text-inverse);
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
 }
-
-/* 本部階梯（桌機專用素材）：行動版以合併圖呈現，故預設隱藏 */
-.eval-track .eval-hq__img {
-    display: none;
-}
-
-/* 級別/職稱/年資/引線文字皆已內建於階梯圖素材（2x），不另用 HTML 重疊 */
-
-/* --- Track: 店鋪PT (part-time)；容器上緣＝標籤上緣、下緣＝階梯圖下緣（1920 設計） --- */
-.eval-pt { aspect-ratio: 1920 / 1006; }
-.eval-pt__label { left: 19.93%; top: 0; }
-.eval-pt__img { left: 19.27%; top: 17.30%; width: 62.19%; }
-
-/* --- Track: 店鋪＋本部（單一容器，桌機為兩張裁切圖＋兩個標籤） --- */
-.eval-ft { aspect-ratio: 1920 / 2619.3; }
-.eval-ft__label--store { left: 19.93%; top: 0; }
-.eval-ft__img { left: 21.61%; top: 6.33%; width: 59.90%; }
-.eval-ft__label--hq { left: 19.93%; top: 56.20%; }
-.eval-hq__img { left: 21.41%; top: 62.99%; width: 60.10%; }
 
 /* --- Caption (single line under a track) --- */
 .eval-caption {
@@ -3757,8 +3742,8 @@ section {
     }
 
     .daily-category,
-    .eval-part-time,
-    .eval-full-time {
+    .eval-store,
+    .eval-headquarter {
         order: 2;
     }
 }
@@ -3945,10 +3930,15 @@ section {
         height: 426px; /* 設計稿 hero 700x426，object-fit cover 裁切 */
     }
 
-    /* --- Scroll indicator（hero 正下方） --- */
+    /* --- Scroll indicator（hero 正下方；設計稿 上線 463-521 / SCROLL / 下線 582-640） --- */
     .hero--eval ~ .hero-indicator {
+        margin-top: -82px;
         gap: 14px;
         padding: 14px 0 0;
+    }
+
+    .hero--eval ~ .hero-indicator::before {
+        margin-bottom: 13px;
     }
 
     .hero--eval ~ .hero-indicator .scroll-text {
@@ -3959,11 +3949,12 @@ section {
     .hero--eval ~ .hero-indicator .scroll-line {
         width: 2px;
         height: 58px;
+        margin-top: 2px;
     }
 
     /* --- Intro（尋找與我們相同頻率的你） --- */
     .eval-intro {
-        padding: 104px 24px 0;
+        padding: 115px 24px 0;
     }
 
     .eval-intro__heading {
@@ -3983,21 +3974,26 @@ section {
         margin: 0;
     }
 
-    /* --- 兼職人員 section --- */
-    .eval-part-time {
+    /* --- 店鋪 section --- */
+    .eval-store {
         padding: 0;
     }
 
-    .eval-part-time .highlight-line {
+    .eval-store .highlight-line {
         width: 2px;
-        height: 130px;
-        margin: 122px auto 24px;
+        height: 136px;
+        margin: 161px auto 26px;
     }
 
     /* --- Section header（中文標題 + 紅色英文副標） --- */
     .eval-section-header {
         padding: 0 24px;
         margin-bottom: 64px;
+    }
+
+    /* 本部：標題群到紅標籤留白較大（設計稿 191） */
+    .eval-headquarter .eval-section-header {
+        margin-bottom: 191px;
     }
 
     .eval-section-header__title {
@@ -4009,61 +4005,57 @@ section {
         margin-top: 10px;
     }
 
-    /* --- Track 共通：改為流式排版，紅 tag 疊在左上角 --- */
-    .eval-track {
-        aspect-ratio: auto;
-        max-width: none;
+    /* --- Track 共通：紅標籤疊左上角，階梯圖靠設計稿座標定位 --- */
+    .eval-track__label {
+        left: 35px;
+        padding: 7px 14px;
+        font-size: 24px;
     }
 
-    .eval-track__tag {
-        left: 34px;
-        top: 0;
-        padding: 6px 14px;
-        font-size: 26px;
+    .eval-track--store {
+        padding-top: 22px;
     }
 
-    .eval-track__img {
-        position: static;
-        display: block;
-        height: auto;
+    .eval-track--store .eval-track__img {
+        width: 623px;
+        margin-left: 45px;
     }
 
-    /* 店鋪PT：完整自帶版式的圖，置中 */
-    .eval-pt {
-        aspect-ratio: auto;
+    .eval-track--part {
+        margin-top: 50px;
+        padding-top: 99px;
     }
 
-    .eval-pt__img {
-        width: 643px;
-        margin: 0 auto;
+    .eval-track--part .eval-track__img {
+        width: 621px;
+        margin-left: 46px;
     }
 
-    /* 店鋪＋本部合併圖（含兩段階梯與間距），置中 */
-    .eval-ft {
-        aspect-ratio: auto;
+    .eval-track--hq {
+        padding-top: 21px;
     }
 
-    .eval-ft__img {
-        width: 643px;
-        margin: 0 auto;
+    .eval-track--hq .eval-track__img {
+        width: 624px;
+        margin-left: 37px;
     }
 
     /* --- 圖下說明（兼職考核說明） --- */
     .eval-caption {
-        padding: 60px 24px 0;
+        padding: 73px 24px 0;
         margin: 0;
         font-size: 20px;
         line-height: 2.05;
     }
 
-    /* --- 正職人員 section --- */
-    .eval-full-time {
-        padding: 168px 0 0;
+    /* --- 本部 section --- */
+    .eval-headquarter {
+        padding: 174px 0 0;
     }
 
-    /* --- 結語（灰字三行）：下留白讓 TOP 落在設計稿位置（末行距 footer 線 164） --- */
+    /* --- 結語（灰字三行）：下留白讓末行距 footer 頂線 151 --- */
     .eval-closing {
-        padding: 62px 24px 152px;
+        padding: 60px 24px 151px;
     }
 
     .eval-closing p {
@@ -5688,55 +5680,41 @@ section {
     }
 
     /* ----------------------------------------
-       Category（關於販售 / 關於收購 / 關於賣場）
-       中文 60px 黑 + 英文 26px 紅粗體置中；
-       首區塊：SCROLL 群組底 → 紅色垂直分隔線 935，線高 179、線底 → 標題 47
-       其後區塊：上一列圖底 → 標題約 400
+       Category（0803 設計稿：桌機取消「關於販售／收購／賣場」大類標題，
+       五列職務改為等距（102）的單一清單；標題僅行動版保留）
+       首區塊：SCROLL 群組底 → 紅色垂直分隔線 195，線高 181、線底 → 首列圖 44
        ---------------------------------------- */
     .daily-category {
-        margin-top: min(19.8vw, 380px);
-    }
-
-    .daily-category--first {
-        margin-top: min(48.68vw, 935px);
+        margin-top: min(5.3125vw, 102px);
     }
 
     .daily-category--first::before {
         content: '';
         display: block;
         width: 2px;
-        height: min(9.32vw, 179px);
-        margin: 0 auto min(1.4583vw, 28px);
+        height: min(9.4271vw, 181px);
+        margin: 0 auto min(2.2917vw, 44px);
         background-color: var(--color-secondary);
     }
 
+    /* 末列圖底 → footer 頂線 336（190 + TOP 44 + 102） */
     .daily-category:last-of-type {
-        padding-bottom: min(5vw, 96px);
+        padding-bottom: min(5.3125vw, 102px);
+    }
+
+    .daily-category:last-of-type .back-to-top {
+        margin-top: min(9.8958vw, 190px);
     }
 
     .daily-category__header {
-        margin-bottom: min(5.73vw, 110px);
-    }
-
-    .daily-category__title {
-        font-size: min(3.125vw, 60px);
-        font-weight: 700;
-        color: #1A1A1A;
-        margin: 0;
-    }
-
-    .daily-category__subtitle {
-        font-size: min(1.4583vw, 28px);
-        font-weight: 700;
-        color: var(--color-secondary);
+        display: none;
     }
 
     /* ----------------------------------------
-       Job 圖文列（灰底文字卡 831 + 照片 916x515，左右邊距 87）
-       預設文左圖右（row-reverse）；--media-left 修飾類為圖左文右
+       Job 圖文列（照片 916x515 靠左 + 灰底文字卡 831，左右邊距 87）
        ---------------------------------------- */
     .daily-job {
-        flex-direction: row-reverse;
+        flex-direction: row;
         align-items: stretch;
         max-width: none;
         margin: 0 min(4.5313vw, 87px);
@@ -5744,17 +5722,8 @@ section {
         background-color: #F2F2F2;
     }
 
-    .daily-job--media-left {
-        flex-direction: row;
-    }
-
     .daily-job + .daily-job {
-        margin-top: min(5.2083vw, 100px);
-    }
-
-    /* 關於賣場：兩列間距較大（設計 159） */
-    .daily-category:last-of-type .daily-job + .daily-job {
-        margin-top: min(8.2813vw, 159px);
+        margin-top: min(5.3125vw, 102px);
     }
 
     .daily-job__figure {
@@ -5775,7 +5744,7 @@ section {
         flex-direction: column;
         justify-content: center;
         margin: 0;
-        padding: 0 min(2.6vw, 50px) 0 min(7.4479vw, 143px);
+        padding: 0 min(2.6vw, 50px) 0 min(7.2917vw, 140px);
         text-align: left;
     }
 
@@ -5918,21 +5887,21 @@ section {
     }
 
     /* ----------------------------------------
-       紅色垂直分隔線（高 179；SCROLL 群組底 → 線頂 997）
+       紅色垂直分隔線（高 181；SCROLL 群組底 → 線頂 257，見文末覆寫）
        ---------------------------------------- */
-    .eval-part-time,
-    .eval-full-time {
+    .eval-store,
+    .eval-headquarter {
         padding: 0;
     }
 
-    .eval-part-time .highlight-line {
+    .eval-store .highlight-line {
         width: 2px;
-        height: min(9.3vw, 179px);
-        margin: min(51.9vw, 997px) auto min(1.9vw, 37px);
+        height: min(9.4271vw, 181px);
+        margin: 0 auto min(2.1354vw, 41px);
     }
 
     /* ----------------------------------------
-       區塊標題（兼職人員／正職人員 fs56 + 紅色英文副標 fs28）
+       區塊標題（店鋪／本部 fs56 + 紅色英文副標 fs28）
        ---------------------------------------- */
     .eval-section-header__title {
         font-size: min(2.9167vw, 56px);
@@ -5948,58 +5917,75 @@ section {
         margin-top: min(0.52vw, 10px);
     }
 
-    .eval-part-time .eval-section-header {
-        margin-bottom: min(16.15vw, 310px);
+    .eval-store .eval-section-header {
+        margin-bottom: min(5.3125vw, 102px);
     }
 
-    .eval-full-time .eval-section-header {
-        margin-bottom: min(7vw, 134px);
+    .eval-headquarter .eval-section-header {
+        margin-bottom: min(5.0521vw, 97px);
     }
 
     /* ----------------------------------------
-       階梯圖軌道：沿用基底 absolute + aspect-ratio 版式，
-       紅色區塊標籤（店鋪PT／店鋪／本部）以 CSS 呈現（fs48、高 70）
+       階梯圖軌道：紅色標籤（正職人員／兼職人員）fs38、盒 238x70，左緣 365
        ---------------------------------------- */
     .eval-track__label {
-        display: inline-block;
-        position: absolute;
-        padding: min(0.573vw, 11px) min(1.354vw, 26px);
-        background: var(--color-secondary);
-        color: var(--text-inverse);
-        font-size: min(2.5vw, 48px);
-        font-weight: 700;
-        line-height: 1;
-        white-space: nowrap;
+        left: min(19.0104vw, 365px);
+        padding: min(0.8333vw, 16px) min(2.2396vw, 43px);
+        font-size: min(1.9792vw, 38px);
     }
 
-    /* 本部階梯（桌機專用素材）顯示 */
-    .eval-track .eval-hq__img {
-        display: block;
+    .eval-track--store {
+        padding-top: min(9.4792vw, 182px);
+    }
+
+    .eval-track--store .eval-track__img {
+        width: min(59.8958vw, 1150px);
+        margin-left: min(21.1719vw, 406.5px);
+    }
+
+    .eval-track--part {
+        margin-top: min(18.5156vw, 355.5px);
+        padding-top: min(9.2708vw, 178px);
+    }
+
+    .eval-track--part .eval-track__img {
+        width: min(62.1875vw, 1194px);
+        margin-left: min(18.9063vw, 363px);
+    }
+
+    .eval-track--hq {
+        padding-top: min(10.0781vw, 193.5px);
+    }
+
+    .eval-track--hq .eval-track__img {
+        width: min(60.1042vw, 1154px);
+        margin-left: min(20.9896vw, 403px);
     }
 
     /* ----------------------------------------
        兼職圖下說明（2 行 fs32/行距49）
        ---------------------------------------- */
     .eval-caption {
-        margin: min(7.6vw, 146px) 0 0;
+        margin: min(7.3958vw, 142px) 0 0;
         padding: 0 var(--spacing-md);
         font-size: min(1.6667vw, 32px);
         line-height: 1.55;
     }
 
     /* ----------------------------------------
-       正職人員區塊：說明文字 → 標題間距 428
+       本部區塊：說明文字 → 標題間距 405
        ---------------------------------------- */
-    .eval-full-time {
-        padding-top: min(22.3vw, 428px);
-        padding-bottom: min(2.97vw, 57px);
+    .eval-headquarter {
+        padding-top: min(21.0938vw, 405px);
+        padding-bottom: min(5.3646vw, 103px);
     }
 
     /* ----------------------------------------
        底部說明 3 行（fs32/行距48 灰字）＋ TOP 回頂連結
+       （末行底 → footer 頂線 327 = 180 + TOP 44 + 103）
        ---------------------------------------- */
     .eval-closing {
-        padding: min(7.45vw, 143px) var(--spacing-md) 0;
+        padding: min(21.3021vw, 409px) var(--spacing-md) 0;
     }
 
     .eval-closing p {
@@ -6010,8 +5996,8 @@ section {
     }
 
     /* TOP 樣式沿用首頁 .back-to-top，覆寫上邊距 */
-    .eval-full-time .back-to-top {
-        margin-top: min(23.5vw, 452px);
+    .eval-headquarter .back-to-top {
+        margin-top: min(9.375vw, 180px);
     }
 }
 
@@ -6546,13 +6532,14 @@ section {
         z-index: 1;
     }
 
-    /* 首個內容區塊：縮短靜態設計留白，內容緊接淡出後出現 */
+    /* 首個內容區塊：縮短靜態設計留白，內容緊接淡出後出現
+       （0803 設計稿：SCROLL 群組底 → 紅線頂，日常業務 195、人事評價 257） */
     .daily-category--first {
-        margin-top: min(8.3333vw, 160px);
+        margin-top: min(10.1563vw, 195px);
     }
 
-    .eval-part-time .highlight-line {
-        margin-top: min(8.3333vw, 160px);
+    .eval-store .highlight-line {
+        margin-top: min(13.3854vw, 257px);
     }
 
     /* 進場動畫（js 掛 .hero-reveal、進視窗加 .is-revealed；三頁共用） */

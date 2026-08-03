@@ -93,44 +93,40 @@
         <div class="scroll-line"></div>
     </div>
 
-    <!-- 兼職人員 Part-time -->
-    <section class="eval-part-time">
+    <!-- 店鋪 Store：正職人員 → 兼職人員 -->
+    <section class="eval-store">
         <div class="highlight-line"></div>
         <div class="eval-section-header">
-            <h2 class="eval-section-header__title">兼職人員</h2>
-            <p class="eval-section-header__subtitle">Part-time</p>
+            <h2 class="eval-section-header__title">店鋪</h2>
+            <p class="eval-section-header__subtitle">Store</p>
         </div>
 
-        <div class="eval-track eval-pt">
-            <span class="eval-track__label eval-pt__label" aria-hidden="true">店鋪PT</span>
-            <picture>
-                <source media="(min-width: 1024px)" srcset="assets/images/evaluation/parttime-desktop.webp">
-                <img class="eval-track__img eval-pt__img" src="assets/images/evaluation/parttime.webp"
-                     alt="兼職人員（店鋪PT）升遷階梯示意圖：C級別、B級別、A級別、S級別" loading="lazy">
-            </picture>
+        <div class="eval-track eval-track--store">
+            <span class="eval-track__label">正職人員</span>
+            <img class="eval-track__img" src="assets/images/evaluation/store-desktop.webp"
+                 alt="店鋪正職人員升遷階梯示意圖：PT、正職社員、店長（等級C~）、店長（等級A~）、區經理" loading="lazy">
+        </div>
+
+        <div class="eval-track eval-track--part">
+            <span class="eval-track__label">兼職人員</span>
+            <img class="eval-track__img" src="assets/images/evaluation/parttime-desktop.webp"
+                 alt="店鋪兼職人員升遷階梯示意圖：C級別、B級別、A級別、S級別" loading="lazy">
         </div>
 
         <p class="eval-caption">入職滿3個月，依個人業務熟悉度達考試資格者，<br class="m-br d-br">分別進行考試與面談，並視最終成果調整薪資。</p>
     </section>
 
-    <!-- 正職人員 Full-time -->
-    <section class="eval-full-time">
+    <!-- 本部 Head Office：正職人員 -->
+    <section class="eval-headquarter">
         <div class="eval-section-header">
-            <h2 class="eval-section-header__title">正職人員</h2>
-            <p class="eval-section-header__subtitle">Full-time</p>
+            <h2 class="eval-section-header__title">本部</h2>
+            <p class="eval-section-header__subtitle">Head Office</p>
         </div>
 
-        <!-- 行動版：店鋪＋本部單張合併圖；桌機版：店鋪／本部分別裁切定位，紅色標籤改以 CSS 呈現 -->
-        <div class="eval-track eval-ft">
-            <span class="eval-track__label eval-ft__label--store" aria-hidden="true">店鋪</span>
-            <span class="eval-track__label eval-ft__label--hq" aria-hidden="true">本部</span>
-            <picture>
-                <source media="(min-width: 1024px)" srcset="assets/images/evaluation/store-desktop.webp">
-                <img class="eval-track__img eval-ft__img" src="assets/images/evaluation/fulltime-and-headquarter.webp"
-                     alt="正職人員升遷階梯示意圖：店鋪（正職社員、店長、區經理）與本部（正職人員、專員、資深專員、副理、經理）" loading="lazy">
-            </picture>
-            <img class="eval-track__img eval-hq__img" src="assets/images/evaluation/headquarter-desktop.webp"
-                 alt="" aria-hidden="true" loading="lazy">
+        <div class="eval-track eval-track--hq">
+            <span class="eval-track__label">正職人員</span>
+            <img class="eval-track__img" src="assets/images/evaluation/headquarter-desktop.webp"
+                 alt="本部正職人員升遷階梯示意圖：正職人員、專員、資深專員、副理、經理" loading="lazy">
         </div>
 
         <div class="eval-closing">

@@ -457,7 +457,7 @@ function initHeaderShrink() {
 // ========================================
 function initHeroPin() {
     const pin = document.querySelector('.hero .hero-slider, .hero--daily > .hero-image, .hero--eval > .hero-image')
-    const reveal = document.querySelector('.about-section, .daily-category--first, .eval-part-time')
+    const reveal = document.querySelector('.about-section, .daily-category--first, .eval-store')
     if (!pin || !reveal) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
