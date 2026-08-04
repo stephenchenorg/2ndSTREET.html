@@ -11,7 +11,7 @@
 :root {
     /* Colors - Primary Palette */
     --color-primary: #000000;
-    --color-secondary: #E60012;
+    --color-secondary: #E00D12;
     --color-accent: #FFFFFF;
     --color-gray-light: #F5F5F5;
     --color-gray-dark: #666666;
@@ -21,17 +21,17 @@
     --text-primary: #000000;
     --text-secondary: #666666;
     --text-inverse: #FFFFFF;
-    --text-accent: #E60012;
+    --text-accent: #E00D12;
     
     /* Background Colors */
     --bg-primary: #FFFFFF;
     --bg-secondary: #F5F5F5;
     --bg-dark: #000000;
-    --bg-accent: #E60012;
+    --bg-accent: #E00D12;
     
     /* Border Colors */
     --border-color: #E0E0E0;
-    --border-accent: #E60012;
+    --border-accent: #E00D12;
     
     /* Spacing - MUST use px, not rem */
     --spacing-xs: 8px;
